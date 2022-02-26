@@ -17,11 +17,10 @@ jobs:
       - name: Run the linter
         run: npm run lint
       - name: Run the formatter
-        id: format
         run: npm run format
         if: failure()
       - name: Create a commit and push the changes
         uses: GuillaumeFalourd/git-commit-push@v1.3
-        if: success()
+        if: always()
         with:
           commit_message: '🚨 Fixed linting issues'
