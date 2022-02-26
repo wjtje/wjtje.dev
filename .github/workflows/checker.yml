@@ -17,11 +17,11 @@ jobs:
       - name: Run the linter
         run: npm run lint
       - name: Run the formatter
+        id: format
         run: npm run format
         if: failure()
-      - name: push
-        uses: github-actions-x/commit@v2.8
+      - name: Create a commit and push the changes
+        uses: GuillaumeFalourd/git-commit-push@v1.3
+        if: success()
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: '🚨 Fixed linting issues'
-          force-add: 'true'
+          commit_message: '🚨 Fixed linting issues'
