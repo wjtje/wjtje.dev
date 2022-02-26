@@ -8,8 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.0.0
         with:
@@ -22,7 +20,7 @@ jobs:
         run: npm run format
         if: failure()
       - name: Create a commit and push the changes
-        uses: GuillaumeFalourd/git-commit-push@v1.3
+        uses: stefanzweifel/git-auto-commit-action@v4
         if: always()
         with:
           commit_message: '🚨 Fixed linting issues'
