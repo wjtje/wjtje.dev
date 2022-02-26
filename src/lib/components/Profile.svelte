@@ -17,17 +17,22 @@
 
 <style lang="scss">
 	section {
-		@apply flex gap-4;
+		@apply flex gap-4 justify-center mt-8;
 
 		img {
 			@apply rounded-full aspect-square h-32;
 		}
 
 		section {
-			@apply flex-col flex-grow justify-center gap-4;
+			@apply flex-col flex-grow gap-4 mt-0;
 
 			h1 {
 				@apply text-4xl;
+				@apply dark:text-white;
+			}
+
+			p {
+				@apply text-gray-900 dark:text-gray-100;
 			}
 		}
 	}
