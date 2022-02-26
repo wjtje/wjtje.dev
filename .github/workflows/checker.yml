@@ -14,13 +14,13 @@ jobs:
           node-version: '17'
       - name: Install dependencies
         run: npm ci
-      - name: Run the linter
-        run: npm run lint
       - name: Run the formatter
         run: npm run format
-        if: failure()
+      - name: Run the linter
+        run: npm run lint
       - name: Create a commit and push the changes
         uses: stefanzweifel/git-auto-commit-action@v4
         if: always()
         with:
-          commit_message: '🚨 Fixed linting issues'
+          commit_message: '🚨 Fixed formatter issues'
+          commit_user_name: Formatter Bot
