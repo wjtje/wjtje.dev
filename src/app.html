@@ -10,13 +10,12 @@
 	<script>
 		// Auto load dark mode
 		let theme = JSON.parse(localStorage.getItem('theme'))
-		if (theme == null) {
+		if (theme == null || theme == 'system') {
 			// Use theme from device
 			theme =
 				window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
 					? 'dark'
 					: 'light'
-			localStorage.setItem('theme', JSON.stringify(theme))
 		}
 		document.documentElement.classList.add(theme);
 	</script>

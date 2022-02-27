@@ -1,19 +1,35 @@
 <script lang="ts">
 	import { browser } from '$app/env';
 	import { writableLocal } from '$lib/store-localstorage';
+	import Dropdown from '../Dropdown.svelte';
 
 	// Store the value inside localStorage
-	const store = writableLocal('theme');
-	let darkMode = $store == 'dark';
-	$: $store = darkMode ? 'dark' : 'light';
+	const store = writableLocal('theme', 'system');
 
-	// Update the gui
+	function dropdownAction(e: number) {
+		$store = ['light', 'dark', 'system'][e];
+	}
+
 	$: {
 		if (browser && document) {
-			document.documentElement.classList.remove(darkMode ? 'light' : 'dark');
-			document.documentElement.classList.add(darkMode ? 'dark' : 'light');
+			let theme = $store;
+
+			if (theme == 'system') {
+				theme =
+					window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+						? 'dark'
+						: 'light';
+			}
+
+			document.documentElement.classList.remove(theme == 'dark' ? 'light' : 'dark');
+			document.documentElement.classList.add(theme);
 		}
 	}
 </script>
 
-<input type="checkbox" bind:checked={darkMode} />
+<Dropdown
+	title="Theme"
+	options={['Light', 'Dark', 'System']}
+	action={dropdownAction}
+	active={['light', 'dark', 'system'].indexOf($store)}
+/>
