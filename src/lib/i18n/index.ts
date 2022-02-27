@@ -3,6 +3,7 @@ import lang from './lang.json';
 
 export const defaultLocale = 'en';
 
+/** @type {import('@sveltejs/kit').Handle} */
 const config = {
 	translations: {
 		en: { lang },
@@ -12,23 +13,25 @@ const config = {
 		{
 			locale: 'en',
 			key: 'profile',
+			route: ['/'],
 			loader: async () => (await import('./en/profile.json')).default
 		},
 		{
 			locale: 'en',
-			key: 'head',
-			loader: async () => (await import('./en/head.json')).default
+			key: 'common',
+			loader: async () => (await import('./en/common.json')).default
 		},
 
 		{
 			locale: 'nl',
 			key: 'profile',
+			route: ['/'],
 			loader: async () => (await import('./nl/profile.json')).default
 		},
 		{
 			locale: 'nl',
-			key: 'head',
-			loader: async () => (await import('./nl/head.json')).default
+			key: 'common',
+			loader: async () => (await import('./nl/common.json')).default
 		}
 	]
 };

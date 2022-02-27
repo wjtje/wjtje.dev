@@ -4,7 +4,7 @@
 
 <section>
 	<img
-		src="https://www.gravatar.com/avatar/{process.env.GRAVATAR_HASH}?s=200&d=mp"
+		src="https://www.gravatar.com/avatar/1741643deaafad86bd0bf2a4fb481366?s=200&d=mp"
 		alt="headshot"
 	/>
 
