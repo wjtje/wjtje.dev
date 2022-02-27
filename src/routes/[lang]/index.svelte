@@ -4,8 +4,8 @@
 </script>
 
 <svelte:head>
-	<title>{$t('head.title')}</title>
-	<meta name="description" content={$t('head.description')} />
+	<title>{$t('common.title')}</title>
+	<meta name="description" content={$t('common.description')} />
 </svelte:head>
 
 <Profile />

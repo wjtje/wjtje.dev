@@ -1,13 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="min-h-screen">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" href="%svelte.assets%/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		%svelte.head%
+
+		<script>
+			// Auto load dark mode
+			let theme = JSON.parse(localStorage.getItem('theme'));
+			if (theme == null || theme == 'system') {
+				// Use theme from device
+				theme =
+					window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+						? 'dark'
+						: 'light';
+			}
+			document.documentElement.classList.add(theme);
+		</script>
 	</head>
 
-	<body class="dark:bg-gray-900">
-		<div>%svelte.body%</div>
+	<body class="dark:bg-gray-900 dark:text-white min-h-screen">
+		%svelte.body%
 	</body>
 </html>
