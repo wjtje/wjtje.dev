@@ -2,6 +2,7 @@
 	import { browser } from '$app/env';
 	import { writableLocal } from '$lib/store-localstorage';
 	import Dropdown from '../Dropdown.svelte';
+	import { t } from '$lib/i18n';
 
 	// Store the value inside localStorage
 	const store = writableLocal('theme', 'system');
@@ -28,8 +29,8 @@
 </script>
 
 <Dropdown
-	title="Theme"
-	options={['Light', 'Dark', 'System']}
+	title={$t('navigation.theme')}
+	options={[$t('navigation.light'), $t('navigation.dark'), $t('navigation.system')]}
 	action={dropdownAction}
 	active={['light', 'dark', 'system'].indexOf($store)}
 />

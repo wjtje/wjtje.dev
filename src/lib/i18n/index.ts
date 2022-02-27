@@ -21,6 +21,11 @@ const config = {
 			key: 'common',
 			loader: async () => (await import('./en/common.json')).default
 		},
+		{
+			locale: 'en',
+			key: 'navigation',
+			loader: async () => (await import('./en/navigation.json')).default
+		},
 
 		{
 			locale: 'nl',
@@ -32,7 +37,12 @@ const config = {
 			locale: 'nl',
 			key: 'common',
 			loader: async () => (await import('./nl/common.json')).default
-		}
+		},
+		{
+			locale: 'nl',
+			key: 'navigation',
+			loader: async () => (await import('./nl/navigation.json')).default
+		},
 	]
 };
 
