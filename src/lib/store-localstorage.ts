@@ -1,6 +1,6 @@
-import { browser } from "$app/env";
-import { writable } from "svelte/store";
-import type { Writable } from "svelte/store"
+import { browser } from '$app/env';
+import { writable } from 'svelte/store';
+import type { Writable } from 'svelte/store';
 
 /**
  * A function similar to `writable`, but it implements `localStorage` support.
@@ -20,29 +20,27 @@ import type { Writable } from "svelte/store"
  * @param defaultValue An optional default value
  * @returns The same as if `writable` was called
  */
-function writableLocal<T> (key: string, defaultValue?: T): Writable<T> {
-	const store = writable<T>(defaultValue)
+function writableLocal<T>(key: string, defaultValue?: T): Writable<T> {
+	const store = writable<T>(defaultValue);
 
 	if (browser && localStorage) {
-		store.set(JSON.parse(localStorage.getItem(key)))
+		store.set(JSON.parse(localStorage.getItem(key)));
 	}
 
-	store.subscribe(
-		(newValue: T) => {
-			if (browser && localStorage) {
-				try {
-					if (newValue !== undefined) {
-						localStorage.setItem(key, JSON.stringify(newValue))
-					} else {
-						localStorage.removeItem(key)
-					}
-				} catch (e) {
-					console.warn(e)
+	store.subscribe((newValue: T) => {
+		if (browser && localStorage) {
+			try {
+				if (newValue !== undefined) {
+					localStorage.setItem(key, JSON.stringify(newValue));
+				} else {
+					localStorage.removeItem(key);
 				}
+			} catch (e) {
+				console.warn(e);
 			}
 		}
-	)
-	return store
+	});
+	return store;
 }
 
-export { writableLocal }
+export { writableLocal };

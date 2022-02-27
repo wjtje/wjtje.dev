@@ -42,7 +42,7 @@ const config = {
 			locale: 'nl',
 			key: 'navigation',
 			loader: async () => (await import('./nl/navigation.json')).default
-		},
+		}
 	]
 };
 
