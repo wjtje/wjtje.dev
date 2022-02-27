@@ -6,7 +6,7 @@
 	export let action: (e: number) => void;
 	export let active: number;
 
-	let hovering: boolean = false;
+	let hovering = false;
 
 	function enter() {
 		hovering = true;
