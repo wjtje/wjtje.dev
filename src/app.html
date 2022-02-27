@@ -15,6 +15,7 @@
 					window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
 						? 'dark'
 						: 'light';
+				localStorage.setItem('theme', JSON.stringify('system'));
 			}
 			document.documentElement.classList.add(theme);
 		</script>
