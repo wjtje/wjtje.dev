@@ -2,5 +2,6 @@
 	"light": "Light",
 	"dark": "Dark",
 	"system": "System",
-	"theme": "Theme"
+	"theme": "Theme",
+	"language": "Language"
 }

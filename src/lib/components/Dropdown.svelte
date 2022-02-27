@@ -62,7 +62,7 @@
 			@apply absolute rounded-md shadow-md bg-white dark:bg-gray-700 min-w-[6rem];
 
 			li {
-				@apply transition-colors cursor-pointer h-8 flex flex-col justify-center px-4 my-2;
+				@apply cursor-pointer h-8 flex flex-col justify-center px-4 my-2;
 
 				&:nth-child(1) {
 					@apply rounded-t-md;
