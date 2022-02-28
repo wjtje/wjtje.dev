@@ -24,7 +24,11 @@
 </main>
 
 <style lang="scss">
+	:global(body) {
+		@apply gdark:bg-gray-900 gdark:text-white min-h-screen;
+	}
+
 	main {
-		@apply container mx-auto;
+		@apply container mx-auto my-4;
 	}
 </style>

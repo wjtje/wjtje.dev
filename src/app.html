@@ -1,27 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" class="min-h-screen">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="%svelte.assets%/favicon.png" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		%svelte.head%
+<html lang="en">
 
-		<script>
-			// Auto load dark mode
-			let theme = JSON.parse(localStorage.getItem('theme'));
-			if (theme == null || theme == 'system') {
-				// Use theme from device
-				theme =
-					window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-						? 'dark'
-						: 'light';
-				localStorage.setItem('theme', JSON.stringify('system'));
-			}
-			document.documentElement.classList.add(theme);
-		</script>
-	</head>
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" href="%svelte.assets%/favicon.png" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	%svelte.head%
 
-	<body class="dark:bg-gray-900 dark:text-white min-h-screen">
-		%svelte.body%
-	</body>
+	<script>
+		// Auto load dark mode
+		let theme = JSON.parse(localStorage.getItem('theme'))
+		if (theme == null || theme == 'system') {
+			// Use theme from device
+			theme =
+				window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+					? 'dark'
+					: 'light'
+			localStorage.setItem('theme', JSON.stringify('system'))
+		}
+		document.documentElement.classList.add(theme);
+	</script>
+</head>
+
+<body>
+	%svelte.body%
+</body>
+
 </html>

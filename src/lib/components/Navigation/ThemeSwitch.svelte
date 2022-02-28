@@ -33,4 +33,5 @@
 	options={[$t('navigation.light'), $t('navigation.dark'), $t('navigation.system')]}
 	action={dropdownAction}
 	active={['light', 'dark', 'system'].indexOf($store)}
+	rightSafety={true}
 />

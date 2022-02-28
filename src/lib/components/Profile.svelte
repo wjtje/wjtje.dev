@@ -17,7 +17,7 @@
 
 <style lang="scss">
 	section {
-		@apply flex gap-4 justify-center mt-8;
+		@apply flex gap-4 justify-center;
 
 		img {
 			@apply rounded-full aspect-square h-32;
