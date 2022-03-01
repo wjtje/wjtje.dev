@@ -13,11 +13,23 @@
 </script>
 
 <script lang="ts">
-	import Navigation from '$lib/components/Navigation/Navigation.svelte';
+	import { Navigation, NavigationTitle, NavigationItems } from '$lib/components/Navigation';
+	import LanguageSwitcher from '$lib/components/Navigation/LanguageSwitcher.svelte';
+	import ThemeSwitcher from '$lib/components/Navigation/ThemeSwitcher.svelte';
+	import { t } from '$lib/i18n';
 	import '../app.css';
 </script>
 
-<Navigation />
+<Navigation>
+	<NavigationTitle>{$t('common.title')}</NavigationTitle>
+	<NavigationItems>
+		<a href={`/${$locale}`}>Home</a>
+		<a href={`/${$locale}/about`}>About</a>
+		<div />
+		<LanguageSwitcher />
+		<ThemeSwitcher />
+	</NavigationItems>
+</Navigation>
 
 <main>
 	<slot />
@@ -30,5 +42,9 @@
 
 	main {
 		@apply container mx-auto my-4;
+	}
+
+	div {
+		@apply flex-grow;
 	}
 </style>

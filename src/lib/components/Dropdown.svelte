@@ -28,7 +28,7 @@
 	>
 
 	{#if hovering}
-		<ul transition:fly={{ y: 100, duration: 150 }} class:right-0={rightSafety}>
+		<ul transition:fly={{ y: 50, duration: 50 }} class:right-0={rightSafety}>
 			{#each options as option, index}
 				<li
 					on:click={() => {
