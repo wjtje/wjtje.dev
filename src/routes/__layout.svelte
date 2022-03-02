@@ -19,6 +19,7 @@
 	import { t } from '$lib/i18n';
 	import { page } from '$app/stores';
 	import '../app.css';
+	import NavigationDropdown from '$lib/components/Navigation/NavigationDropdown.svelte';
 
 	$: routes = [
 		{
@@ -26,7 +27,7 @@
 			name: $t('navigation.home')
 		},
 		{
-			path: `${$locale}/about`,
+			path: `/${$locale}/about`,
 			name: $t('navigation.about')
 		}
 	];
@@ -39,8 +40,10 @@
 			<a href={route.path} class:active={$page.url.pathname == route.path}>{route.name}</a>
 		{/each}
 		<div />
-		<LanguageSwitcher />
-		<ThemeSwitcher />
+		<!-- <LanguageSwitcher />
+		<ThemeSwitcher /> -->
+		<NavigationDropdown />
+		<NavigationDropdown />
 	</NavigationItems>
 </Navigation>
 
