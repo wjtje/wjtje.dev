@@ -17,14 +17,27 @@
 	import LanguageSwitcher from '$lib/components/Navigation/LanguageSwitcher.svelte';
 	import ThemeSwitcher from '$lib/components/Navigation/ThemeSwitcher.svelte';
 	import { t } from '$lib/i18n';
+	import { page } from '$app/stores';
 	import '../app.css';
+
+	$: routes = [
+		{
+			path: `/${$locale}`,
+			name: $t('navigation.home')
+		},
+		{
+			path: `${$locale}/about`,
+			name: $t('navigation.about')
+		}
+	];
 </script>
 
 <Navigation>
 	<NavigationTitle>{$t('common.title')}</NavigationTitle>
 	<NavigationItems>
-		<a href={`/${$locale}`}>Home</a>
-		<a href={`/${$locale}/about`}>About</a>
+		{#each routes as route}
+			<a href={route.path} class:active={$page.url.pathname == route.path}>{route.name}</a>
+		{/each}
 		<div />
 		<LanguageSwitcher />
 		<ThemeSwitcher />

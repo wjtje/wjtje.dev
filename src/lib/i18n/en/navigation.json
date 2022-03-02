@@ -3,5 +3,7 @@
 	"dark": "Dark",
 	"system": "System",
 	"theme": "Theme",
-	"language": "Language"
+	"language": "Language",
+	"home": "Home",
+	"about": "About"
 }
