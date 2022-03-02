@@ -75,7 +75,7 @@
 			<li>Item 3</li>
 		</ul>
 	{:else}
-		<ul bind:this={dropdown} class="collapsed">
+		<ul bind:this={dropdown} class="collapsed mobile">
 			<li>Item 1</li>
 			<li>Item 2</li>
 			<li>Item 3</li>
@@ -105,6 +105,10 @@
 			@apply h-auto md:h-auto overflow-hidden md:absolute md:min-w-[6rem] left-[-0.5rem] md:right-0 transition-[height] ease-in-out;
 			// Give it the correct color and style
 			@apply md:rounded-md md:shadow-md md:bg-white md:dark:bg-gray-700;
+
+			&.mobile {
+				@apply md:hidden;
+			}
 
 			&.collapsed {
 				@apply h-0;
