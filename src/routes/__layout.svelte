@@ -41,7 +41,7 @@
 	}
 
 	main {
-		@apply container mx-auto my-4;
+		@apply container mx-auto my-4 px-2;
 	}
 
 	div {
