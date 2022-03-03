@@ -26,6 +26,12 @@ const config = {
 			key: 'navigation',
 			loader: async () => (await import('./en/navigation.json')).default
 		},
+		{
+			locale: 'en',
+			key: 'about',
+			path: ['/about'],
+			loader: async () => (await import('./en/about.json')).default
+		},
 
 		{
 			locale: 'nl',
@@ -42,6 +48,12 @@ const config = {
 			locale: 'nl',
 			key: 'navigation',
 			loader: async () => (await import('./nl/navigation.json')).default
+		},
+		{
+			locale: 'nl',
+			key: 'about',
+			path: ['/about'],
+			loader: async () => (await import('./nl/about.json')).default
 		}
 	]
 };

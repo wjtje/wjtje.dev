@@ -8,32 +8,27 @@
 		alt="headshot"
 	/>
 
-	<section>
-		<h1>{$t('profile.name')}</h1>
+	<h1>{$t('profile.name')}</h1>
 
-		<p>{$t('profile.about')}</p>
-	</section>
+	<p>{$t('profile.about')}</p>
 </section>
 
 <style lang="scss">
 	section {
-		@apply flex gap-4 justify-center mt-8;
+		// @apply flex gap-4 justify-center;
+		@apply grid grid-cols-[8rem_1fr] grid-rows-[8rem_1fr] md:grid-rows-2 gap-4 items-center md:items-start;
 
 		img {
-			@apply rounded-full aspect-square h-32;
+			@apply rounded-full aspect-square h-32 md:row-span-2;
 		}
 
-		section {
-			@apply flex-col flex-grow gap-4 mt-0;
+		h1 {
+			@apply text-4xl md:self-end;
+			@apply dark:text-white;
+		}
 
-			h1 {
-				@apply text-4xl;
-				@apply dark:text-white;
-			}
-
-			p {
-				@apply text-gray-900 dark:text-gray-100;
-			}
+		p {
+			@apply text-gray-900 dark:text-gray-100 col-span-2 md:col-span-1;
 		}
 	}
 </style>

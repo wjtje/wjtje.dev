@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { browser } from '$app/env';
 	import { writableLocal } from '$lib/store-localstorage';
-	import Dropdown from '../Dropdown.svelte';
+	import { NavigationDropdown } from '$lib/components/Navigation';
 	import { t } from '$lib/i18n';
 
 	// Store the value inside localStorage
@@ -28,7 +28,7 @@
 	}
 </script>
 
-<Dropdown
+<NavigationDropdown
 	title={$t('navigation.theme')}
 	options={[$t('navigation.light'), $t('navigation.dark'), $t('navigation.system')]}
 	action={dropdownAction}

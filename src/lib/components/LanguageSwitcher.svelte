@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Dropdown from '../Dropdown.svelte';
+	import { NavigationDropdown } from '$lib/components/Navigation';
 	import { t, locale, locales } from '$lib/i18n';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
@@ -20,7 +20,7 @@
 	}
 </script>
 
-<Dropdown
+<NavigationDropdown
 	title={$t('navigation.language')}
 	options={$locales.map((lc) => {
 		return $t(`lang.${lc}`);

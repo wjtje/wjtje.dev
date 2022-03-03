@@ -13,18 +13,55 @@
 </script>
 
 <script lang="ts">
-	import Navigation from '$lib/components/Navigation/Navigation.svelte';
+	import {
+		Navigation,
+		NavigationTitle,
+		NavigationItems,
+		NavigationItem
+	} from '$lib/components/Navigation';
+	import LanguageSwitcher from '$lib/components/LanguageSwitcher.svelte';
+	import ThemeSwitcher from '$lib/components/ThemeSwitcher.svelte';
+	import { t } from '$lib/i18n';
 	import '../app.css';
+
+	$: routes = [
+		{
+			path: ``,
+			name: $t('navigation.home')
+		},
+		{
+			path: `about`,
+			name: $t('navigation.about')
+		}
+	];
 </script>
 
-<Navigation />
+<Navigation>
+	<NavigationTitle>{$t('common.title')}</NavigationTitle>
+	<NavigationItems>
+		{#each routes as route}
+			<NavigationItem {...route} />
+		{/each}
+		<div />
+		<LanguageSwitcher />
+		<ThemeSwitcher />
+	</NavigationItems>
+</Navigation>
 
 <main>
 	<slot />
 </main>
 
 <style lang="scss">
+	:global(body) {
+		@apply gdark:bg-gray-900 gdark:text-white min-h-screen;
+	}
+
 	main {
-		@apply container mx-auto;
+		@apply container mx-auto my-4 lg:py-6 px-4 lg:px-8;
+	}
+
+	div {
+		@apply flex-grow;
 	}
 </style>
