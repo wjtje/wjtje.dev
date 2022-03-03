@@ -1,8 +1,9 @@
 name: Checker
 on:
+  push:
+    branches: [main]
   pull_request:
-    branches:
-      - main
+    branches: [main]
 jobs:
   linter:
     runs-on: ubuntu-latest
