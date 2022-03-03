@@ -13,20 +13,24 @@
 </script>
 
 <script lang="ts">
-	import { Navigation, NavigationTitle, NavigationItems } from '$lib/components/Navigation';
+	import {
+		Navigation,
+		NavigationTitle,
+		NavigationItems,
+		NavigationItem
+	} from '$lib/components/Navigation';
 	import LanguageSwitcher from '$lib/components/LanguageSwitcher.svelte';
 	import ThemeSwitcher from '$lib/components/ThemeSwitcher.svelte';
 	import { t } from '$lib/i18n';
-	import { page } from '$app/stores';
 	import '../app.css';
 
 	$: routes = [
 		{
-			path: `/${$locale}`,
+			path: ``,
 			name: $t('navigation.home')
 		},
 		{
-			path: `/${$locale}/about`,
+			path: `about`,
 			name: $t('navigation.about')
 		}
 	];
@@ -36,7 +40,7 @@
 	<NavigationTitle>{$t('common.title')}</NavigationTitle>
 	<NavigationItems>
 		{#each routes as route}
-			<a href={route.path} class:active={$page.url.pathname == route.path}>{route.name}</a>
+			<NavigationItem {...route} />
 		{/each}
 		<div />
 		<LanguageSwitcher />

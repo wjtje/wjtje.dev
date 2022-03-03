@@ -2,17 +2,21 @@
 	import { fade } from 'svelte/transition';
 	import MdMenu from 'svelte-icons/md/MdMenu.svelte';
 	import MdClose from 'svelte-icons/md/MdClose.svelte';
+	import { onMount, setContext } from 'svelte';
+	import { beforeNavigate } from '$app/navigation';
+	import { writable } from 'svelte/store';
 
-	let showMobileMenu = false;
+	let showMobileMenu = writable(false);
+	setContext('showMobileMenu', showMobileMenu);
 
 	const handleClick = () => {
-		showMobileMenu = !showMobileMenu;
+		$showMobileMenu = !$showMobileMenu;
 	};
 </script>
 
 <button on:click={handleClick}> <MdMenu /> </button>
 
-{#if showMobileMenu}
+{#if $showMobileMenu}
 	<section transition:fade={{ duration: 150 }} class="mobile">
 		<button on:click={handleClick}> <MdClose /> </button>
 		<slot />
@@ -47,10 +51,6 @@
 		& > :global(*) {
 			// Give the childeren the correct style
 			@apply px-0 md:px-2;
-		}
-
-		& > :global(a) {
-			@apply text-lg md:text-base transition-[font-weight];
 		}
 
 		& > :global(.active) {
