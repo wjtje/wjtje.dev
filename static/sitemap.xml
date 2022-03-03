@@ -7,10 +7,10 @@
 		<xhtml:link rel="alternate" hreflang="de" href="https://wjtje.ga/de" />
 	</url>
 	<url>
-		<loc>https://wjtje.ga/en/about</loc>
+		<loc>https://wjtje.ga/en/contact</loc>
 		<priority>0.8</priority>
-		<xhtml:link rel="alternate" hreflang="en" href="https://wjtje.ga/en/about" />
-		<xhtml:link rel="alternate" hreflang="nl" href="https://wjtje.ga/nl/about" />
-		<xhtml:link rel="alternate" hreflang="de" href="https://wjtje.ga/de/about" />
+		<xhtml:link rel="alternate" hreflang="en" href="https://wjtje.ga/en/contact" />
+		<xhtml:link rel="alternate" hreflang="nl" href="https://wjtje.ga/nl/contact" />
+		<xhtml:link rel="alternate" hreflang="de" href="https://wjtje.ga/de/contact" />
 	</url>
 </urlset>

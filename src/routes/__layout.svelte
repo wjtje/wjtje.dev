@@ -30,8 +30,8 @@
 			name: $t('navigation.home')
 		},
 		{
-			path: `about`,
-			name: $t('navigation.about')
+			path: `contact`,
+			name: $t('navigation.contact')
 		}
 	];
 </script>

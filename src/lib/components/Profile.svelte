@@ -8,9 +8,9 @@
 		alt="headshot"
 	/>
 
-	<h1>{$t('profile.name')}</h1>
+	<h1>{$t('home.name')}</h1>
 
-	<p>{$t('profile.about')}</p>
+	<p>{$t('home.about')}</p>
 </section>
 
 <style lang="scss">
