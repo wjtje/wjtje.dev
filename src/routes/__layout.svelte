@@ -14,12 +14,11 @@
 
 <script lang="ts">
 	import { Navigation, NavigationTitle, NavigationItems } from '$lib/components/Navigation';
-	import LanguageSwitcher from '$lib/components/Navigation/LanguageSwitcher.svelte';
-	import ThemeSwitcher from '$lib/components/Navigation/ThemeSwitcher.svelte';
+	import LanguageSwitcher from '$lib/components/LanguageSwitcher.svelte';
+	import ThemeSwitcher from '$lib/components/ThemeSwitcher.svelte';
 	import { t } from '$lib/i18n';
 	import { page } from '$app/stores';
 	import '../app.css';
-	import NavigationDropdown from '$lib/components/Navigation/NavigationDropdown.svelte';
 
 	$: routes = [
 		{
@@ -40,10 +39,8 @@
 			<a href={route.path} class:active={$page.url.pathname == route.path}>{route.name}</a>
 		{/each}
 		<div />
-		<!-- <LanguageSwitcher />
-		<ThemeSwitcher /> -->
-		<NavigationDropdown />
-		<NavigationDropdown />
+		<LanguageSwitcher />
+		<ThemeSwitcher />
 	</NavigationItems>
 </Navigation>
 

@@ -6,6 +6,12 @@
 	import type { mediaObject } from 'svelte-match-media';
 	import { fly } from 'svelte/transition';
 
+	// Props
+	export let title: string;
+	export let options: string[];
+	export let action: (e: number) => void;
+	export let active: number = -1;
+
 	// Register media querys
 	let media: mediaObject;
 
@@ -62,7 +68,7 @@
 
 <div on:mouseenter={mouseEnter} on:mouseleave={mouseLeave}>
 	<button on:click={buttonClick}>
-		<span>Dropdown</span>
+		<span>{title}</span>
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
 			<path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
 		</svg>
@@ -70,15 +76,17 @@
 
 	{#if hovering && $media.md}
 		<ul transition:fly={{ y: 50, duration: 50 }}>
-			<li>Item 1</li>
-			<li>Item 2</li>
-			<li>Item 3</li>
+			{#each options as option, index}
+				<li on:click={(_) => action(index)} class:active={active == index}>
+					<span>{option}</span>
+				</li>
+			{/each}
 		</ul>
 	{:else}
 		<ul bind:this={dropdown} class="collapsed mobile">
-			<li>Item 1</li>
-			<li>Item 2</li>
-			<li>Item 3</li>
+			{#each options as option, index}
+				<li on:click={(_) => action(index)} class:active={active == index}>{option}</li>
+			{/each}
 		</ul>
 	{/if}
 </div>
@@ -102,7 +110,7 @@
 
 		ul {
 			// Set it the correct position
-			@apply h-auto md:h-auto overflow-hidden md:absolute md:min-w-[6rem] left-[-0.5rem] md:right-0 transition-[height] ease-in-out;
+			@apply h-auto md:h-auto overflow-hidden md:absolute md:min-w-[6rem] md:w-fit px-4 left-[-0.5rem] md:right-0 transition-[height] ease-in-out;
 			// Give it the correct color and style
 			@apply md:rounded-md md:shadow-md md:bg-white md:dark:bg-gray-700;
 
@@ -116,15 +124,19 @@
 
 			li {
 				// Make it the correct size
-				@apply h-8 px-4 my-2;
+				@apply h-8 my-2;
 				// Center the text vertically
 				@apply flex flex-col justify-center;
 
 				@apply cursor-pointer;
 
+				// Make the active item slightly bold
+				&.active {
+					@apply text-green-400 md:text-white font-semibold md:font-bold;
+				}
+
 				span {
-					// Make the text the correct color and size
-					@apply text-gray-900 dark:text-white text-base whitespace-nowrap;
+					@apply text-gray-900 md:dark:text-white text-base whitespace-nowrap;
 				}
 			}
 		}
