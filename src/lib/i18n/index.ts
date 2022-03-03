@@ -7,7 +7,8 @@ export const defaultLocale = 'en';
 const config = {
 	translations: {
 		en: { lang },
-		nl: { lang }
+		nl: { lang },
+		de: { lang }
 	},
 	loaders: [
 		{
@@ -54,6 +55,29 @@ const config = {
 			key: 'about',
 			path: ['/about'],
 			loader: async () => (await import('./nl/about.json')).default
+		},
+
+		{
+			locale: 'de',
+			key: 'profile',
+			route: ['/'],
+			loader: async () => (await import('./de/profile.json')).default
+		},
+		{
+			locale: 'de',
+			key: 'common',
+			loader: async () => (await import('./de/common.json')).default
+		},
+		{
+			locale: 'de',
+			key: 'navigation',
+			loader: async () => (await import('./de/navigation.json')).default
+		},
+		{
+			locale: 'de',
+			key: 'about',
+			path: ['/about'],
+			loader: async () => (await import('./de/about.json')).default
 		}
 	]
 };
