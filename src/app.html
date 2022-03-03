@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="%svelte.assets%/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		%svelte.head%
 
-<head>
-	<meta charset="utf-8" />
-	<link rel="icon" href="%svelte.assets%/favicon.png" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	%svelte.head%
+		<script>
+			// Auto load dark mode
+			let theme = JSON.parse(localStorage.getItem('theme'));
+			if (theme == null || theme == 'system') {
+				// Use theme from device
+				theme =
+					window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+						? 'dark'
+						: 'light';
+				localStorage.setItem('theme', JSON.stringify('system'));
+			}
+			document.documentElement.classList.add(theme);
+		</script>
+	</head>
 
-	<script>
-		// Auto load dark mode
-		let theme = JSON.parse(localStorage.getItem('theme'))
-		if (theme == null || theme == 'system') {
-			// Use theme from device
-			theme =
-				window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-					? 'dark'
-					: 'light'
-			localStorage.setItem('theme', JSON.stringify('system'))
-		}
-		document.documentElement.classList.add(theme);
-	</script>
-</head>
-
-<body>
-	%svelte.body%
-</body>
-
+	<body>
+		%svelte.body%
+	</body>
 </html>

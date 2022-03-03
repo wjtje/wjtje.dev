@@ -54,7 +54,7 @@ const config = {
 			key: 'about',
 			path: ['/about'],
 			loader: async () => (await import('./nl/about.json')).default
-		},
+		}
 	]
 };
 
