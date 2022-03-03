@@ -16,27 +16,37 @@
 
 <h1>{capitalizeFirstLetter($t('contact.title'))}</h1>
 
+<p>{$t('contact.description')}</p>
+
 <ul>
-	<li aria-label="email" class="email">
-		<MdEmail /><span><a href="mailto:me@wjtje.ga">me@wjtje.ga</a></span>
+	<li class="email">
+		<MdEmail title="email" />
+		<span><a href="mailto:me@wjtje.ga">me@wjtje.ga</a></span>
 	</li>
-	<li aria-label="Github" class="github">
-		<GoMarkGithub /><span><a href="https://www.github.com/wjtje">wjtje</a></span>
+	<li class="github">
+		<GoMarkGithub title="Github" />
+		<span><a href="https://www.github.com/wjtje">wjtje</a></span>
 	</li>
-	<li aria-label="LinkedIn" class="linkedin">
-		<FaLinkedin /><span><a href="https://www.linkedin.com/in/wjtje/">Wouter van der Wal</a></span>
+	<li class="linkedin">
+		<FaLinkedin title="LinkedIn" />
+		<span><a href="https://www.linkedin.com/in/wjtje/">Wouter van der Wal</a></span>
 	</li>
-	<li aria-label="Reddit" class="reddit">
-		<FaReddit /><span><a href="https://www.reddit.com/u/wjtje">u/wjtje</a></span>
+	<li class="reddit">
+		<FaReddit title="Reddit" /><span><a href="https://www.reddit.com/u/wjtje">u/wjtje</a></span>
 	</li>
-	<li aria-label="Twitter" class="twitter">
-		<FaTwitter /><span><a href="https://twitter.com/wjtje_wal">@wjtje_wal</a></span>
+	<li class="twitter">
+		<FaTwitter title="twitter" />
+		<span><a href="https://twitter.com/wjtje_wal">@wjtje_wal</a></span>
 	</li>
 </ul>
 
 <style lang="scss">
 	h1 {
-		@apply text-4xl pb-4;
+		@apply text-4xl pb-3;
+	}
+
+	p {
+		@apply pb-2;
 	}
 
 	ul {
