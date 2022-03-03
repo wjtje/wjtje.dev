@@ -8,7 +8,7 @@ interface key {
 	routes?: string[];
 }
 
-const languages = ['en', 'nl', 'de']
+const languages = ['en', 'nl', 'de'];
 const keys: key[] = [
 	// Different pages
 	{
@@ -26,7 +26,7 @@ const keys: key[] = [
 	{
 		key: 'common'
 	}
-]
+];
 
 /** @type {import('@sveltejs/kit').Handle} */
 const config = {
@@ -42,8 +42,8 @@ const config = {
 				key: key.key,
 				route: key.routes,
 				loader: async () => (await import(`./${language}/${key.key}.json`)).default
-			}
-		})
+			};
+		});
 	})
 };
 
