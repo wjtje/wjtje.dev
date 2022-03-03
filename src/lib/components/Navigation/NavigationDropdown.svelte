@@ -11,7 +11,7 @@
 	export let title: string;
 	export let options: string[];
 	export let action: (e: number) => void;
-	export let active: number = -1;
+	export let active = -1;
 
 	let showMobileMenu: Writable<boolean> = getContext('showMobileMenu');
 
@@ -80,7 +80,7 @@
 	{#if hovering && $media.md}
 		<ul transition:fly={{ y: 50, duration: 50 }}>
 			{#each options as option, index}
-				<li on:click={(_) => action(index)} class:active={active == index}>
+				<li on:click={() => action(index)} class:active={active == index}>
 					<span>{option}</span>
 				</li>
 			{/each}
@@ -89,7 +89,7 @@
 		<ul bind:this={dropdown} class="collapsed mobile">
 			{#each options as option, index}
 				<li
-					on:click={(_) => {
+					on:click={() => {
 						action(index);
 						$showMobileMenu = false;
 					}}

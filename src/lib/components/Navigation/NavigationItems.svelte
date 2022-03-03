@@ -2,8 +2,7 @@
 	import { fade } from 'svelte/transition';
 	import MdMenu from 'svelte-icons/md/MdMenu.svelte';
 	import MdClose from 'svelte-icons/md/MdClose.svelte';
-	import { onMount, setContext } from 'svelte';
-	import { beforeNavigate } from '$app/navigation';
+	import { setContext } from 'svelte';
 	import { writable } from 'svelte/store';
 
 	let showMobileMenu = writable(false);
