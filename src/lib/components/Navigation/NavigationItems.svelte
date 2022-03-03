@@ -13,11 +13,11 @@
 	};
 </script>
 
-<button on:click={handleClick}> <MdMenu /> </button>
+<button on:click={handleClick} aria-label="Menu open"> <MdMenu /> </button>
 
 {#if $showMobileMenu}
 	<section transition:fade={{ duration: 150 }} class="mobile">
-		<button on:click={handleClick}> <MdClose /> </button>
+		<button on:click={handleClick} aria-label="Menu close"> <MdClose /> </button>
 		<slot />
 	</section>
 {:else}
