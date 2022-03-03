@@ -16,14 +16,14 @@
 <h1>{capitalizeFirstLetter($t('contact.title'))}</h1>
 
 <ul>
-	<li><MdEmail /><span><a href="mailto:me@wjtje.ga">me@wjtje.ga</a></span></li>
-	<li>
+	<li aria-label="email"><MdEmail /><span><a href="mailto:me@wjtje.ga">me@wjtje.ga</a></span></li>
+	<li aria-label="Github">
 		<GoMarkGithub /><span><a href="https://www.github.com/wjtje">wjtje</a></span>
 	</li>
-	<li>
+	<li aria-label="LinkedIn">
 		<FaLinkedin /><span><a href="https://www.linkedin.com/in/wjtje/">Wouter van der Wal</a></span>
 	</li>
-	<li>
+	<li aria-label="Twitter">
 		<FaTwitter /><span><a href="https://twitter.com/wjtje_wal">wjtje_wal</a></span>
 	</li>
 </ul>
