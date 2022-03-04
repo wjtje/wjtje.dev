@@ -5,5 +5,19 @@
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"[html]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	}
+	},
+	"vsicons.associations.files": [
+		{
+			"filename": true,
+			"icon": "svelte",
+			"extensions": ["svelte.config.js"]
+		}
+	],
+	"vsicons.associations.folders": [
+		{
+			"icon": "www",
+			"extensions": ["static"],
+			"format": "svg"
+		}
+	]
 }

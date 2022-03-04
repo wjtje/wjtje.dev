@@ -3,6 +3,10 @@ name: docker CI
 on:
   push:
     branches: [main]
+    paths:
+      - 'src'
+      - 'static'
+      - 'package.json'
 
 jobs:
   main:
