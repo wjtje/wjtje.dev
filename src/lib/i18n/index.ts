@@ -1,4 +1,4 @@
-import i18n from 'sveltekit-i18n';
+import i18n, { type Config } from 'sveltekit-i18n';
 import lang from './lang.json';
 
 export const defaultLocale = 'en';
@@ -16,6 +16,10 @@ const keys: key[] = [
 		routes: ['/']
 	},
 	{
+		key: 'github',
+		routes: ['/']
+	},
+	{
 		key: 'contact',
 		routes: ['/contact']
 	},
@@ -28,8 +32,11 @@ const keys: key[] = [
 	}
 ];
 
-/** @type {import('@sveltejs/kit').Handle} */
-const config = {
+type PayloadProps = {
+	repo: string;
+}
+
+const config: Config<PayloadProps, {}> = {
 	translations: {
 		en: { lang },
 		nl: { lang },
@@ -47,4 +54,4 @@ const config = {
 	})
 };
 
-export const { t, locale, locales, loading, loadTranslations } = new i18n(config);
+export const { t, locale, locales, loading, loadTranslations } = new i18n<[payload?: any]>(config);

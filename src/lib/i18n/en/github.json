@@ -1,0 +1,17 @@
+{
+	"title": "Github activity",
+	"PushEvent": "Pushed to <a href=\"https://github.com/{{repo_name}}\">{{repo_name}}</a>",
+	"DeleteEvent": "Deleted {{delete_event_tag; default: unknown}} from <a href=\"https://github.com/{{repo_name}}\">{{repo_name}}</a>",
+	"PullRequestEvent": "{{pull_request_event_action; default: unknown}} pull request <a href=\"{{pull_request_event_url}}\">{{pull_request_event_title; default: unknown}}</a> from <a href=\"https://github.com/{{repo_name}}\">{{repo_name}}</a>",
+	"action_opened": "Opened",
+	"action_edited": "Edited",
+	"action_closed": "Closed",
+	"action_reopened": "Reopened",
+	"action_assigned": "Assigned",
+	"action_unassigned": "Unassigned",
+	"action_review_requested": "Review requested on",
+	"action_review_request_removed": "Review request removed from",
+	"action_labeled": "Labeled",
+	"action_unlabeled": "Unlabeled",
+	"action_synchronize": "Synchronize"
+}
