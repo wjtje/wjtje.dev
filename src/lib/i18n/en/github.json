@@ -1,5 +1,5 @@
 {
-	"title": "Github activity",
+	"title": "GitHub activity",
 	"UnknownEvent": "Unknown {{type:sanitize;}}",
 	"UnknownEventSubtitle": "Whoops, something is not right. (id: {{id:sanitize;}})",
 	"CommitCommentEvent": "Commented on <a href=\"{{html_url}}\">commit</a> in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
