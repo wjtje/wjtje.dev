@@ -33,6 +33,7 @@
 	"PullRequestReviewCommentEvent": "Left a <a href=\"{{comment_url}}\">comment</a> on a review of a pull request (<a href=\"{{pull_request_url}}\">{{pull_request:sanitize;}}</a>) in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
 	"PushEvent": "Pushed {{size}} {{size; 1:commit; default:commits;}} to <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
 	"PushEventSubtitle": "{{commit:capitalize;}}",
+	"PushEventSubtitleMore": "and {{count}} more {{count; 1:commit; default:commits;}}",
 	"ReleaseEvent": "Released <a href=\"{{html_url}}\" target=\"_blank\">{{name}}</a> of <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
 	"WatchEvent": "Now watching <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>"
 }

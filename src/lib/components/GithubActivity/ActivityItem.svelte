@@ -119,6 +119,10 @@
 			{$t(`github.${event.type}Subtitle`, {
 				commit: event.payload?.commits[0].message
 			})}
+
+			{#if event.payload?.commits.length > 1}
+				{$t(`github.${event.type}SubtitleMore`, { count: event.payload?.commits.length - 1 })}
+			{/if}
 		</p>
 	{:else if event.type == 'ReleaseEvent'}
 		<h3>
