@@ -1,3 +1,3 @@
-import GithubActivity from './GithubActivity.svelte'
+import GithubActivity from './GithubActivity.svelte';
 
-export { GithubActivity }
+export { GithubActivity };

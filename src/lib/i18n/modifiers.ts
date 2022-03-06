@@ -8,4 +8,4 @@ export const capitalize: Modifier.T = ({ value, defaultValue }) => {
 export const sanitize: Modifier.T = ({ value, defaultValue }) => {
 	const s: string = value || defaultValue;
 	return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
-}
+};

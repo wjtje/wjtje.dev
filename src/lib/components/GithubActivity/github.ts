@@ -1,4 +1,7 @@
-const emoteList = [[":arrow_up:", "⬆️"], [":twisted_rightwards_arrows:", "🔀"]]
+const emoteList = [
+	[':arrow_up:', '⬆️'],
+	[':twisted_rightwards_arrows:', '🔀']
+];
 
 export interface GithubEvent<T> {
 	/**
@@ -24,7 +27,6 @@ export interface GithubEvent<T> {
 	public: boolean;
 	created_at: string;
 }
-
 
 export enum GithubEventType {
 	CommitCommentEvent = 'CommitCommentEvent',
