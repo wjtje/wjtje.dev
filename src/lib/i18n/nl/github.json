@@ -1,6 +1,4 @@
 {
 	"title": "Github activiteit",
-	"PushEvent": "Gepushed naar <a href=\"https://github.com/{{repo_name}}\">{{repo_name}}</a>",
-	"DeleteEvent": "Verwijderd {{delete_event_tag; default: unknown}} van <a href=\"https://github.com/{{repo_name}}\">{{repo_name}}</a>",
-	"PullRequestEvent": "{{pull_request_event_action; default: unknown}} pull request <a href=\"{{pull_request_event_url}}\">{{pull_request_event_title; default: unknown}}</a> from <a href=\"https://github.com/{{repo_name}}\">{{repo_name}}</a>"
+	"CreateEvent": "{{ref_type:capitalize;}} <a href=\"https://github.com/{{repo}}/tree/{{ref}}\">{{ref}}</a> aangemaakt in <a href=\"https://github.com/{{repo}}\">{{repo}}</a>"
 }

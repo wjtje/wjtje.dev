@@ -1,5 +1,6 @@
 import i18n, { type Config } from 'sveltekit-i18n';
 import lang from './lang.json';
+import * as customModifiers from './modifiers'
 
 export const defaultLocale = 'en';
 
@@ -37,6 +38,9 @@ type PayloadProps = {
 }
 
 const config: Config<PayloadProps, {}> = {
+	parserOptions: {
+		customModifiers
+	},
 	translations: {
 		en: { lang },
 		nl: { lang },

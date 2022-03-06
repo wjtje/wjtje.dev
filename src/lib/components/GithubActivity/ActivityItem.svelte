@@ -2,13 +2,9 @@
 	import { DateTime } from 'luxon';
 	import { locale } from '$lib/i18n';
 	import { t } from '$lib/i18n';
-	import {
-		replaceGithubEmote,
-		type GithubEvent,
-		type GithubEventDeleteEventPayload
-	} from './github';
+	import type { GithubEvent } from './github';
 
-	export let event: GithubEvent;
+	export let event: GithubEvent<any>;
 
 	$: date = DateTime.fromISO(event.created_at).toRelative({
 		locale: $locale
@@ -18,18 +14,10 @@
 <div>
 	<span>{date}</span>
 
-	<h4>
-		{@html $t(`github.${event.type}`, {
-			repo_name: event.repo.name,
-			delete_event_tag: event.payload?.ref,
-			pull_request_event_action: $t(`github.action_${event.payload?.action ?? ''}`),
-			pull_request_event_title: event.payload?.pull_request?.title,
-			pull_request_event_url: event.payload?.pull_request?.html_url
-		})}
-	</h4>
-
-	{#if event.type == 'PushEvent'}
-		<span>{replaceGithubEmote(event.payload?.commits[0]?.message ?? 'No commit message')}</span>
+	{#if event.type == 'CreateEvent'}
+		<h4>{@html $t(`github.${event.type}`, { ...event.payload, repo: event.repo.name })}</h4>
+	{:else}
+		<h4>{@html $t(`github.${event.type}`)}</h4>
 	{/if}
 </div>
 

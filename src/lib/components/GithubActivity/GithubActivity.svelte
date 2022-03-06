@@ -3,7 +3,7 @@
 	import { t } from '$lib/i18n';
 	import type { GithubEvent } from './github';
 
-	export let githubEvent: GithubEvent[];
+	export let githubEvent: GithubEvent<any>[];
 </script>
 
 <section>

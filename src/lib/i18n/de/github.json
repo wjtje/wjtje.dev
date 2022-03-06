@@ -1,0 +1,4 @@
+{
+	"title": "Github-Aktivität",
+	"CreateEvent": "{{ref_type:capitalize;}} <a href=\"https://github.com/{{repo}}/tree/{{ref}}\">{{ref}}</a> in <a href=\"https://github.com/{{repo}}\">{{repo}}</a> erstellt"
+}
