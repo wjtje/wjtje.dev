@@ -4,7 +4,7 @@
 	import { t } from '$lib/i18n';
 	import type { GithubEvent } from './github';
 
-	export let event: GithubEvent<any>;
+	export let event: GithubEvent<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
 
 	$: date = DateTime.fromISO(event.created_at).toRelative({
 		locale: $locale

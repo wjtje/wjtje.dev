@@ -1,8 +1,3 @@
-const emoteList = [
-	[':arrow_up:', '⬆️'],
-	[':twisted_rightwards_arrows:', '🔀']
-];
-
 export interface GithubEvent<T> {
 	/**
 	 * Unique identifier for the event.

@@ -1,13 +1,14 @@
 <script context="module">
 	/** @type {import('./')).Load} */
 	export async function load({ fetch }) {
-		const url = `https://api.github.com/users/wjtje/events/public?per_page=30`;
+		const url = `https://api.github.com/users/wjtje/events/public?per_page=10`;
 		const response = await fetch(url);
+		const json = await response.json();
 
 		return {
-			status: response.status,
 			props: {
-				github: response.ok && (await response.json())
+				github_status: response.status,
+				github: json
 			}
 		};
 	}
@@ -19,6 +20,7 @@
 	import { t } from '$lib/i18n';
 
 	export let github;
+	export let github_status;
 </script>
 
 <svelte:head>
@@ -28,7 +30,7 @@
 
 <Profile />
 
-<GithubActivity githubEvent={github} />
+<GithubActivity githubEvent={github} githubStatus={github_status} />
 
 <style lang="scss">
 	:global(section) {

@@ -1,5 +1,6 @@
 {
 	"title": "GitHub activiteit",
+	"LoadFailed": "Kon de GitHub activiteit niet ophalen ({{status}})",
 	"UnknownEvent": "Onbekent {{type:sanitize;}}",
 	"UnknownEventSubtitle": "Oeps, iets is niet helemaal goed gegaan. (id: {{id:sanitize;}})",
 	"CommitCommentEvent": "Heeft gereageerd op <a href=\"{{html_url}}\">commit</a> in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",

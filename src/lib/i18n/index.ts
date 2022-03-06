@@ -1,4 +1,5 @@
-import i18n, { type Config } from 'sveltekit-i18n';
+import i18n from 'sveltekit-i18n';
+import type { Config } from 'sveltekit-i18n';
 import lang from './lang.json';
 import * as customModifiers from './modifiers';
 
@@ -37,7 +38,7 @@ type PayloadProps = {
 	repo: string;
 };
 
-const config: Config<PayloadProps, {}> = {
+const config: Config<PayloadProps, Record<string, unknown>> = {
 	parserOptions: {
 		customModifiers
 	},
@@ -57,4 +58,6 @@ const config: Config<PayloadProps, {}> = {
 	})
 };
 
-export const { t, locale, locales, loading, loadTranslations } = new i18n<[payload?: any]>(config);
+export const { t, locale, locales, loading, loadTranslations } = new i18n<
+	[payload?: Record<string, unknown>]
+>(config);

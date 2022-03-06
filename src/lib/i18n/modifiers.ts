@@ -11,7 +11,7 @@ export const sanitize: Modifier.T = ({ value, defaultValue }) => {
 	return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 };
 
-export const replaceGithubEmote = ({ value, defaultValue }) => {
+export const replaceGithubEmote: Modifier.T = ({ value, defaultValue }) => {
 	const reg = new RegExp(/:.*:/g);
 	let s: string = value || defaultValue;
 	let emote;
