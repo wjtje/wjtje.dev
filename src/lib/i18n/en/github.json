@@ -10,7 +10,7 @@
 	"GollumEventSubtitle": "{{pages}} {{pages; 1:page; default:pages;}} has been changed",
 	"IssueCommentEvent": {
 		"created": "Commented on an issue (<a href=\"{{issue_html}}\" target=\"_blank\">{{issue:sanitize;}}</a>) in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
-		"edited": "Edited comment on an issue (<a href=\"{{issue_html}}\" target=\"_blank\">{{issue:sanitize;}}</a>) in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
+		"edited": "Edited a comment on an issue (<a href=\"{{issue_html}}\" target=\"_blank\">{{issue:sanitize;}}</a>) in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
 		"deleted": "Removed comment on an issue (<a href=\"{{issue_html}}\" target=\"_blank\">{{issue:sanitize;}}</a>) in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
 		"unknown": "An unknown IssueCommentEvent action has occurred"
 	},
