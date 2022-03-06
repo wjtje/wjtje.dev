@@ -1,7 +1,7 @@
 <script context="module">
 	/** @type {import('./')).Load} */
 	export async function load({ fetch }) {
-		const url = `https://api.github.com/users/wjtje/events/public?per_page=10`;
+		const url = `https://api.github.com/users/wjtje/events/public?per_page=30`;
 		const response = await fetch(url);
 
 		return {
