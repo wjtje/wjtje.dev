@@ -9,7 +9,7 @@ interface key {
 	routes?: string[];
 }
 
-const languages = ['en', 'nl', 'de'];
+const languages = ['en', 'nl'];
 const keys: key[] = [
 	// Different pages
 	{
@@ -43,8 +43,7 @@ const config: Config<PayloadProps, {}> = {
 	},
 	translations: {
 		en: { lang },
-		nl: { lang },
-		de: { lang }
+		nl: { lang }
 	},
 	loaders: languages.flatMap((language) => {
 		return keys.map((key) => {
