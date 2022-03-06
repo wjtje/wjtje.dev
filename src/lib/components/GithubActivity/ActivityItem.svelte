@@ -158,7 +158,7 @@
 		}
 
 		:global(a) {
-			@apply hover:text-sky-600 transition-colors;
+			@apply text-sky-700 gdark:text-blue-200 hover:text-blue-700 gdark:hover:text-sky-600 transition-colors;
 		}
 	}
 </style>
