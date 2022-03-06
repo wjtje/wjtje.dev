@@ -14,6 +14,7 @@
 	"devDependencies": {
 		"@sveltejs/adapter-node": "^1.0.0-next.70",
 		"@sveltejs/kit": "next",
+		"@types/luxon": "^2.3.0",
 		"@typescript-eslint/eslint-plugin": "^5.13.0",
 		"@typescript-eslint/parser": "^5.10.1",
 		"autoprefixer": "^10.4.2",
@@ -36,6 +37,8 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"gemoji": "^7.1.0",
+		"luxon": "^2.3.1",
 		"svelte": "^3.44.0",
 		"svelte-icons": "^2.1.0",
 		"svelte-match-media": "^1.2.1"

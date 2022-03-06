@@ -1,5 +1,7 @@
 import i18n from 'sveltekit-i18n';
+import type { Config } from 'sveltekit-i18n';
 import lang from './lang.json';
+import * as customModifiers from './modifiers';
 
 export const defaultLocale = 'en';
 
@@ -8,11 +10,15 @@ interface key {
 	routes?: string[];
 }
 
-const languages = ['en', 'nl', 'de'];
+const languages = ['en', 'nl'];
 const keys: key[] = [
 	// Different pages
 	{
 		key: 'home',
+		routes: ['/']
+	},
+	{
+		key: 'github',
 		routes: ['/']
 	},
 	{
@@ -28,12 +34,17 @@ const keys: key[] = [
 	}
 ];
 
-/** @type {import('@sveltejs/kit').Handle} */
-const config = {
+type PayloadProps = {
+	repo: string;
+};
+
+const config: Config<PayloadProps, Record<string, unknown>> = {
+	parserOptions: {
+		customModifiers
+	},
 	translations: {
 		en: { lang },
-		nl: { lang },
-		de: { lang }
+		nl: { lang }
 	},
 	loaders: languages.flatMap((language) => {
 		return keys.map((key) => {
@@ -47,4 +58,6 @@ const config = {
 	})
 };
 
-export const { t, locale, locales, loading, loadTranslations } = new i18n(config);
+export const { t, locale, locales, loading, loadTranslations } = new i18n<
+	[payload?: Record<string, unknown>]
+>(config);

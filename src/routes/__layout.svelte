@@ -54,7 +54,7 @@
 
 <style lang="scss">
 	:global(body) {
-		@apply gdark:bg-gray-900 gdark:text-white min-h-screen;
+		@apply gdark:bg-gray-900 gdark:text-white min-h-screen transition-colors;
 	}
 
 	main {
