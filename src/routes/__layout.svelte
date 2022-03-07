@@ -37,7 +37,7 @@
 </script>
 
 <Navigation>
-	<NavigationTitle>{$t('common.title')}</NavigationTitle>
+	<NavigationTitle><a href={`/${$locale}/`}>{$t('common.title')}</a></NavigationTitle>
 	<NavigationItems>
 		{#each routes as route}
 			<NavigationItem {...route} />
