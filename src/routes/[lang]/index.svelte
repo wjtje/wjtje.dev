@@ -15,7 +15,7 @@
 </script>
 
 <script lang="ts">
-	import { GithubActivity } from '$lib/components/GithubActivity';
+	import { GithubActivity } from '$lib/components/svelte-github-activity';
 	import Profile from '$lib/components/Profile.svelte';
 	import { t } from '$lib/i18n';
 
@@ -30,7 +30,11 @@
 
 <Profile />
 
-<GithubActivity githubEvent={github} githubStatus={github_status} />
+<section class="github">
+	<h2>{$t('home.ghactivity')}</h2>
+
+	<GithubActivity githubEvent={github} githubStatus={github_status} />
+</section>
 
 <style lang="scss">
 	:global(section) {
@@ -38,6 +42,14 @@
 
 		&:last-child {
 			@apply pb-0;
+		}
+	}
+
+	section.github {
+		@apply lg:max-w-[80%];
+
+		h2 {
+			@apply text-3xl pb-3;
 		}
 	}
 </style>

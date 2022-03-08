@@ -1,13 +1,16 @@
 import i18n from 'sveltekit-i18n';
 import type { Config } from 'sveltekit-i18n';
 import lang from './lang.json';
-import * as customModifiers from './modifiers';
+
+// Import modifiers from svelte-github-activity
+import * as SvelteGitHubActivityModifiers from '$lib/components/svelte-github-activity/i18n/modifiers';
 
 export const defaultLocale = 'en';
 
 interface key {
 	key: string;
 	routes?: string[];
+	loaderUrl?: (locale: string) => () => Promise<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 const languages = ['en', 'nl'];
@@ -18,8 +21,12 @@ const keys: key[] = [
 		routes: ['/']
 	},
 	{
-		key: 'github',
-		routes: ['/']
+		key: 'GitHubActivity',
+		routes: ['/'],
+		loaderUrl: (locale: string) => {
+			return async () =>
+				(await import(`./../components/svelte-github-activity/i18n/${locale}.json`)).default;
+		}
 	},
 	{
 		key: 'contact',
@@ -40,7 +47,7 @@ type PayloadProps = {
 
 const config: Config<PayloadProps, Record<string, unknown>> = {
 	parserOptions: {
-		customModifiers
+		customModifiers: SvelteGitHubActivityModifiers
 	},
 	translations: {
 		en: { lang },
@@ -52,7 +59,10 @@ const config: Config<PayloadProps, Record<string, unknown>> = {
 				locale: language,
 				key: key.key,
 				route: key.routes,
-				loader: async () => (await import(`./${language}/${key.key}.json`)).default
+				loader:
+					key.loaderUrl == null
+						? async () => (await import(`./${language}/${key.key}.json`)).default
+						: key.loaderUrl(language)
 			};
 		});
 	})
