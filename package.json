@@ -16,7 +16,7 @@
 		"@sveltejs/kit": "next",
 		"@types/luxon": "^2.3.0",
 		"@typescript-eslint/eslint-plugin": "^5.14.0",
-		"@typescript-eslint/parser": "^5.14.0",
+		"@typescript-eslint/parser": "^5.18.0",
 		"autoprefixer": "^10.4.2",
 		"eslint": "^8.10.0",
 		"eslint-config-prettier": "^8.5.0",
