@@ -23,6 +23,7 @@
 	import ThemeSwitcher from '$lib/components/ThemeSwitcher.svelte';
 	import { t } from '$lib/i18n';
 	import '../app.css';
+	import PageTransition from '$lib/components/PageTransition.svelte';
 
 	$: routes = [
 		{
@@ -48,17 +49,13 @@
 	</NavigationItems>
 </Navigation>
 
-<main>
+<PageTransition>
 	<slot />
-</main>
+</PageTransition>
 
 <style lang="scss">
 	:global(body) {
-		@apply gdark:bg-gray-900 gdark:text-white min-h-screen transition-colors;
-	}
-
-	main {
-		@apply container mx-auto my-4 lg:py-6 px-4 lg:px-8;
+		@apply gdark:bg-gray-900 gdark:text-white min-h-screen transition-colors overflow-x-hidden;
 	}
 
 	div {
