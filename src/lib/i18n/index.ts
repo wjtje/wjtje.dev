@@ -3,7 +3,7 @@ import type { Config } from 'sveltekit-i18n';
 import lang from './lang.json';
 
 // Import modifiers from svelte-github-activity
-import * as SvelteGitHubActivityModifiers from '$lib/components/svelte-github-activity/i18n/modifiers';
+import * as SvelteGitHubActivityModifiers from '$lib/i18n/modifiers';
 
 export const defaultLocale = 'en';
 
@@ -22,11 +22,7 @@ const keys: key[] = [
 	},
 	{
 		key: 'GitHubActivity',
-		routes: ['/'],
-		loaderUrl: (locale: string) => {
-			return async () =>
-				(await import(`./../components/svelte-github-activity/i18n/${locale}.json`)).default;
-		}
+		routes: ['/']
 	},
 	{
 		key: 'contact',

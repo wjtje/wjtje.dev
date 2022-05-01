@@ -1,0 +1,48 @@
+{
+	"LoadFailed": "Kon de GitHub activiteit niet ophalen ({{status}})",
+	"UnknownEvent": "Onbekent {{type:sanitize;}}",
+	"UnknownEventSubtitle": "Oeps, iets is niet helemaal goed gegaan. (id: {{id:sanitize;}})",
+	"CommitCommentEvent": "Heeft gereageerd op <a href=\"{{html_url:sanitize;}}\">commit</a> in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
+	"CreateEvent": {
+		"branch": "{{ref_type:sanitize:capitalize;}} <a href=\"https://github.com/{{repo:sanitize;}}/tree/{{ref:sanitize;}}\" target=\"_blank\">{{ref:sanitize;}}</a> aangemaakt in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
+		"tag": "{{ref_type:sanitize:capitalize;}} <a href=\"https://github.com/{{repo:sanitize;}}/tree/{{ref:sanitize;}}\" target=\"_blank\">{{ref:sanitize;}}</a> aangemaakt in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
+		"repository": "Nieuwe repository genaamd <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a> aangemaakt",
+		"unknown": "Een onbekende CreateEvent actie is voorgekomen ({{id}})"
+	},
+	"DeleteEvent": {
+		"branch": "{{ref_type:sanitize:capitalize;}} {{ref:sanitize;}} verwijderd van <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
+		"tag": "{{ref_type:sanitize:capitalize;}} {{ref:sanitize;}} verwijderd van <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
+		"repository": "De repository genaamd <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a> is verwijderd"
+	},
+	"ForkEvent": "Een <a href=\"{{html_url:sanitize;}}\" target=\"_blank\">fork</a> gemaakt van <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
+	"GollumEvent": "Een wiki pagina aangepast van <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
+	"GollumEventSubtitle": "{{pages}} {{pages; 1:pagina; default:paginas;}} {{pages; 1:is; default:zijn;}} veranderd",
+	"IssueCommentEvent": {
+		"created": "Heeft gereageerd op een probleem (<a href=\"{{issue_html}}\" target=\"_blank\">{{issue:sanitize:replaceGithubEmote;}}</a>) in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
+		"edited": "Een opmerking over een probleem bewerkt (<a href=\"{{issue_html}}\" target=\"_blank\">{{issue:sanitize:replaceGithubEmote;}}</a>) in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
+		"deleted": "Reactie op een probleem verwijderd (<a href=\"{{issue_html}}\" target=\"_blank\">{{issue:sanitize:replaceGithubEmote;}}</a>) in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
+		"unknown": "Een onbekende IssueCommentEvent actie is voorgekomen ({{id}})"
+	},
+	"IssuesEvent": {
+		"opened": "Een nieuw probleem (<a href=\"{{issue_html}}\" target=\"_blank\">{{issue:sanitize:replaceGithubEmote;}}</a>) geopend in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
+		"edited": "Een probleem (<a href=\"{{issue_html}}\" target=\"_blank\">{{issue:sanitize:replaceGithubEmote;}}</a>) bewerkt in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
+		"closed": "Sloot een probleem (<a href=\"{{issue_html}}\" target=\"_blank\">{{issue:sanitize:replaceGithubEmote;}}</a>) in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
+		"unknown": "Een onbekende IssuesEvent actie is voorgekomen ({{id}})"
+	},
+	"PublicEvent": "De repo <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a> is publiek gemaakt",
+	"PullRequestEvent": {
+		"opened": "Een pull-request geopend in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize:replaceGithubEmote;}}</a>",
+		"edited": "Een pull-request bewerkt in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize:replaceGithubEmote;}}</a>",
+		"closed": "Een pull-request gesloten in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize:replaceGithubEmote;}}</a>",
+		"reopened": "Een pull-request heropend in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize:replaceGithubEmote;}}</a>",
+		"unknown": "Een onbekende PullRequestEvent actie is voorgekomen ({{id}})",
+		"subtitle": "<a href=\"{{html_url:sanitize;}}\">{{title:sanitize:replaceGithubEmote;}}</a> ({{changed_files}} {{changed_files; 1:bestamd; default:bestanden}} veranderd)"
+	},
+	"PullRequestReviewEvent": "Een <a href=\"{{review_url}}\">recensie</a> achtergelaten op <a href=\"{{pull_request_url}}\">{{pull_request:sanitize:replaceGithubEmote;}}</a> in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
+	"PullRequestReviewCommentEvent": "Heeft een <a href=\"{{comment_url}}\">opmerking</a> bij een beoordeling van een pull-request (<a href=\"{{pull_request_url}}\">{{pull_request:sanitize:replaceGithubEmote;}}</a>) in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
+	"PushEvent": "{{size}} {{size; 1:commit; default:commits;}} gepushed naar <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
+	"PushEventSubtitle": "{{commit:capitalize:replaceGithubEmote;}}",
+	"PushEventSubtitleMore": "en nog {{count}} {{count; 1:commit; default:commits;}}",
+	"ReleaseEvent": "Uitgegeven <a href=\"{{html_url:sanitize;}}\" target=\"_blank\">{{name}}</a> van <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
+	"WatchEvent": "Is nu <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a> aan het volgen"
+}

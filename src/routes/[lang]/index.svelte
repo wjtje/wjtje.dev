@@ -15,7 +15,7 @@
 </script>
 
 <script lang="ts">
-	import { GithubActivity } from '$lib/components/svelte-github-activity';
+	import GithubActivity from '$lib/components/GithubActivity/GithubActivity.svelte';
 	import Profile from '$lib/components/Profile.svelte';
 	import { t } from '$lib/i18n';
 
