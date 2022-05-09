@@ -1,26 +1,8 @@
-<script context="module">
-	/** @type {import('./')).Load} */
-	export async function load({ fetch }) {
-		const url = `https://api.github.com/users/wjtje/events/public?per_page=10`;
-		const response = await fetch(url);
-		const json = await response.json();
-
-		return {
-			props: {
-				github_status: response.status,
-				github: json
-			}
-		};
-	}
-</script>
-
 <script lang="ts">
 	import GithubActivity from '$lib/components/GithubActivity/GithubActivity.svelte';
+	import OsmActivity from '$lib/components/OsmActivity/OsmActivity.svelte';
 	import Profile from '$lib/components/Profile.svelte';
 	import { t } from '$lib/i18n';
-
-	export let github;
-	export let github_status;
 </script>
 
 <svelte:head>
@@ -30,10 +12,18 @@
 
 <Profile />
 
-<section class="github">
-	<h2>{$t('home.ghactivity')}</h2>
+<section class="activity">
+	<section class="github">
+		<h2>{$t('home.ghactivity')}</h2>
 
-	<GithubActivity githubEvent={github} githubStatus={github_status} />
+		<GithubActivity />
+	</section>
+
+	<section class="osm">
+		<h2>OpenStreetMap activity</h2>
+
+		<OsmActivity />
+	</section>
 </section>
 
 <style lang="scss">
@@ -45,8 +35,13 @@
 		}
 	}
 
-	section.github {
-		@apply lg:max-w-[80%];
+	section.activity {
+		@apply lg:flex lg:gap-4;
+	}
+
+	section.github,
+	section.osm {
+		@apply lg:w-[calc(50%-8px)];
 
 		h2 {
 			@apply text-3xl pb-3;
