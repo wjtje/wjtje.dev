@@ -8,11 +8,17 @@ export interface Tag {
 	'@_v': string;
 }
 
+export interface OsmEditor {
+	name: string;
+	version?: string;
+	locale?: string;
+}
+
 export interface ParsedTags {
 	source: string;
 	'StreetComplete:quest_type'?: string;
 	locale?: string;
-	created_by: string;
+	created_by: OsmEditor;
 	comment: string;
 }
 

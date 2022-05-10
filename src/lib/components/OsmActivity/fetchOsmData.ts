@@ -1,5 +1,6 @@
 import type { Changeset, OsmRootObject, ParsedTags } from '$lib/@types/osm';
 import { XMLParser } from 'fast-xml-parser';
+import { parseOsmEditor } from './parseOsmEditor';
 
 export const fetchOsmData = async (displayName: string): Promise<Changeset[]> => {
 	// Fetch the data from the OSM API
@@ -22,10 +23,20 @@ export const fetchOsmData = async (displayName: string): Promise<Changeset[]> =>
 
 	for (let i = 0; i < length; i++) {
 		const changeset = osmXml.osm.changeset[i];
-		let tags = {};
+		let tags: ParsedTags = {
+			comment: '',
+			created_by: {
+				name: 'Unknown editor'
+			},
+			source: ''
+		};
 
 		changeset.tag.forEach((element) => {
-			tags[element['@_k']] = element['@_v'];
+			if (element['@_k'] === 'created_by') {
+				tags.created_by = parseOsmEditor(element['@_v']);
+			} else {
+				tags[element['@_k']] = element['@_v'];
+			}
 		});
 
 		responseChangesets.push({

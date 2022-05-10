@@ -1,3 +1,4 @@
 {
-	"LoadFailed": "Failed to load the OpenStreetMap activity"
+	"LoadFailed": "Failed to load the OpenStreetMap activity",
+	"defaultText": "Changeset <a href=\"https://osm.org/changeset/{{id}}\">{{id}}</a> uploaded with {{editor}} version {{version}}"
 }

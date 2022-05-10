@@ -15,7 +15,7 @@
 	<span>{date}</span>
 
 	<!-- Check if it's StreetComplete -->
-	{#if changeset.parsedTags['StreetComplete:quest_type'] != null}
+	{#if changeset.parsedTags.created_by.name == 'StreetComplete'}
 		<h3>{changeset.parsedTags['StreetComplete:quest_type']}</h3>
 		<p>
 			(<a href="https://osm.org/changeset/{changeset['@_id']}">#{changeset['@_id']}</a>) {changeset
@@ -24,7 +24,11 @@
 	{:else}
 		<h3>{changeset.parsedTags.comment}</h3>
 		<p>
-			<a href="https://osm.org/changeset/{changeset['@_id']}">#{changeset['@_id']}</a>
+			{@html $t('OsmActivity.defaultText', {
+				id: changeset['@_id'],
+				editor: changeset.parsedTags.created_by.name,
+				version: changeset.parsedTags.created_by.version
+			})}
 		</p>
 	{/if}
 </div>
