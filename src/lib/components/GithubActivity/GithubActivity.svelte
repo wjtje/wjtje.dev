@@ -24,7 +24,7 @@
 	<ActivityLoader />
 {:else if githubStatus == 200}
 	{#each githubEvent as event, i}
-		<div transition:scale={{ duration: 400, delay: i * 50 }}>
+		<div in:scale={{ duration: 400, delay: i * 50 }}>
 			<ActivityItem {event} />
 		</div>
 	{/each}
