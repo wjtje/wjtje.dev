@@ -1,14 +1,16 @@
-<script context="module">
+<script lang="ts" context="module">
 	import { loadTranslations, locale } from '$lib/i18n';
+	import type { Load } from '@sveltejs/kit';
 
-	/** @type {import('@sveltejs/kit').Load} */
-	export const load = async ({ url }) => {
+	export const load: Load = async ({ url }) => {
 		const { pathname } = url;
 		const lang = `${pathname.match(/\w+?(?=\/|$)/) || ''}`;
 		const route = pathname.replace(new RegExp(`^/${lang}`), '');
+
 		await loadTranslations(lang, route);
 		locale.set(lang);
-		return { stuff: { route, lang } };
+
+		return { stuff: { route, lang }, props: { url } };
 	};
 </script>
 
@@ -35,6 +37,8 @@
 			name: $t('navigation.contact')
 		}
 	];
+
+	export let url: URL;
 </script>
 
 <Navigation>
@@ -49,7 +53,7 @@
 	</NavigationItems>
 </Navigation>
 
-<PageTransition>
+<PageTransition {url}>
 	<slot />
 </PageTransition>
 

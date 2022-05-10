@@ -1,16 +1,8 @@
 <script lang="ts">
-	import { beforeNavigate } from '$app/navigation';
-
 	import { fly } from 'svelte/transition';
 
-	let url = '';
+	export let url: URL;
 	let duration = 250;
-
-	beforeNavigate(({ to }) => {
-		url = to.pathname;
-	});
-
-	$: console.log(url);
 </script>
 
 <div>
