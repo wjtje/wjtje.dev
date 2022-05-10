@@ -1,5 +1,6 @@
 {
 	"name": "Wouter van der Wal",
 	"about": "Een 19 jaar oude software ontwikkelaar uit Nederland, die experimenteert met TypeScript, Svelte, GraphQL en Tailwind.",
-	"ghactivity": "GitHub activiteit"
+	"ghactivity": "GitHub activiteit",
+	"osmactivity": "OpenStreetMap activiteit"
 }

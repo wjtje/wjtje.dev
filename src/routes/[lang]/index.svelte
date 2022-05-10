@@ -20,7 +20,7 @@
 	</section>
 
 	<section class="osm">
-		<h2>OpenStreetMap activity</h2>
+		<h2>{$t('home.osmactivity')}</h2>
 
 		<OsmActivity />
 	</section>

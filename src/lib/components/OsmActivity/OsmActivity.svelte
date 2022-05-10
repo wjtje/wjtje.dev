@@ -6,8 +6,6 @@
 	import { scale } from 'svelte/transition';
 	import { t } from '$lib/i18n';
 	import ActivityItem from './ActivityItem.svelte';
-	import { DateTime } from 'luxon';
-	import { locale } from '$lib/i18n';
 
 	onMount(async () => {
 		const response = await fetch(
