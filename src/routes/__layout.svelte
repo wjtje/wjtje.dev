@@ -57,6 +57,10 @@
 	<slot />
 </PageTransition>
 
+<footer>
+	<a href={`/${$locale}/notice`}>notice</a>
+</footer>
+
 <style lang="scss">
 	:global(body) {
 		@apply gdark:bg-gray-900 gdark:text-white min-h-screen transition-colors overflow-hidden;
@@ -64,5 +68,13 @@
 
 	div {
 		@apply flex-grow;
+	}
+
+	footer {
+		@apply fixed bottom-0 h-8 w-full flex flex-row px-8 justify-end;
+
+		a {
+			@apply text-sm text-gray-500 hover:text-gray-700 gdark:text-gray-500 gdark:hover:text-gray-200;
+		}
 	}
 </style>
