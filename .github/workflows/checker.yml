@@ -20,7 +20,7 @@ jobs:
       - name: Run the formatter
         run: npm run format
       - name: Run the linter
-        run: npm run lint
+        run: npm run lint --fix
       - name: Create a commit and push the changes
         uses: stefanzweifel/git-auto-commit-action@v4
         if: always()

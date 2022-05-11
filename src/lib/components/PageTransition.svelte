@@ -2,7 +2,7 @@
 	import { fly } from 'svelte/transition';
 
 	export let url: URL;
-	let cleanUrl: string = '';
+	let cleanUrl = '';
 
 	$: {
 		// This makes sure the page transition is only triggered when the page actually changes
