@@ -10,6 +10,7 @@ const baseLocale = `en`;
 
 const pages: page[] = [
 	{ loc: '/', priority: '1.0' },
+	{ loc: '/projects', priority: '0.7' },
 	{ loc: '/contact', priority: '0.5' },
 	{ loc: '/notice', priority: '0.1' }
 ];

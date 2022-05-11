@@ -29,6 +29,10 @@ const keys: key[] = [
 		routes: ['/']
 	},
 	{
+		key: 'projects',
+		routes: ['/projects']
+	},
+	{
 		key: 'contact',
 		routes: ['/contact']
 	},
