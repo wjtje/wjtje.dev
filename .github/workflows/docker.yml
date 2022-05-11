@@ -8,6 +8,7 @@ on:
       - 'static/**'
       - 'package.json'
       - 'package-lock.json'
+      - '.github/workflows/docker.yml'
 
 jobs:
   main:
@@ -32,6 +33,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: wjtje/website:latest
+          tags: ghcr.io/wjtje/website:latest
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
