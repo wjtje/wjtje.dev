@@ -7,6 +7,9 @@
 	import FaLinkedin from 'svelte-icons/fa/FaLinkedin.svelte';
 	import FaTwitter from 'svelte-icons/fa/FaTwitter.svelte';
 	import FaReddit from 'svelte-icons/fa/FaReddit.svelte';
+	import OsmIcon from '$lib/components/icons/OsmIcon.svelte';
+	import DiscordIcon from '$lib/components/icons/DiscordIcon.svelte';
+	import FaYoutube from 'svelte-icons/fa/FaYoutube.svelte';
 </script>
 
 <svelte:head>
@@ -19,6 +22,10 @@
 <p>{$t('contact.description')}</p>
 
 <ul>
+	<li class="discord">
+		<DiscordIcon />
+		<span><a href="https://discord.com/users/389862864409853952">WJTJE#7243</a></span>
+	</li>
 	<li class="email">
 		<MdEmail title="email" />
 		<span><a href="mailto:me@wjtje.ga">me@wjtje.ga</a></span>
@@ -31,12 +38,20 @@
 		<FaLinkedin title="LinkedIn" />
 		<span><a href="https://www.linkedin.com/in/wjtje/">Wouter van der Wal</a></span>
 	</li>
+	<li class="osm">
+		<OsmIcon />
+		<span><a href="https://www.openstreetmap.org/user/wjtje">wjtje</a></span>
+	</li>
 	<li class="reddit">
 		<FaReddit title="Reddit" /><span><a href="https://www.reddit.com/u/wjtje">u/wjtje</a></span>
 	</li>
 	<li class="twitter">
-		<FaTwitter title="twitter" />
+		<FaTwitter title="Twitter" />
 		<span><a href="https://twitter.com/wjtje_wal">@wjtje_wal</a></span>
+	</li>
+	<li class="youtube">
+		<FaYoutube title="Youtube" />
+		<span><a href="https://www.youtube.com/channel/UCIXqIlnYY016Dn1aSuYvTmg">wjtje</a></span>
 	</li>
 </ul>
 
@@ -67,7 +82,7 @@
 			}
 
 			// Define brands with custom styles
-			$brands: linkedin, reddit, twitter;
+			$brands: discord, osm, linkedin, reddit, twitter, youtube;
 
 			@each $brand in $brands {
 				&.#{$brand} {

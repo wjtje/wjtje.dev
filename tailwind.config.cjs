@@ -4,11 +4,14 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
-				'reddit-brand': '#ff4500',
-				'twitter-brand': '#009EF7',
-				'linkedin-brand': '#0A66C2'
+				'discord-brand': '#5865F2', // https://discord.com/branding
+				'osm-brand': '#7ebc6f',
+				'reddit-brand': '#ff4500', // https://www.redditinc.com/brand
+				'twitter-brand': '#009EF7', // https://about.twitter.com/en/who-we-are/brand-toolkit
+				'linkedin-brand': '#0A66C2', // https://brand.linkedin.com/
+				'youtube-brand': '#FF0000' // https://www.youtube.com/brand
 			}
 		}
 	},
 	plugins: [require('tailwindcss-global-dark')]
-};
+}
