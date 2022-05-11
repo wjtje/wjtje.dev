@@ -15,7 +15,7 @@
 
 <style lang="scss">
 	div {
-		@apply overflow-y-scroll h-[calc(100vh-3rem)];
+		@apply overflow-y-scroll overflow-x-hidden h-[calc(100vh-3rem)];
 	}
 
 	main {
