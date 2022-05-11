@@ -2,11 +2,19 @@
 	import { fly } from 'svelte/transition';
 
 	export let url: URL;
+	let cleanUrl: string = '';
+
+	$: {
+		// This makes sure the page transition is only triggered when the page actually changes
+		const parts = url.pathname.split('/');
+		cleanUrl = parts.slice(2).join('/');
+	}
+
 	let duration = 250;
 </script>
 
 <div>
-	{#key url}
+	{#key cleanUrl}
 		<main in:fly={{ x: -5, duration, delay: duration }} out:fly={{ x: 5, duration }}>
 			<slot />
 		</main>
