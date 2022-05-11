@@ -1,0 +1,4 @@
+{
+	"LoadFailed": "Kon de OpenStreetMap activiteit niet ophalen",
+	"defaultText": "Changeset <a href=\"https://osm.org/changeset/{{id}}\">{{id}}</a> geupload met {{editor}} version {{version}}"
+}

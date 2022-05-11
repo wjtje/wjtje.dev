@@ -25,6 +25,10 @@ const keys: key[] = [
 		routes: ['/']
 	},
 	{
+		key: 'OsmActivity',
+		routes: ['/']
+	},
+	{
 		key: 'contact',
 		routes: ['/contact']
 	},
