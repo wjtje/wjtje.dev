@@ -19,11 +19,11 @@ export const fetchOsmData = async (displayName: string): Promise<Changeset[]> =>
 	// Parse the data
 	const responseChangesets: Changeset[] = [];
 
-	let length = osmXml.osm.changeset.length < 10 ? osmXml.osm.changeset.length : 10;
+	const length = osmXml.osm.changeset.length < 10 ? osmXml.osm.changeset.length : 10;
 
 	for (let i = 0; i < length; i++) {
 		const changeset = osmXml.osm.changeset[i];
-		let tags: ParsedTags = {
+		const tags: ParsedTags = {
 			comment: '',
 			created_by: {
 				name: 'Unknown editor'
