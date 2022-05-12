@@ -33,6 +33,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ghcr.io/wjtje/website:latest
+          tags: ghcr.io/wjtje/wjtje.ga:latest
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
