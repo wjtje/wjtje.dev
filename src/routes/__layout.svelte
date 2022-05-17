@@ -78,7 +78,7 @@
 		@apply fixed bottom-0 h-8 w-full flex flex-row px-8 justify-end;
 
 		a {
-			@apply text-sm text-gray-500 hover:text-gray-700 gdark:text-gray-500 gdark:hover:text-gray-200;
+			@apply text-sm text-gray-600 hover:text-gray-800 gdark:text-gray-400 gdark:hover:text-gray-200;
 		}
 	}
 </style>
