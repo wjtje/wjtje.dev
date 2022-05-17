@@ -1,5 +1,5 @@
-import adapter from '@sveltejs/adapter-node';
-import preprocess from 'svelte-preprocess';
+import adapter from '@sveltejs/adapter-node'
+import preprocess from 'svelte-preprocess'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -14,8 +14,11 @@ const config = {
 	kit: {
 		adapter: adapter({
 			out: 'build'
-		})
+		}),
+		version: {
+			name: '0.1-beta.0'
+		},
 	}
-};
+}
 
-export default config;
+export default config
