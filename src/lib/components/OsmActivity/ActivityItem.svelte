@@ -14,14 +14,26 @@
 <div>
 	<span>{date}</span>
 
-	<h3>{changeset.parsedTags.comment}</h3>
-	<p>
-		{@html $t('OsmActivity.defaultText', {
-			id: changeset['@_id'],
-			editor: changeset.parsedTags.created_by.name,
-			version: changeset.parsedTags.created_by.version
-		})}
-	</p>
+	{#if changeset.parsedTags.created_by.name == 'MapComplete'}
+		<h3>MapComplete</h3>
+	{:else if changeset.parsedTags.created_by.name == 'StreetComplete'}
+		<h3>{changeset.parsedTags.comment}</h3>
+		<p>
+			{@html $t('OsmActivity.editor.StreetComplete.subText', {
+				id: changeset['@_id'],
+				version: changeset.parsedTags.created_by.version
+			})}
+		</p>
+	{:else}
+		<h3>{changeset.parsedTags.comment}</h3>
+		<p>
+			{@html $t('OsmActivity.defaultText', {
+				id: changeset['@_id'],
+				editor: changeset.parsedTags.created_by.name,
+				version: changeset.parsedTags.created_by.version
+			})}
+		</p>
+	{/if}
 </div>
 
 <style lang="scss">

@@ -1,4 +1,10 @@
 {
 	"LoadFailed": "Failed to load the OpenStreetMap activity",
-	"defaultText": "Changeset <a href=\"https://osm.org/changeset/{{id}}\">{{id}}</a> uploaded with {{editor}} version {{version}}"
+	"defaultText": "Changeset <a href=\"https://osm.org/changeset/{{id}}\">{{id}}</a> uploaded with {{editor}} version {{version}}",
+	"editor": {
+		"MapComplete": {},
+		"StreetComplete": {
+			"subText": "Changeset <a href=\"https://osm.org/changeset/{{id}}\">{{id}}</a> uploaded with <a href=\"https://github.com/streetcomplete/StreetComplete\">StreetComplete</a> version {{version}}"
+		}
+	}
 }
