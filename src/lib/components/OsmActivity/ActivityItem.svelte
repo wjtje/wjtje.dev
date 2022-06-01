@@ -17,7 +17,7 @@
 	{#if changeset.parsedTags.created_by.name == 'MapComplete'}
 		<h3>
 			{@html $t('OsmActivity.editor.MapComplete.mainText', {
-				count: changeset.parsedTags.answer ?? changeset.parsedTags.create,
+				count: changeset['@_changes_count'],
 				theme: changeset.parsedTags.theme,
 				host: changeset.parsedTags.host
 			})}
