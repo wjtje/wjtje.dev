@@ -10,7 +10,6 @@
 		"seatonjiang.gitmoji-vscode",
 		"redhat.vscode-yaml",
 		"ms-azuretools.vscode-docker",
-		"yzhang.markdown-all-in-one",
-		"Prisma.prisma"
+		"yzhang.markdown-all-in-one"
 	]
 }
