@@ -25,3 +25,8 @@ export const replaceGithubEmote: Modifier.T = ({ value, defaultValue }) => {
 
 	return s;
 };
+
+export const fixMapCompleteTheme: Modifier.T = ({ value, defaultValue }) => {
+	const s = String(value || defaultValue);
+	return s.replace(/s$/, "'s");
+};

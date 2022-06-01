@@ -20,6 +20,10 @@ export interface ParsedTags {
 	locale?: string;
 	created_by: OsmEditor;
 	comment: string;
+	answer?: number;
+	create?: number;
+	theme?: string;
+	host?: string;
 }
 
 export interface Changeset {

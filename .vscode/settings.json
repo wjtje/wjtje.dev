@@ -26,11 +26,22 @@
 			"format": "svg"
 		}
 	],
-	"explorer.experimental.fileNesting.enabled": true,
-	"explorer.experimental.fileNesting.patterns": {
-		"package.json": "package-lock.json, .npmrc, yarn.lock, .yarnrc, pnpm-lock.yaml, .eslintrc.cjs, .prettierrc, postcss.config.cjs, svelte.config.js, tailwind.config.cjs, tsconfig.json",
+	"explorer.fileNesting.enabled": true,
+	"explorer.fileNesting.patterns": {
+		"package.json": "package-lock.json, .npmrc, yarn.lock, .yarnrc, playwright.config.ts, pnpm-lock.yaml, .eslintrc.cjs, .prettierrc, postcss.config.cjs, svelte.config.js, tailwind.config.cjs, tsconfig.json",
 		"Dockerfile": ".dockerignore",
 		"*.html": "$(capture).css, $(capture).d.ts, $(capture).ts, $(capture).js",
-		".gitignore": ".gitmodules"
-	}
+		".gitignore": ".gitmodules",
+		".eslintrc.cjs": ".eslintignore",
+		".prettierrc": ".prettierignore"
+	},
+	"json.schemas": [
+		{
+			"fileMatch": ["manifest.json"],
+			"url": "https://json.schemastore.org/web-manifest-combined.json"
+		}
+	],
+	"yaml.schemaStore.enable": true,
+	"editor.tabSize": 2,
+	"scss.lint.unknownAtRules": "ignore"
 }
