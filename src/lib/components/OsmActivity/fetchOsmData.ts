@@ -45,7 +45,5 @@ export const fetchOsmData = async (displayName: string): Promise<Changeset[]> =>
 		});
 	}
 
-	console.log(responseChangesets);
-
 	return responseChangesets;
 };
