@@ -15,7 +15,19 @@
 	<span>{date}</span>
 
 	{#if changeset.parsedTags.created_by.name == 'MapComplete'}
-		<h3>MapComplete</h3>
+		<h3>
+			{@html $t('OsmActivity.editor.MapComplete.mainText', {
+				count: changeset.parsedTags.answer ?? changeset.parsedTags.create,
+				theme: changeset.parsedTags.theme,
+				host: changeset.parsedTags.host
+			})}
+		</h3>
+		<p>
+			{@html $t('OsmActivity.editor.MapComplete.subText', {
+				id: changeset['@_id'],
+				version: changeset.parsedTags.created_by.version
+			})}
+		</p>
 	{:else if changeset.parsedTags.created_by.name == 'StreetComplete'}
 		<h3>{changeset.parsedTags.comment}</h3>
 		<p>
