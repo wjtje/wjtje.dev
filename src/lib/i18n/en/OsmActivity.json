@@ -3,7 +3,7 @@
 	"defaultText": "Changeset <a href=\"https://osm.org/changeset/{{id}}\">{{id}}</a> uploaded with {{editor}} version {{version}}",
 	"editor": {
 		"MapComplete": {
-			"mainText": "Changed {{count}} {{count; 1:object; default:objects}} using the <a href=\"{{host}}\">{{theme}}</a> theme",
+			"mainText": "Changed {{count}} {{count; 1:object; default:objects}} using the <a href=\"{{host}}\">{{theme:fixMapCompleteTheme}}</a> theme",
 			"subText": "Changeset <a href=\"https://osm.org/changeset/{{id}}\">{{id}}</a> uploaded with <a href=\"https://mapcomplete.osm.be/\">MapComplete</a> version {{version}}"
 		},
 		"StreetComplete": {
