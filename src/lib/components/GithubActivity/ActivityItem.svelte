@@ -123,7 +123,7 @@
 		</h3>
 		<p>
 			{$t(`GitHubActivity.${event.type}Subtitle`, {
-				commit: event.payload?.commits[0].message
+				commit: event.payload?.commits[0]?.message ?? $t('GitHubActivity.PushEventSubtitleEmpty')
 			})}
 
 			{#if event.payload?.commits.length > 1}

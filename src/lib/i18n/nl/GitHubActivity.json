@@ -42,6 +42,7 @@
 	"PullRequestReviewCommentEvent": "Heeft een <a href=\"{{comment_url}}\">opmerking</a> bij een beoordeling van een pull-request (<a href=\"{{pull_request_url}}\">{{pull_request:sanitize:replaceGithubEmote;}}</a>) in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
 	"PushEvent": "{{size}} {{size; 1:commit; default:commits;}} gepushed naar <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
 	"PushEventSubtitle": "{{commit:capitalize:replaceGithubEmote;}}",
+	"PushEventSubtitleEmpty": "Er is geen bericht bij deze push event",
 	"PushEventSubtitleMore": "en nog {{count}} {{count; 1:commit; default:commits;}}",
 	"ReleaseEvent": "Uitgegeven <a href=\"{{html_url:sanitize;}}\" target=\"_blank\">{{name}}</a> van <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
 	"WatchEvent": "Is nu <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a> aan het volgen"
