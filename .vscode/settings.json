@@ -43,5 +43,8 @@
 	],
 	"yaml.schemaStore.enable": true,
 	"editor.tabSize": 2,
-	"scss.lint.unknownAtRules": "ignore"
+	"scss.lint.unknownAtRules": "ignore",
+	"[prisma]": {
+		"editor.defaultFormatter": "Prisma.prisma"
+	}
 }

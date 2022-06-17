@@ -1,0 +1,22 @@
+services:
+  app:
+    build: .
+    image: ghcr.io/wjtje/wjtje.ga:latest
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    environment:
+      - DATABASE_URL=postgresql://user:example@localhost:5432/iwa?schema=public
+
+  database:
+    image: postgres:latest
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: example
+    volumes:
+      - database:/var/lib/postgresql/data
+
+volumes:
+  database:
