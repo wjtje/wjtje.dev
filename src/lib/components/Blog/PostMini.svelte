@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Post, User } from '@prisma/client';
+	import { t } from '$lib/i18n';
 
 	export let post: Post & {
 		author: User;
@@ -10,7 +11,7 @@
 	<h2>{post.title}</h2>
 	<div>
 		<p>{post.body}</p>
-		<a>Read more</a>
+		<a>{$t('blog.more')}</a>
 	</div>
 </section>
 

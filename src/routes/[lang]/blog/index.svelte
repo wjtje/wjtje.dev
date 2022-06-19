@@ -1,5 +1,6 @@
 <script lang="ts">
 	import PostMini from '$lib/components/Blog/PostMini.svelte';
+	import { t } from '$lib/i18n';
 	import type { Post, User } from '@prisma/client';
 
 	export let posts: (Post & {
@@ -7,7 +8,7 @@
 	})[] = [];
 </script>
 
-<h1>BLOG</h1>
+<h1>{$t('blog.title')}</h1>
 
 {#each posts as post}
 	<PostMini {post} />
