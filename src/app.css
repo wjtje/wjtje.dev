@@ -1,4 +1,16 @@
-/* Write your global styles here, in PostCSS syntax */
+/* Import tailwind */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Global body */
+body {
+	@apply dark:bg-gray-900 dark:text-white min-h-screen transition-colors overflow-hidden;
+}
+
+/* Global headings */
+h1 {
+	@apply text-4xl pb-3;
+}
+
+/* Global colors*/

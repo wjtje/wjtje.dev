@@ -41,7 +41,7 @@
 
 	section.github,
 	section.osm {
-		@apply lg:w-[calc(50%-8px)];
+		@apply lg:w-[calc(50%-8px)] pb-8;
 
 		h2 {
 			@apply text-3xl pb-3;

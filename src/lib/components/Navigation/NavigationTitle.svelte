@@ -2,6 +2,6 @@
 
 <style lang="scss">
 	h1 {
-		@apply text-xl;
+		@apply text-xl pb-0;
 	}
 </style>

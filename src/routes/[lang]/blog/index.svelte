@@ -12,9 +12,3 @@
 {#each posts as post}
 	<PostMini {post} />
 {/each}
-
-<style lang="scss">
-	h1 {
-		@apply text-4xl pb-3;
-	}
-</style>

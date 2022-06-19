@@ -15,7 +15,6 @@
 
 <style lang="scss">
 	section {
-		// @apply flex gap-4 justify-center;
 		@apply grid grid-cols-[8rem_1fr] grid-rows-[8rem_1fr] md:grid-rows-2 gap-4 items-center md:items-start;
 
 		img {
@@ -23,8 +22,7 @@
 		}
 
 		h1 {
-			@apply text-4xl md:self-end;
-			@apply dark:text-white;
+			@apply md:self-end pb-0;
 		}
 
 		p {

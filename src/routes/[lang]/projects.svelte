@@ -7,9 +7,3 @@
 <p>
 	{@html $t('projects.temp')}
 </p>
-
-<style lang="scss">
-	h1 {
-		@apply text-4xl pb-3;
-	}
-</style>

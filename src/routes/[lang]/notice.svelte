@@ -33,10 +33,6 @@
 </p>
 
 <style lang="scss">
-	h1 {
-		@apply text-4xl pb-3;
-	}
-
 	p {
 		@apply pb-2 max-w-lg;
 	}
