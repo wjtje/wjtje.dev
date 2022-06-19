@@ -37,6 +37,10 @@
 			name: $t('navigation.projects')
 		},
 		{
+			path: `blog`,
+			name: $t('navigation.blog')
+		},
+		{
 			path: `contact`,
 			name: $t('navigation.contact')
 		}
