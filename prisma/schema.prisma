@@ -20,6 +20,7 @@ model Post {
   slug      String
   language  Language @default(EN)
   published Boolean
+  createdAt DateTime @default(now())
   author    User     @relation(fields: [authorId], references: [id])
   authorId  Int
 

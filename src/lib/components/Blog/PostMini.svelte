@@ -1,14 +1,22 @@
 <script lang="ts">
 	import type { Post, User } from '@prisma/client';
-	import { t } from '$lib/i18n';
+	import { locale, t } from '$lib/i18n';
+	import { DateTime } from 'luxon';
 
 	export let post: Post & {
 		author: User;
 	};
+
+	$: date = DateTime.fromJSDate(new Date(post.createdAt)).toRelative({
+		locale: $locale
+	});
 </script>
 
 <section>
-	<h2>{post.title}</h2>
+	<span>{date}</span>
+
+	<h3>{post.title}</h3>
+
 	<div>
 		<p>{post.body}</p>
 		<a>{$t('blog.more')}</a>
@@ -17,21 +25,25 @@
 
 <style lang="scss">
 	section {
-		@apply pb-2;
+		@apply pb-4;
 
-		h2 {
-			@apply text-xl;
+		span {
+			@apply text-xs text-gray-700 dark:text-gray-300 mb-[-0.1rem] block;
+		}
+
+		h3 {
+			@apply text-xl whitespace-nowrap overflow-hidden text-ellipsis w-full block;
 		}
 
 		div {
 			@apply flex gap-2 w-full md:w-[60%] lg:w-[50%];
 
 			p {
-				@apply truncate;
+				@apply text-sm truncate;
 			}
 
 			a {
-				@apply whitespace-nowrap text-sky-700 gdark:text-blue-200 hover:text-blue-700 gdark:hover:text-sky-600 transition-colors;
+				@apply text-sm whitespace-nowrap text-sky-700 gdark:text-blue-200 hover:text-blue-700 gdark:hover:text-sky-600 transition-colors;
 			}
 		}
 	}

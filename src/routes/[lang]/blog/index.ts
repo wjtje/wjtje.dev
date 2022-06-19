@@ -12,8 +12,9 @@ export const get: RequestHandler = async ({ url }) => {
 	);
 
 	// Get all the posts
+	// TODO: Pagination
 	const posts = await prisma.post.findMany({
-		take: 15,
+		take: 10,
 		include: {
 			author: true
 		},
