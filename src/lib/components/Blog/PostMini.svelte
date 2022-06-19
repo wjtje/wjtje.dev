@@ -19,7 +19,7 @@
 
 	<div>
 		<p>{post.body}</p>
-		<a>{$t('blog.more')}</a>
+		<a href={`/${$locale}/blog/post/${post.slug}`}>{$t('blog.more')}</a>
 	</div>
 </section>
 
