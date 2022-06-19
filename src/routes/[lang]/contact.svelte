@@ -57,7 +57,7 @@
 
 <style lang="scss">
 	p {
-		@apply pb-2;
+		@apply pb-4;
 	}
 
 	ul {
