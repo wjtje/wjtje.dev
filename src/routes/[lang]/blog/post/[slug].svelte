@@ -20,3 +20,13 @@
 <p>
 	{post.body}
 </p>
+
+<style lang="scss">
+	h1 {
+		@apply pb-1;
+	}
+
+	span {
+		@apply pb-3 inline-block text-gray-700 gdark:text-gray-300;
+	}
+</style>
