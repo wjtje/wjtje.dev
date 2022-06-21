@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { locale } from '$lib/i18n';
+	import { locale, t } from '$lib/i18n';
 
 	import type { Post, User } from '@prisma/client';
 	import { DateTime } from 'luxon';
@@ -15,7 +15,12 @@
 
 <h1>{post.title}</h1>
 
-<span>Written by {post.author.name}, {date}</span>
+<span
+	>{$t('blog.written_by', {
+		author: post.author.name,
+		date: date
+	})}</span
+>
 
 <p>
 	{post.body}

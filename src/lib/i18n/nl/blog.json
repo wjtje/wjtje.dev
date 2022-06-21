@@ -1,4 +1,5 @@
 {
 	"title": "Blog",
-	"more": "Meer lezen"
+	"more": "Meer lezen",
+	"written_by": "Geschreven door {{author}}, {{date}}"
 }
