@@ -13,6 +13,10 @@
 	});
 </script>
 
+<svelte:head>
+	<title>{$t('common.title')} - {post.title}</title>
+</svelte:head>
+
 <h1>{post.title}</h1>
 
 <span

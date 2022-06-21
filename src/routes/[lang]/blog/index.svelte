@@ -8,6 +8,10 @@
 	})[] = [];
 </script>
 
+<svelte:head>
+	<title>{$t('common.title')} - {$t('blog.title')}</title>
+</svelte:head>
+
 <h1>{$t('blog.title')}</h1>
 
 {#each posts as post}

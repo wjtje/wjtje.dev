@@ -1,3 +1,11 @@
+<script>
+	import { t } from '$lib/i18n';
+</script>
+
+<svelte:head>
+	<title>{$t('common.title')} - Notice</title>
+</svelte:head>
+
 <h1>Notice</h1>
 
 <p>
