@@ -18,6 +18,7 @@ model Post {
   title     String
   body      String
   slug      String
+  preview   String
   language  Language @default(EN)
   published Boolean
   createdAt DateTime @default(now())

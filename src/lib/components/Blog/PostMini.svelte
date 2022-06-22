@@ -18,7 +18,7 @@
 	<h3>{post.title}</h3>
 
 	<div>
-		<p>{post.body}</p>
+		<p>{post.preview}</p>
 		<a href={`/${$locale}/blog/post/${post.slug}`}>{$t('blog.more')}</a>
 	</div>
 </section>

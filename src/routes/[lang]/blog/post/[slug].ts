@@ -28,7 +28,10 @@ export const get: RequestHandler = async ({ params }) => {
 	return {
 		status: 200,
 		body: {
-			post: post
+			post: {
+				...post,
+				body: atob(post.body)
+			}
 		}
 	};
 };

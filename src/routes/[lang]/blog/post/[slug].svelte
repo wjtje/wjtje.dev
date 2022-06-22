@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { locale, t } from '$lib/i18n';
-
 	import type { Post, User } from '@prisma/client';
 	import { DateTime } from 'luxon';
+	import Markdown from 'svelte-exmarkdown';
+	import './[slug].scss';
 
 	export let post: Post & {
 		author: User;
@@ -26,9 +27,9 @@
 	})}</span
 >
 
-<p>
-	{post.body}
-</p>
+<div class="markdown">
+	<Markdown md={post.body} />
+</div>
 
 <style lang="scss">
 	h1 {
