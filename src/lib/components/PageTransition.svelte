@@ -27,6 +27,6 @@
 	}
 
 	main {
-		@apply container mx-auto py-4 lg:py-10 px-4 lg:px-8;
+		@apply container mx-auto py-4 lg:py-8 px-4 lg:px-8;
 	}
 </style>

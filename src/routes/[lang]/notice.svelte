@@ -1,3 +1,11 @@
+<script>
+	import { t } from '$lib/i18n';
+</script>
+
+<svelte:head>
+	<title>{$t('common.title')} - Notice</title>
+</svelte:head>
+
 <h1>Notice</h1>
 
 <p>
@@ -33,10 +41,6 @@
 </p>
 
 <style lang="scss">
-	h1 {
-		@apply text-4xl pb-3;
-	}
-
 	p {
 		@apply pb-2 max-w-lg;
 	}

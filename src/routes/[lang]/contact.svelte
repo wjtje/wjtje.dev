@@ -56,12 +56,8 @@
 </ul>
 
 <style lang="scss">
-	h1 {
-		@apply text-4xl pb-3;
-	}
-
 	p {
-		@apply pb-2;
+		@apply pb-4;
 	}
 
 	ul {

@@ -17,7 +17,9 @@
 	}
 </script>
 
-<a href={url} class:active={$page.url.pathname == url} on:click={onClick}>{name}</a>
+<a href={url} class:active={($page.url.pathname.split('/')[2] ?? '') === path} on:click={onClick}
+	>{name}</a
+>
 
 <style lang="scss">
 	a {

@@ -1,0 +1,23 @@
+.markdown {
+	@apply xl:max-w-2xl 2xl:max-w-3xl;
+
+	a {
+		@apply text-sky-700 dark:text-blue-200 hover:text-blue-700 dark:hover:text-sky-600 transition-colors;
+	}
+
+	h2 {
+		@apply text-2xl pt-2;
+	}
+
+	h3 {
+		@apply text-xl pt-1;
+	}
+
+	p {
+		@apply py-2;
+	}
+
+	ul {
+		@apply list-disc pl-4;
+	}
+}

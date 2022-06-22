@@ -36,6 +36,10 @@ const keys: key[] = [
 		key: 'contact',
 		routes: ['/contact']
 	},
+	{
+		key: 'blog',
+		routes: ['/blog']
+	},
 	// Common parts
 	{
 		key: 'navigation'

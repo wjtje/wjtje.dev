@@ -1,20 +1,16 @@
-FROM node:17-alpine as builder
+FROM node:18-alpine
 
 WORKDIR /app
-COPY . .
 
-RUN npm i
+# Install all the packages
+COPY package.json package-lock.json ./
+RUN npm install
+
+# Build the project
+COPY . .
 RUN npm run build
 
-FROM node:17-alpine as runner
-
-WORKDIR /app
-COPY --from=builder /app/build /app
-COPY --from=builder /app/package.json /app
-
-ENV NODE_ENV production
-RUN npm i
-
 EXPOSE 3000
+EXPOSE 5555
 
-CMD [ "node", "index.js" ]
+CMD [ "sh", "docker_start.sh" ]

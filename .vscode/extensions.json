@@ -1,6 +1,5 @@
 {
 	"recommendations": [
-		"github.copilot",
 		"esbenp.prettier-vscode",
 		"dbaeumer.vscode-eslint",
 		"svelte.svelte-vscode",
@@ -10,6 +9,7 @@
 		"seatonjiang.gitmoji-vscode",
 		"redhat.vscode-yaml",
 		"ms-azuretools.vscode-docker",
-		"yzhang.markdown-all-in-one"
+		"yzhang.markdown-all-in-one",
+		"Prisma.prisma"
 	]
 }
