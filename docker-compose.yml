@@ -5,8 +5,9 @@ services:
     restart: unless-stopped
     ports:
       - 3000:3000
+      - 5555:5555
     environment:
-      - DATABASE_URL=postgresql://user:example@localhost:5432/iwa?schema=public
+      - DATABASE_URL=postgresql://postgres:example@database:5432/postgres?schema=public
 
   database:
     image: postgres:latest

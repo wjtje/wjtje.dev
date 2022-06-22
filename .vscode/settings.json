@@ -29,7 +29,7 @@
 	"explorer.fileNesting.enabled": true,
 	"explorer.fileNesting.patterns": {
 		"package.json": "package-lock.json, .npmrc, yarn.lock, .yarnrc, playwright.config.ts, pnpm-lock.yaml, .eslintrc.cjs, .prettierrc, postcss.config.cjs, svelte.config.js, tailwind.config.cjs, tsconfig.json",
-		"Dockerfile": ".dockerignore",
+		"Dockerfile": ".dockerignore, docker_start.sh",
 		"*.html": "$(capture).css, $(capture).d.ts, $(capture).ts, $(capture).js",
 		".gitignore": ".gitmodules",
 		".eslintrc.cjs": ".eslintignore",
