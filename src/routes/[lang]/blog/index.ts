@@ -13,6 +13,9 @@ export const get: RequestHandler = async ({ params }) => {
 		where: {
 			published: true,
 			language: params.lang.toUpperCase() as Language
+		},
+		orderBy: {
+			createdAt: 'desc'
 		}
 	});
 
