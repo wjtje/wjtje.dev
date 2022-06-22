@@ -1,5 +1,5 @@
 /// <reference lib="webworker" />
-import { build, files, prerendered, version } from '$service-worker';
+import { build, files, version } from '$service-worker';
 
 self.addEventListener('install', (event: ExtendableEvent) => {
 	event.waitUntil(async () => {
