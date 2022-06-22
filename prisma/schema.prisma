@@ -19,6 +19,7 @@ model Post {
   body      String
   slug      String
   preview   String
+  image     String?
   language  Language @default(EN)
   published Boolean
   createdAt DateTime @default(now())
