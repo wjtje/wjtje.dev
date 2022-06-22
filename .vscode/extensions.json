@@ -1,6 +1,5 @@
 {
 	"recommendations": [
-		"github.copilot",
 		"esbenp.prettier-vscode",
 		"dbaeumer.vscode-eslint",
 		"svelte.svelte-vscode",
