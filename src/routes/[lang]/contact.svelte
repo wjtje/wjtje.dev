@@ -63,26 +63,21 @@
 	ul {
 		li {
 			@apply h-8 flex flex-row gap-2 items-center mb-2 transition-[color] duration-200 w-auto;
-
 			:global(svg) {
 				@apply h-8 w-8 p-1 fill-current;
 			}
-
 			span {
 				@apply h-auto whitespace-nowrap;
 			}
-
 			// Custom hover effects
 			&.email {
-				@apply hover:text-red-600 dark:hover:text-red-500;
+				@apply hover:text-red-600 gdark:hover:text-red-500;
 			}
-
 			// Define brands with custom styles
 			$brands: discord, osm, linkedin, reddit, twitter, youtube;
-
 			@each $brand in $brands {
 				&.#{$brand} {
-					@apply hover:text-#{$brand}-brand;
+					@apply #{'hover:text-' + $brand + '-brand'};
 				}
 			}
 		}

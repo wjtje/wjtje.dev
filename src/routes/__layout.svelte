@@ -20,12 +20,12 @@
 		NavigationTitle,
 		NavigationItems,
 		NavigationItem
-	} from '$lib/components/Navigation';
-	import LanguageSwitcher from '$lib/components/LanguageSwitcher.svelte';
-	import ThemeSwitcher from '$lib/components/ThemeSwitcher.svelte';
+	} from '$lib/components/navigation';
+	import LanguageSwitcher from '$lib/components/common/LanguageSwitcher.svelte';
+	import ThemeSwitcher from '$lib/components/common/ThemeSwitcher.svelte';
 	import { t } from '$lib/i18n';
 	import '../app.css';
-	import PageTransition from '$lib/components/PageTransition.svelte';
+	import PageTransition from '$lib/components/common/PageTransition.svelte';
 
 	$: routes = [
 		{

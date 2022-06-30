@@ -4,7 +4,7 @@
 	import type { GithubEvent } from '$lib/@types/github';
 	import { onMount } from 'svelte';
 	import { scale } from 'svelte/transition';
-	import ActivityLoader from '../ActivityLoader.svelte';
+	import MiniPostLoader from '$lib/components/common/MiniPostLoader.svelte';
 
 	onMount(async () => {
 		// Fetch the GitHub events
@@ -21,7 +21,7 @@
 </script>
 
 {#if githubStatus == undefined}
-	<ActivityLoader />
+	<MiniPostLoader />
 {:else if githubStatus == 200}
 	{#each githubEvent as event, i}
 		<div in:scale={{ duration: 400, delay: i * 50 }}>

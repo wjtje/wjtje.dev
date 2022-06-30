@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { NavigationDropdown } from '$lib/components/Navigation';
+	import { NavigationDropdown } from '$lib/components/navigation';
 	import { t, locale, locales } from '$lib/i18n';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';

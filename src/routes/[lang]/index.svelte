@@ -1,7 +1,7 @@
 <script lang="ts">
-	import GithubActivity from '$lib/components/GithubActivity/GithubActivity.svelte';
-	import OsmActivity from '$lib/components/OsmActivity/OsmActivity.svelte';
-	import Profile from '$lib/components/Profile.svelte';
+	import GithubActivity from '$lib/components/home/GithubActivity/GithubActivity.svelte';
+	import OsmActivity from '$lib/components/home/OsmActivity/OsmActivity.svelte';
+	import Profile from '$lib/components/home/Profile.svelte';
 	import { t } from '$lib/i18n';
 </script>
 

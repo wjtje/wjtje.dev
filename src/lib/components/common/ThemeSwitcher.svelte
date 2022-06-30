@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { browser } from '$app/env';
 	import { writableLocal } from '$lib/store-localstorage';
-	import { NavigationDropdown } from '$lib/components/Navigation';
+	import { NavigationDropdown } from '$lib/components/navigation';
 	import { t } from '$lib/i18n';
 
 	// Store the value inside localStorage

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import ActivityLoader from '../ActivityLoader.svelte';
+	import MiniPostLoader from '$lib/components/common/MiniPostLoader.svelte';
 	import type { Changeset } from '$lib/@types/osm';
 	import { scale } from 'svelte/transition';
 	import { t } from '$lib/i18n';
@@ -15,7 +15,7 @@
 </script>
 
 {#if changesets == null}
-	<ActivityLoader />
+	<MiniPostLoader />
 {:else if changesets.length != null}
 	{#each changesets as changeset, i}
 		<div in:scale={{ duration: 400, delay: i * 50 }}>

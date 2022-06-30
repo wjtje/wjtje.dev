@@ -8,7 +8,11 @@ export const capitalize: Modifier.T = ({ value, defaultValue }) => {
 
 export const sanitize: Modifier.T = ({ value, defaultValue }) => {
 	const s = String(value || defaultValue);
-	return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+	return s
+		.replace(/&/g, '&amp;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;')
+		.replace(/"/g, '&quot;');
 };
 
 export const replaceGithubEmote: Modifier.T = ({ value, defaultValue }) => {
@@ -29,4 +33,8 @@ export const replaceGithubEmote: Modifier.T = ({ value, defaultValue }) => {
 export const fixMapCompleteTheme: Modifier.T = ({ value, defaultValue }) => {
 	const s = String(value || defaultValue);
 	return s.replace(/s$/, "'s");
+};
+
+export const gh: Modifier.T = (x) => {
+	return replaceGithubEmote({ ...x, value: sanitize(x) });
 };

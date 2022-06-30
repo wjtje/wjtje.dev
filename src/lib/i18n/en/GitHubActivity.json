@@ -1,49 +1,49 @@
 {
-	"LoadFailed": "Failed to load the GitHub activity ({{status}})",
-	"UnknownEvent": "Unknown {{type:sanitize;}}",
-	"UnknownEventSubtitle": "Whoops, something is not right. (id: {{id:sanitize;}})",
-	"CommitCommentEvent": "Commented on <a href=\"{{html_url:sanitize;}}\">commit</a> in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
+	"LoadFailed": "Failed to load the GitHub activity ({{status:gh;}})",
+	"UnknownEvent": "Unknown {{type::gh;}}",
+	"UnknownEventSubtitle": "Whoops, something is not right. (id: {{id:gh;}})",
+	"CommitCommentEvent": "Commented on [commit]({{html_url:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 	"CreateEvent": {
-		"branch": "Created a {{ref_type:sanitize;}} called <a href=\"https://github.com/{{repo:sanitize;}}/tree/{{ref:sanitize;}}\" target=\"_blank\">{{ref:sanitize;}}</a> in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
-		"tag": "Created a {{ref_type:sanitize;}} called <a href=\"https://github.com/{{repo:sanitize;}}/tree/{{ref:sanitize;}}\" target=\"_blank\">{{ref:sanitize;}}</a> in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
-		"repository": "Create a repository named <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
-		"unknown": "An unknown CreateEvent has occurred ({{id}})"
+		"branch": "Created a {{ref_type:gh;}} called [{{ref;:gh;}}](https://github.com/{{repo;:gh;}}/tree/{{ref;:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"tag": "Created a {{ref_type:gh;}} called [{{ref;:gh;}}](https://github.com/{{repo;:gh;}}/tree/{{ref;:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"repository": "Create a repository named [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"unknown": "An unknown CreateEvent has occurred ({{id:gh;}})"
 	},
 	"DeleteEvent": {
-		"branch": "Removed the {{ref:sanitize;}} {{ref_type:sanitize;}} from <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
-		"tag": "Removed the {{ref:sanitize;}} {{ref_type:sanitize;}} from <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
-		"repository": "Deleted the repository named <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>"
+		"branch": "Removed the {{ref:gh;}} {{ref_type:gh;}} from [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"tag": "Removed the {{ref:gh;}} {{ref_type:gh;}} from [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"repository": "Deleted the repository named [{{repo:gh;}}](https://github.com/{{repo:gh;}})"
 	},
-	"ForkEvent": "Created a <a href=\"{{html_url:sanitize;}}\" target=\"_blank\">fork</a> of <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
-	"GollumEvent": "Changed a wiki page of <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
-	"GollumEventSubtitle": "{{pages}} {{pages; 1:page; default:pages;}} {{pages; 1:has; default:have;}} been changed",
+	"ForkEvent": "Created a [fork]({{html_url:gh;}} of [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+	"GollumEvent": "Changed a wiki page of [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+	"GollumEventSubtitle": "{{pages:gh;}} {{pages; 1:page; default:pages;:gh;}} {{pages; 1:has; default:have;:gh;}} been changed",
 	"IssueCommentEvent": {
-		"created": "Commented on an issue (<a href=\"{{issue_html}}\" target=\"_blank\">{{issue:sanitize:replaceGithubEmote;}}</a>) in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
-		"edited": "Edited a comment on an issue (<a href=\"{{issue_html}}\" target=\"_blank\">{{issue:sanitize:replaceGithubEmote;}}</a>) in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
-		"deleted": "Removed comment on an issue (<a href=\"{{issue_html}}\" target=\"_blank\">{{issue:sanitize:replaceGithubEmote;}}</a>) in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
-		"unknown": "An unknown IssueCommentEvent action has occurred ({{id}})"
+		"created": "Commented on an issue ([{{issue}}]({{issue_html:gh;}})) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"edited": "Edited a comment on an issue ([{{issue}}]({{issue_html:gh;}})) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"deleted": "Removed comment on an issue ([{{issue}}]({{issue_html:gh;}})) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"unknown": "An unknown IssueCommentEvent action has occurred ({{id:gh;}})"
 	},
 	"IssuesEvent": {
-		"opened": "Opened a new issue (<a href=\"{{issue_html}}\" target=\"_blank\">{{issue:sanitize:replaceGithubEmote;}}</a>) in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
-		"edited": "Edited an issue (<a href=\"{{issue_html}}\" target=\"_blank\">{{issue:sanitize:replaceGithubEmote;}}</a>) in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
-		"closed": "Closed an issue (<a href=\"{{issue_html}}\" target=\"_blank\">{{issue:sanitize:replaceGithubEmote;}}</a>) in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
-		"unknown": "An unknown IssuesEvent action has occurred ({{id}})"
+		"opened": "Opened a new issue ([{{issue:gh;}}]({{issue_html:gh;}})) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"edited": "Edited an issue ([{{issue:gh;}}]({{issue_html:gh;}})) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"closed": "Closed an issue ([{{issue:gh;}}]({{issue_html:gh;}})) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"unknown": "An unknown IssuesEvent action has occurred ({{id:gh;}})"
 	},
-	"PublicEvent": "The repo <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a> has been made public",
+	"PublicEvent": "The repo [{{repo:gh;}}](https://github.com/{{repo:gh;}}) has been made public",
 	"PullRequestEvent": {
-		"opened": "Opened a pull request in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize:replaceGithubEmote;}}</a>",
-		"edited": "Edited a pull request in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize:replaceGithubEmote;}}</a>",
-		"closed": "Closed a pull request in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize:replaceGithubEmote;}}</a>",
-		"reopened": "Reopened a pull request in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize:replaceGithubEmote;}}</a>",
-		"unknown": "An unknown PullRequestEvent action has occurred ({{id}})",
-		"subtitle": "<a href=\"{{html_url:sanitize;}}\">{{title:sanitize:replaceGithubEmote;}}</a> ({{changed_files}} {{changed_files; 1:file; default:files}} changed)"
+		"opened": "Opened a pull request in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"edited": "Edited a pull request in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"closed": "Closed a pull request in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"reopened": "Reopened a pull request in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"unknown": "An unknown PullRequestEvent action has occurred ({{id:gh;}})",
+		"subtitle": "[{{title:gh;}}]({{html_url:gh;}}) ({{changed_files:gh;}} {{changed_files; 1:file; default:files:gh;}} changed)"
 	},
-	"PullRequestReviewEvent": "Left a <a href=\"{{review_url}}\">review</a> on <a href=\"{{pull_request_url}}\">{{pull_request:sanitize:replaceGithubEmote;}}</a> in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
-	"PullRequestReviewCommentEvent": "Left a <a href=\"{{comment_url}}\">comment</a> on a review of a pull request (<a href=\"{{pull_request_url}}\">{{pull_request:sanitize:replaceGithubEmote;}}</a>) in <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
-	"PushEvent": "Pushed {{size}} {{size; 1:commit; default:commits;}} to <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
-	"PushEventSubtitle": "{{commit:capitalize:replaceGithubEmote;}}",
+	"PullRequestReviewEvent": "Left a [review]({{review_url:gh;}}) on [{{pull_request:gh;}}]({{pull_request_url:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+	"PullRequestReviewCommentEvent": "Left a [comment]({{comment_url:gh;}}) on a review of a pull request ([{{pull_request:gh;}}]({{pull_request_url:gh;}})) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+	"PushEvent": "Pushed {{size:gh;}} {{size; 1:commit; default:commits;:gh;}} to [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+	"PushEventSubtitle": "{{commit:capitalize;:gh;}}",
 	"PushEventSubtitleEmpty": "There is no commit message with this push",
-	"PushEventSubtitleMore": "and {{count}} more {{count; 1:commit; default:commits;}}",
-	"ReleaseEvent": "Released <a href=\"{{html_url:sanitize;}}\" target=\"_blank\">{{name}}</a> of <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>",
-	"WatchEvent": "Now watching <a href=\"https://github.com/{{repo:sanitize;}}\" target=\"_blank\">{{repo:sanitize;}}</a>"
+	"PushEventSubtitleMore": "and {{count:gh;}} more {{count; 1:commit; default:commits;:gh;}}",
+	"ReleaseEvent": "Released [{{name:gh;}}]({{html_url:gh;}}) of [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+	"WatchEvent": "Now watching [{{repo:gh;}}](https://github.com/{{repo:gh;}})"
 }
