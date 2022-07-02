@@ -28,7 +28,7 @@
 	</li>
 	<li class="email">
 		<MdEmail title="email" />
-		<span><a href="mailto:me@wjtje.ga">me@wjtje.ga</a></span>
+		<span><a href="mailto:me@wjtje.dev">me@wjtje.dev</a></span>
 	</li>
 	<li class="github">
 		<GoMarkGithub title="Github" />

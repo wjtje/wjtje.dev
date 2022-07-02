@@ -5,7 +5,7 @@ interface page {
 	priority: string;
 }
 
-const baseUrl = `https://www.wjtje.ga/`;
+const baseUrl = `https://www.wjtje.dev/`;
 const baseLocale = `en`;
 
 const pages: page[] = [

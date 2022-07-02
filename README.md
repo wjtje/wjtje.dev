@@ -1,6 +1,6 @@
-# wjtje.ga <!-- omit in toc -->
+# wjtje.dev <!-- omit in toc -->
 
-> The source code for the website [https://www.wjtje.ga/](wjtje.ga)
+> The source code for the website [https://www.wjtje.dev/](wjtje.dev)
 
 ## Index <!-- omit in toc -->
 

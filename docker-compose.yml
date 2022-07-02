@@ -1,7 +1,7 @@
 services:
   app:
     build: .
-    image: ghcr.io/wjtje/wjtje.ga:latest
+    image: ghcr.io/wjtje/wjtje.dev:latest
     restart: unless-stopped
     ports:
       - 3000:3000
