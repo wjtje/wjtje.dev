@@ -11,8 +11,9 @@
 			case 'MapComplete':
 				return $t('OsmActivity.editor.MapComplete.mainText', {
 					count: changeset['@_changes_count'],
-					theme: changeset.parsedTags.theme,
-					host: changeset.parsedTags.host
+					theme: $t(`OsmActivity.editor.MapComplete.themes.${changeset.parsedTags.theme}`, {
+						host: changeset.parsedTags.host
+					})
 				});
 			default:
 				return changeset.parsedTags.comment;

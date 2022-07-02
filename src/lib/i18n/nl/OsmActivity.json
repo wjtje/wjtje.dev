@@ -3,8 +3,12 @@
 	"defaultText": "Changeset [{{id}}](https://osm.org/changeset/{{id}}) geupload met {{editor}} versie {{version}}",
 	"editor": {
 		"MapComplete": {
-			"mainText": "{{count}} {{count; 1:object; default:objecten}} aangepast met behulp van de <a href=\"{{host}}\">{{theme:fixMapCompleteTheme}}</a> thema",
-			"subText": "Changeset [{{id}}](https://osm.org/changeset/{{id}}) geupload met [MapComplete](https://mapcomplete.osm.be/) versie {{version}}"
+			"mainText": "{{count}} {{count; 1:object; default:objecten}} aangepast met behulp van {{theme}} thema",
+			"subText": "Changeset [{{id}}](https://osm.org/changeset/{{id}}) geupload met [MapComplete](https://mapcomplete.osm.be/) versie {{version}}",
+			"themes": {
+				"trees": "het [bomen]({{host}})",
+				"toerisme_vlaanderen": "het [Pin je punt]({{host}})"
+			}
 		},
 		"StreetComplete": {
 			"subText": "Changeset [{{id}}](https://osm.org/changeset/{{id}}) geupload met [StreetComplete](https://github.com/streetcomplete/StreetComplete) versie {{version}}"
