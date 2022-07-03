@@ -5,10 +5,13 @@
 	import { onMount } from 'svelte';
 	import { scale } from 'svelte/transition';
 	import MiniPostLoader from '$lib/components/common/MiniPostLoader.svelte';
+	import { GitHubUsername } from '$lib/common';
 
 	onMount(async () => {
 		// Fetch the GitHub events
-		const response = await fetch(`https://api.github.com/users/wjtje/events/public?per_page=10`);
+		const response = await fetch(
+			`https://api.github.com/users/${GitHubUsername}/events/public?per_page=10`
+		);
 		const json = await response.json();
 
 		// Set the GitHub events

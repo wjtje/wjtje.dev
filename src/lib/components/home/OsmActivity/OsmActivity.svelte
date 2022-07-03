@@ -6,9 +6,10 @@
 	import { t } from '$lib/i18n';
 	import ActivityItem from './ActivityItem.svelte';
 	import { fetchOsmData } from './fetchOsmData';
+	import { OSMUsername } from '$lib/common';
 
 	onMount(async () => {
-		changesets = await fetchOsmData('wjtje');
+		changesets = await fetchOsmData(OSMUsername);
 	});
 
 	let changesets: Changeset[] = null;
