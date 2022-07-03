@@ -10,9 +10,10 @@
 		switch (changeset.parsedTags.created_by.name) {
 			case 'MapComplete':
 				return $t('OsmActivity.editor.MapComplete.mainText', {
-					count: changeset['@_changes_count'],
+					count: changeset.parsedTags.answer,
 					theme: $t(`OsmActivity.editor.MapComplete.themes.${changeset.parsedTags.theme}`, {
-						host: changeset.parsedTags.host
+						host: changeset.parsedTags.host,
+						default: $t(`OsmActivity.editor.MapComplete.themes.default`)
 					})
 				});
 			default:

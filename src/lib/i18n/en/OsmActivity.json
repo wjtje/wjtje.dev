@@ -3,11 +3,19 @@
 	"defaultText": "Changeset [{{id}}](https://osm.org/changeset/{{id}}) uploaded with {{editor}} version {{version}}",
 	"editor": {
 		"MapComplete": {
-			"mainText": "Changed {{count}} {{count; 1:object; default:objects}} using {{theme}} theme",
+			"mainText": "Answered {{count}} {{count; 1:question; default:questions}} using {{theme}}",
 			"subText": "Changeset [{{id}}](https://osm.org/changeset/{{id}}) uploaded with [MapComplete](https://mapcomplete.osm.be/) version {{version}}",
 			"themes": {
-				"trees": "the [trees]({{host}})",
-				"toerisme_vlaanderen": "a hidden theme"
+				"default": "a unknown theme",
+				"aed": "the [open AED map]({{host}})",
+				"artwork": "the [open artwork map]({{host}})",
+				"benches": "the [benches]({{host}}) thema",
+				"bookcases": "the [open bookcase map]({{host}})",
+				"drinking_water": "the [drinking water]({{host}}) thema",
+				"etymology": "the [open etymology map]({{host}})",
+				"toerisme_vlaanderen": "a hidden theme",
+				"trees": "the [trees]({{host}}) theme",
+				"waste": "the [waste]({{host}}) theme"
 			}
 		},
 		"StreetComplete": {

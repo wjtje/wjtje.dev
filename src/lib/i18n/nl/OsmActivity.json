@@ -3,11 +3,19 @@
 	"defaultText": "Changeset [{{id}}](https://osm.org/changeset/{{id}}) geupload met {{editor}} versie {{version}}",
 	"editor": {
 		"MapComplete": {
-			"mainText": "{{count}} {{count; 1:object; default:objecten}} aangepast met behulp van {{theme}} thema",
+			"mainText": "{{count}} {{count; 1:vraag; default:vragen}} beantwoord met behulp van {{theme}}",
 			"subText": "Changeset [{{id}}](https://osm.org/changeset/{{id}}) geupload met [MapComplete](https://mapcomplete.osm.be/) versie {{version}}",
 			"themes": {
-				"trees": "het [bomen]({{host}})",
-				"toerisme_vlaanderen": "het [Pin je punt]({{host}})"
+				"default": "een onbekende thema",
+				"aed": "de [open AED-kaart]({{host}})",
+				"artwork": "de [open kunstwerken-kaart]({{host}})",
+				"benches": "de [zitbanken]({{host}}) thema",
+				"bookcases": "de [open boekenruilkasten-kaart]({{host}})",
+				"drinking_water": "de [drinkwaterpunten]({{host}}) thema",
+				"etymology": "de [open etymology-kaart]({{host}})",
+				"toerisme_vlaanderen": "het [Pin je punt]({{host}}) thema",
+				"trees": "het [bomen]({{host}}) thema",
+				"waste": "het [afval]({{host}}) thema"
 			}
 		},
 		"StreetComplete": {
