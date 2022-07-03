@@ -1,9 +1,9 @@
 import { defaultLocale, locales } from '$lib/i18n';
+import type { Handle } from '@sveltejs/kit';
 
 const routeRegex = new RegExp(/^\/[^.]*([?#].*)?$/);
 
-/** @type {import('@sveltejs/kit').Handle} */
-export const handle = async ({ event, resolve }) => {
+export const handle: Handle = async ({ event, resolve }) => {
 	const { url, request } = event;
 	const { pathname } = url;
 

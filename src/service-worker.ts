@@ -18,9 +18,9 @@ const fetchCacheFirst = async (request: Request) => {
 	// Get from network
 	const responseFromServer = await fetch(request);
 	// Cache static assets
-	if (request.url.match(/\.(js|css|html|json|ico|png|jpg|jpeg|svg|gif|woff|woff2|ttf|eot)$/)) {
+	if (request.url.match(/\.(js|css|html|ico|png|jpg|jpeg|svg|gif|woff|woff2|ttf|eot)$/)) {
 		const cache = await caches.open(version);
-		const responseToCache = await responseFromServer.clone();
+		const responseToCache = responseFromServer.clone();
 		cache.put(request, responseToCache);
 	}
 	return responseFromServer;
