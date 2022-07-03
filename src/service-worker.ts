@@ -1,19 +1,29 @@
 /// <reference lib="webworker" />
 import { build, files, version } from '$service-worker';
 
-self.addEventListener('install', (event: ExtendableEvent) => {
-	event.waitUntil(async () => {
-		// Delete old cache
-		const names = await caches.keys();
-		for (const name of names) {
-			await caches.delete(name);
-		}
+const applicationCache = `applicationCache-v${version}`;
+const staticCache = `staticCache-v${version}`;
+const dynamicCache = `dynamicCache-v${version}`;
 
-		// Cache all static files
-		const cache = await caches.open(`${version}-static`);
-		cache.addAll(build);
-		cache.addAll(files);
-	});
+// Remove old cache
+self.addEventListener('activate', (event: ExtendableEvent) => {
+	event.waitUntil(
+		caches.keys().then((keys) => {
+			return Promise.all(
+				keys.filter((key) => !key.endsWith(version)).map((key) => caches.delete(key))
+			);
+		})
+	);
+});
+
+// Fetch static files
+self.addEventListener('install', (event: ExtendableEvent) => {
+	event.waitUntil(
+		Promise.all([
+			caches.open(applicationCache).then((cache) => cache.addAll(build)),
+			caches.open(staticCache).then((cache) => cache.addAll(files))
+		])
+	);
 });
 
 const fetchCacheFirst = async (request: Request) => {
@@ -26,7 +36,7 @@ const fetchCacheFirst = async (request: Request) => {
 	const responseFromServer = await fetch(request);
 	// Cache static assets
 	if (request.url.match(/\.(js|css|html|ico|png|jpg|jpeg|svg|gif|woff|woff2|ttf|eot)$/)) {
-		const cache = await caches.open(`${version}-dynamic`);
+		const cache = await caches.open(dynamicCache);
 		const responseToCache = responseFromServer.clone();
 		cache.put(request, responseToCache);
 	}
