@@ -2,6 +2,7 @@
 	import type { Changeset } from '$lib/@types/osm';
 	import MiniPost from '$lib/components/common/MiniPost.svelte';
 	import { t } from '$lib/i18n';
+	import { getStreetCompleteDetails } from '$lib/components/home/OSMACtivity/getStreetCompleteDetails';
 
 	export let changeset: Changeset;
 
@@ -42,6 +43,15 @@
 				});
 		}
 	})();
+
+	$: image = ((): string | undefined => {
+		switch (changeset.parsedTags.created_by.name) {
+			case 'StreetComplete':
+				return getStreetCompleteDetails(changeset.parsedTags['StreetComplete:quest_type']);
+			default:
+				return undefined;
+		}
+	})();
 </script>
 
-<MiniPost date={changeset['@_created_at']} {title} {subtitle} />
+<MiniPost date={changeset['@_created_at']} {title} {subtitle} {image} />

@@ -3,6 +3,7 @@
 	import { DateTime } from 'luxon';
 	import Markdown from 'svelte-exmarkdown';
 
+	export let image: string = undefined;
 	export let date: Date | string = undefined;
 	export let title: string;
 	export let subtitle: string = undefined;
@@ -13,6 +14,10 @@
 </script>
 
 <section>
+	{#if image !== undefined}
+		<img src={image} alt={title} height="75px" />
+	{/if}
+
 	{#if date !== undefined}
 		<span aria-label="Date">{dateString}</span>
 	{/if}

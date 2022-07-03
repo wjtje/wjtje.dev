@@ -8,7 +8,7 @@
 	import { fetchOsmData } from './fetchOsmData';
 
 	onMount(async () => {
-		changesets = await fetchOsmData('wjtje');
+		changesets = await fetchOsmData('Robin van der Linde');
 	});
 
 	let changesets: Changeset[] = null;
