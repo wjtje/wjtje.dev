@@ -18,15 +18,15 @@
 	"GollumEvent": "Changed a wiki page of [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 	"GollumEventSubtitle": "{{pages:gh;}} {{pages; 1:page; default:pages;:gh;}} {{pages; 1:has; default:have;:gh;}} been changed",
 	"IssueCommentEvent": {
-		"created": "Commented on an issue ([{{issue}}]({{issue_html:gh;}})) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
-		"edited": "Edited a comment on an issue ([{{issue}}]({{issue_html:gh;}})) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
-		"deleted": "Removed comment on an issue ([{{issue}}]({{issue_html:gh;}})) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"created": "Commented on an [issue]({{issue_html:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"edited": "Edited a comment on an [issue]({{issue_html:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"deleted": "Removed comment on an [issue]({{issue_html:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 		"unknown": "An unknown IssueCommentEvent action has occurred ({{id:gh;}})"
 	},
 	"IssuesEvent": {
-		"opened": "Opened a new issue ([{{issue:gh;}}]({{issue_html:gh;}})) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
-		"edited": "Edited an issue ([{{issue:gh;}}]({{issue_html:gh;}})) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
-		"closed": "Closed an issue ([{{issue:gh;}}]({{issue_html:gh;}})) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"opened": "Opened a new [issue]({{issue_html:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"edited": "Edited an [issue]({{issue_html:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"closed": "Closed an [issue]({{issue_html:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 		"unknown": "An unknown IssuesEvent action has occurred ({{id:gh;}})"
 	},
 	"PublicEvent": "The repo [{{repo:gh;}}](https://github.com/{{repo:gh;}}) has been made public",

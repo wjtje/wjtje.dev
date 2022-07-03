@@ -18,15 +18,15 @@
 	"GollumEvent": "Een wiki pagina aangepast van [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 	"GollumEventSubtitle": "{{pages}} {{pages; 1:pagina; default:paginas;}} {{pages; 1:is; default:zijn;}} veranderd",
 	"IssueCommentEvent": {
-		"created": "Heeft gereageerd op een probleem ([{{issue}}]({{issue_html:gh;}})) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
-		"edited": "Een opmerking over een probleem bewerkt ([{{issue}}]({{issue_html:gh;}})) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
-		"deleted": "Reactie op een probleem verwijderd ([{{issue}}]({{issue_html:gh;}})) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"created": "Heeft gereageerd op een [probleem]({{issue_html:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"edited": "Een opmerking over een [probleem]({{issue_html:gh;}}) bewerkt in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"deleted": "Reactie op een [probleem]({{issue_html:gh;}}) verwijderd in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 		"unknown": "Een onbekende IssueCommentEvent actie is voorgekomen ({{id:gh;}})"
 	},
 	"IssuesEvent": {
-		"opened": "Een nieuw probleem ([{{issue}}]({{issue_html:gh;}})) geopend in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
-		"edited": "Een probleem ([{{issue}}]({{issue_html:gh;}})) bewerkt in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
-		"closed": "Sloot een probleem ([{{issue}}]({{issue_html:gh;}})) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"opened": "Een nieuw [probleem]({{issue_html:gh;}}) geopend in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"edited": "Een [probleem]({{issue_html:gh;}}) bewerkt in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"closed": "Sloot een [probleem]({{issue_html:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 		"unknown": "Een onbekende IssuesEvent actie is voorgekomen ({{id:gh;}})"
 	},
 	"PublicEvent": "De repo [{{repo:gh;}}](https://github.com/{{repo:gh;}}) is publiek gemaakt",

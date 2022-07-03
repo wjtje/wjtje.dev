@@ -48,28 +48,24 @@
 		<MiniPost
 			date={event.created_at}
 			title={$t(`GitHubActivity.${event.type}.${event.payload?.action ?? 'unknown'}`, {
-				issue: event.payload?.issue?.title,
 				issue_html: event.payload?.issue?.html_url,
 				repo: event.repo.name,
 				id: event.id
 			})}
 			subtitle={event.payload?.action == 'created' || event.payload?.action == 'edited'
 				? event.payload?.comment?.body
-				: undefined}
+				: event.payload?.issue?.title}
 		/>
 	{:else if event.type == 'IssuesEvent'}
 		{#if event.payload?.action == 'opened' || event.payload?.action == 'edited' || event.payload?.action == 'closed'}
 			<MiniPost
 				date={event.created_at}
 				title={$t(`GitHubActivity.${event.type}.${event.payload?.action ?? 'unknown'}`, {
-					issue: event.payload?.issue?.title,
 					issue_html: event.payload?.issue?.html_url,
 					repo: event.repo.name,
 					id: event.id
 				})}
-				subtitle={event.payload?.action == 'opened' && event.payload?.issue?.body != null
-					? event.payload?.issue?.body
-					: undefined}
+				subtitle={event.payload?.issue?.title}
 			/>
 		{/if}
 	{:else if event.type == 'PublicEvent'}
