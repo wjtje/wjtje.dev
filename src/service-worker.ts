@@ -3,7 +3,14 @@ import { build, files, version } from '$service-worker';
 
 self.addEventListener('install', (event: ExtendableEvent) => {
 	event.waitUntil(async () => {
-		const cache = await caches.open(version);
+		// Delete old cache
+		const names = await caches.keys();
+		for (const name of names) {
+			await caches.delete(name);
+		}
+
+		// Cache all static files
+		const cache = await caches.open(`${version}-static`);
 		cache.addAll(build);
 		cache.addAll(files);
 	});
@@ -19,7 +26,7 @@ const fetchCacheFirst = async (request: Request) => {
 	const responseFromServer = await fetch(request);
 	// Cache static assets
 	if (request.url.match(/\.(js|css|html|ico|png|jpg|jpeg|svg|gif|woff|woff2|ttf|eot)$/)) {
-		const cache = await caches.open(version);
+		const cache = await caches.open(`${version}-dynamic`);
 		const responseToCache = responseFromServer.clone();
 		cache.put(request, responseToCache);
 	}
