@@ -14,57 +14,70 @@
 </script>
 
 <section>
-	{#if image !== undefined}
-		<img src={image} alt={title} height="75px" />
-	{/if}
-
-	{#if date !== undefined}
-		<span aria-label="Date">{dateString}</span>
-	{/if}
-
-	<h3 aria-label="Main title">
-		<Markdown md={title} />
-	</h3>
-
-	<div aria-label="Subtitle">
-		<Markdown md={subtitle} />
-		<slot />
+	<div class="text">
+		{#if date}
+			<span aria-label="Date">{dateString}</span>
+		{/if}
+		<h3 aria-label="Main title">
+			<Markdown md={title} />
+		</h3>
+		<div class="subtitle" aria-label="Subtitle">
+			{#if subtitle}
+				<Markdown md={subtitle} />
+			{/if}
+			<slot />
+		</div>
 	</div>
+
+	{#if image}
+		<img src={image} alt={title} />
+	{/if}
 </section>
 
 <style lang="scss">
 	section {
-		@apply pb-4;
+		@apply pb-4 flex flex-row;
 
-		span {
-			@apply text-xs text-gray-700 dark:text-gray-300 mb-[-0.1rem] block;
+		img {
+			@apply h-16 ml-4;
 		}
 
-		h3 {
-			@apply text-xl truncate w-full block;
+		div.text {
+			@apply w-full min-w-0;
 
-			:global(p) {
-				@apply truncate;
+			// The date above the title shown in a light gray
+			span {
+				@apply text-xs text-gray-700 dark:text-gray-300 mb-[-0.1rem] block;
 			}
 
-			:global(a) {
-				@apply text-sky-700 gdark:text-blue-200 hover:text-blue-700 gdark:hover:text-sky-600 transition-colors;
-			}
-		}
+			// The main title in large default color text with markdown support
+			h3 {
+				@apply text-xl truncate w-full block;
 
-		div {
-			@apply flex gap-2;
+				:global(p) {
+					@apply truncate;
+				}
 
-			:global(p) {
-				@apply text-sm truncate;
-			}
-
-			:global(a) {
-				@apply text-sm whitespace-nowrap text-sky-700 gdark:text-blue-200 hover:text-blue-700 gdark:hover:text-sky-600 transition-colors;
+				:global(a) {
+					@apply text-sky-700 gdark:text-blue-200 hover:text-blue-700 gdark:hover:text-sky-600 transition-colors;
+				}
 			}
 
-			:global(ul) {
-				display: none;
+			// The subtitle is mid size default color text
+			div.subtitle {
+				@apply flex gap-2;
+
+				:global(p) {
+					@apply text-sm truncate;
+				}
+
+				:global(a) {
+					@apply text-sm whitespace-nowrap text-sky-700 gdark:text-blue-200 hover:text-blue-700 gdark:hover:text-sky-600 transition-colors;
+				}
+
+				:global(ul) {
+					display: none;
+				}
 			}
 		}
 	}

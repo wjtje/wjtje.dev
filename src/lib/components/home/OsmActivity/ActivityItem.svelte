@@ -2,7 +2,7 @@
 	import type { Changeset } from '$lib/@types/osm';
 	import MiniPost from '$lib/components/common/MiniPost.svelte';
 	import { t } from '$lib/i18n';
-	import { getStreetCompleteDetails } from '$lib/components/home/OSMACtivity/getStreetCompleteDetails';
+	import { getStreetCompleteDetails } from '$lib/components/home/OsmActivity/getStreetcompleteDetails';
 
 	export let changeset: Changeset;
 
