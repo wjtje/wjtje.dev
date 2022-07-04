@@ -33,3 +33,20 @@ enum Language {
   EN
   NL
 }
+
+model RemoteSource {
+  id         Int          @id @default(autoincrement())
+  name       String
+  lastUpdate DateTime?
+  RemoteData RemoteData[]
+}
+
+model RemoteData {
+  id             Int          @id @default(autoincrement())
+  remoteSource   RemoteSource @relation(fields: [remoteSourceId], references: [id])
+  remoteSourceId Int
+  mainTitle      String
+  subTitle       String?
+  date           DateTime?
+  image          String?
+}
