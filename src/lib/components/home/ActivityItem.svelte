@@ -5,7 +5,7 @@
 
 	export let event: RemoteData;
 
-	const generateMainTitle = (t: (key: string, payload?: Record<string, unknown>) => any) => {
+	const generateMainTitle = (t: (key: string, payload?: Record<string, unknown>) => string) => {
 		if (typeof event.mainTitle == 'string') {
 			return event.mainTitle;
 		}
@@ -33,8 +33,6 @@
 			: typeof event.subTitle == 'string'
 			? event.subTitle
 			: $t(event.subTitle.id, event.subTitle.data ?? {});
-
-	$: () => {};
 </script>
 
 <MiniPost date={event.date} {title} {subtitle} />
