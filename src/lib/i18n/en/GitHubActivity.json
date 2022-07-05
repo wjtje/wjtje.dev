@@ -4,30 +4,32 @@
 	"UnknownEventSubtitle": "Whoops, something is not right. (id: {{id:gh;}})",
 	"CommitCommentEvent": "Commented on [commit]({{html_url:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 	"CreateEvent": {
-		"branch": "Created a {{ref_type:gh;}} called [{{ref;:gh;}}](https://github.com/{{repo;:gh;}}/tree/{{ref;:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
-		"tag": "Created a {{ref_type:gh;}} called [{{ref;:gh;}}](https://github.com/{{repo;:gh;}}/tree/{{ref;:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"branch": "Created a {{ref_type:gh;}} called [{{ref:gh;}}](https://github.com/{{repo:gh;}}/tree/{{ref:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"tag": "Created a {{ref_type:gh;}} called [{{ref:gh;}}](https://github.com/{{repo:gh;}}/tree/{{ref:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 		"repository": "Create a repository named [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 		"unknown": "An unknown CreateEvent has occurred ({{id:gh;}})"
 	},
 	"DeleteEvent": {
 		"branch": "Removed the {{ref:gh;}} {{ref_type:gh;}} from [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 		"tag": "Removed the {{ref:gh;}} {{ref_type:gh;}} from [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
-		"repository": "Deleted the repository named [{{repo:gh;}}](https://github.com/{{repo:gh;}})"
+		"repository": "Deleted the repository named [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"unknown": "An unknown DeleteEvent has occurred ({{id:gh;}})"
 	},
 	"ForkEvent": "Created a [fork]({{html_url:gh;}} of [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 	"GollumEvent": "Changed a wiki page of [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
-	"GollumEventSubtitle": "{{pages:gh;}} {{pages; 1:page; default:pages;:gh;}} {{pages; 1:has; default:have;:gh;}} been changed",
+	"GollumEventSubtitle": "{{pages:gh;}} {{pages; 1:page; default:pages;}} {{pages; 1:has; default:have;}} been changed",
 	"IssueCommentEvent": {
 		"created": "Commented on an [issue]({{issue_html:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 		"edited": "Edited a comment on an [issue]({{issue_html:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
-		"deleted": "Removed comment on an [issue]({{issue_html:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
-		"unknown": "An unknown IssueCommentEvent action has occurred ({{id:gh;}})"
+		"deleted": "Removed comment on an [issue]({{issue_html:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})"
 	},
 	"IssuesEvent": {
 		"opened": "Opened a new [issue]({{issue_html:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 		"edited": "Edited an [issue]({{issue_html:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
-		"closed": "Closed an [issue]({{issue_html:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
-		"unknown": "An unknown IssuesEvent action has occurred ({{id:gh;}})"
+		"closed": "Closed an [issue]({{issue_html:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})"
+	},
+	"MemberEvent": {
+		"added": "Added [{{member:gh;}}]({{member_url}}) to [{{repo:gh;}}](https://github.com/{{repo:gh;}})"
 	},
 	"PublicEvent": "The repo [{{repo:gh;}}](https://github.com/{{repo:gh;}}) has been made public",
 	"PullRequestEvent": {
@@ -35,15 +37,14 @@
 		"edited": "Edited a pull request in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 		"closed": "Closed a pull request in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 		"reopened": "Reopened a pull request in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
-		"unknown": "An unknown PullRequestEvent action has occurred ({{id:gh;}})",
-		"subtitle": "[{{title:gh;}}]({{html_url:gh;}}) ({{changed_files:gh;}} {{changed_files; 1:file; default:files:gh;}} changed)"
+		"subtitle": "[{{title:gh;}}]({{html_url:gh;}}) ({{changed_files:gh;}} {{changed_files; 1:file; default:files;}} changed)"
 	},
 	"PullRequestReviewEvent": "Left a [review]({{review_url:gh;}}) on [{{pull_request:gh;}}]({{pull_request_url:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 	"PullRequestReviewCommentEvent": "Left a [comment]({{comment_url:gh;}}) on a review of a pull request ([{{pull_request:gh;}}]({{pull_request_url:gh;}})) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
-	"PushEvent": "Pushed {{size:gh;}} {{size; 1:commit; default:commits;:gh;}} to [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
-	"PushEventSubtitle": "{{commit:capitalize;:gh;}}",
+	"PushEvent": "Pushed {{size:gh;}} {{size; 1:commit; default:commits;}} to [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+	"PushEventSubtitle": "{{commit:capitalize:gh;}}",
 	"PushEventSubtitleEmpty": "There is no commit message with this push",
-	"PushEventSubtitleMore": "and {{count:gh;}} more {{count; 1:commit; default:commits;:gh;}}",
+	"PushEventSubtitleMore": "and {{count:gh;}} more {{count; 1:commit; default:commits;}}",
 	"ReleaseEvent": "Released [{{name:gh;}}]({{html_url:gh;}}) of [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 	"WatchEvent": "Now watching [{{repo:gh;}}](https://github.com/{{repo:gh;}})"
 }
