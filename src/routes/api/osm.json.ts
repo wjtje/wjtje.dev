@@ -1,4 +1,10 @@
-import { checkCacheState, getCacheData, saveCacheData, type RemoteData } from '$lib/api/helper';
+import {
+	checkCacheState,
+	getCacheData,
+	saveCacheData,
+	updateCacheState,
+	type RemoteData
+} from '$lib/api/helper';
 import { prisma } from '$lib/prisma';
 import type { RequestHandler } from './__types/osm.json';
 import { fetchOsmData } from '$lib/api/osm';
@@ -72,6 +78,9 @@ export const get: RequestHandler = async () => {
 					await saveCacheData(data, id);
 				})
 			);
+
+			// Update the cache state
+			await updateCacheState(id);
 		} catch {
 			return {
 				status: 500,

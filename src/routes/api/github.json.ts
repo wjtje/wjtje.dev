@@ -1,5 +1,11 @@
 import type { GithubEvent } from '$lib/@types/github';
-import { checkCacheState, getCacheData, saveCacheData, type RemoteData } from '$lib/api/helper';
+import {
+	checkCacheState,
+	getCacheData,
+	saveCacheData,
+	updateCacheState,
+	type RemoteData
+} from '$lib/api/helper';
 import { GitHubUsername } from '$lib/common';
 import { prisma } from '$lib/prisma';
 import type { RequestHandler } from './__types/github.json';
@@ -244,6 +250,9 @@ export const get: RequestHandler = async () => {
 					await saveCacheData(data, id);
 				})
 			);
+
+			// Update the cache state
+			await updateCacheState(id);
 		} catch {
 			return {
 				status: 500,

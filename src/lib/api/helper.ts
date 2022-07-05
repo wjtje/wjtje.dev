@@ -88,3 +88,19 @@ export async function saveCacheData(data: RemoteData, id: number) {
 		}
 	});
 }
+
+/**
+ * update the last fetch time of the data
+ *
+ * @param id The id of the remoteSource
+ */
+export async function updateCacheState(id: number) {
+	await prisma.remoteSource.update({
+		where: {
+			id: id
+		},
+		data: {
+			lastUpdate: DateTime.now().toISO()
+		}
+	});
+}
