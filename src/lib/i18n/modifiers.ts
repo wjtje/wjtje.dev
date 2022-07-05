@@ -37,3 +37,7 @@ export const gh: Modifier.T = (x) => {
 export const min: Modifier.T = (x) => {
 	return String(Number(x.value ?? x.defaultValue) - 1);
 };
+
+export const pushEventSubtitle: Modifier.T = (x) => {
+	return gh({ ...x, value: String(x.value || x.defaultValue).split('\n')[0] });
+};
