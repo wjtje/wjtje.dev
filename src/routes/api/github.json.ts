@@ -1,5 +1,5 @@
 import type { GithubEvent } from '$lib/@types/github';
-import { checkCacheState, type RemoteData } from '$lib/api/helper';
+import { checkCacheState, getCacheData, saveCacheData, type RemoteData } from '$lib/api/helper';
 import { GitHubUsername } from '$lib/common';
 import { prisma } from '$lib/prisma';
 import type { RequestHandler } from './__types/github.json';
@@ -240,33 +240,10 @@ export const get: RequestHandler = async () => {
 				}
 
 				// Save object inside database
-				await prisma.remoteData.create({
-					data: {
-						date: data.date,
-						mainTitle: JSON.stringify(data.mainTitle),
-						subTitle: JSON.stringify(data.subTitle),
-						image: data.image,
-						remoteSourceId: id
-					}
-				});
+				await saveCacheData(data, id);
 			})
 		);
 	}
 
-	return {
-		body: await prisma.remoteData.findMany({
-			where: {
-				remoteSourceId: id
-			},
-			take: 10,
-			select: {
-				mainTitle: true,
-				subTitle: true,
-				date: true
-			},
-			orderBy: {
-				date: 'desc'
-			}
-		})
-	};
+	return await getCacheData(id);
 };

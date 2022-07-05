@@ -1,10 +1,7 @@
-import { checkCacheState, type RemoteData } from '$lib/api/helper';
-import { OSMUsername } from '$lib/common';
+import { checkCacheState, getCacheData, saveCacheData, type RemoteData } from '$lib/api/helper';
 import { prisma } from '$lib/prisma';
 import type { RequestHandler } from './__types/osm.json';
-import { XMLParser } from 'fast-xml-parser';
-import type { Changeset, OsmRootObject, ParsedTags } from '$lib/@types/osm';
-import { parseOsmEditor } from '$lib/api/parseOsmEditor';
+import { fetchOsmData } from '$lib/api/osm';
 
 export const get: RequestHandler = async () => {
 	// Get information about the cache
@@ -20,47 +17,8 @@ export const get: RequestHandler = async () => {
 			}
 		});
 
-		// Get new data from osm
-		const response = await fetch(
-			`https://api.allorigins.win/get?url=${encodeURIComponent(
-				`https://openstreetmap.org/api/0.6/changesets?display_name=${OSMUsername}`
-			)}`
-		);
-
-		const parser = new XMLParser({
-			ignoreAttributes: false
-		});
-
-		const osmXml: OsmRootObject = parser.parse(String((await response.json())?.contents) ?? '');
-
-		// Parse the data
-		const responseChangesets: Changeset[] = [];
-
-		const length = osmXml.osm.changeset.length < 10 ? osmXml.osm.changeset.length : 10;
-
-		for (let i = 0; i < length; i++) {
-			const changeset = osmXml.osm.changeset[i];
-			const tags: ParsedTags = {
-				comment: '',
-				created_by: {
-					name: 'Unknown editor'
-				},
-				source: ''
-			};
-
-			changeset.tag.forEach((element) => {
-				if (element['@_k'] === 'created_by') {
-					tags.created_by = parseOsmEditor(element['@_v']);
-				} else {
-					tags[element['@_k']] = element['@_v'];
-				}
-			});
-
-			responseChangesets.push({
-				...changeset,
-				parsedTags: tags as ParsedTags
-			});
-		}
+		// Fetch the data
+		const responseChangesets = await fetchOsmData();
 
 		// Save the data in the cache
 		await Promise.all(
@@ -110,33 +68,10 @@ export const get: RequestHandler = async () => {
 				}
 
 				// Save object inside database
-				await prisma.remoteData.create({
-					data: {
-						date: data.date,
-						mainTitle: JSON.stringify(data.mainTitle),
-						subTitle: JSON.stringify(data.subTitle),
-						image: data.image,
-						remoteSourceId: id
-					}
-				});
+				await saveCacheData(data, id);
 			})
 		);
 	}
 
-	return {
-		body: await prisma.remoteData.findMany({
-			where: {
-				remoteSourceId: id
-			},
-			take: 10,
-			select: {
-				mainTitle: true,
-				subTitle: true,
-				date: true
-			},
-			orderBy: {
-				date: 'desc'
-			}
-		})
-	};
+	return await getCacheData(id);
 };

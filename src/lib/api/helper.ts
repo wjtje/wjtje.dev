@@ -45,3 +45,46 @@ export async function checkCacheState(name: string): Promise<{ cacheState: boole
 		id: cacheState.id
 	};
 }
+
+/**
+ * Get all the cache for a remote source
+ *
+ * @param id The id of the remoteSource
+ * @returns A object that can be returned to the client
+ */
+export async function getCacheData(id: number) {
+	return {
+		body: await prisma.remoteData.findMany({
+			where: {
+				remoteSourceId: id
+			},
+			take: 10,
+			select: {
+				mainTitle: true,
+				subTitle: true,
+				date: true
+			},
+			orderBy: {
+				date: 'desc'
+			}
+		})
+	};
+}
+
+/**
+ * Save the data inside the cache
+ *
+ * @param data The data to save
+ * @param id The id of the remoteSource
+ */
+export async function saveCacheData(data: RemoteData, id: number) {
+	await prisma.remoteData.create({
+		data: {
+			date: data.date,
+			mainTitle: JSON.stringify(data.mainTitle),
+			subTitle: JSON.stringify(data.subTitle),
+			image: data.image,
+			remoteSourceId: id
+		}
+	});
+}
