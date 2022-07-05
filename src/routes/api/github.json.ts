@@ -30,13 +30,27 @@ export const get: RequestHandler = async () => {
 				// Create base object
 				const data: RemoteData = {
 					date: event.created_at,
-					mainTitle: `Unknown ${event.type}`
+					mainTitle: {
+						id: 'GitHubActivity.UnknownEvent',
+						data: {
+							type: event.type
+						}
+					},
+					subTitle: {
+						id: 'GitHubActivity.UnknownEventSubtitle',
+						data: {
+							id: event.id
+						}
+					}
 				};
 
 				// Save object inside database
 				await prisma.remoteData.create({
 					data: {
-						...data,
+						date: data.date,
+						mainTitle: JSON.stringify(data.mainTitle),
+						subTitle: JSON.stringify(data.subTitle) ?? null,
+						image: data.image,
 						remoteSourceId: id
 					}
 				});

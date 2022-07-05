@@ -2,9 +2,14 @@ import { cacheDuration } from '$lib/common';
 import { prisma } from '$lib/prisma';
 import { DateTime } from 'luxon';
 
+export interface RemoteI18nData {
+	id: string;
+	data?: Record<string, unknown>;
+}
+
 export interface RemoteData {
-	mainTitle: string;
-	subTitle?: string;
+	mainTitle: RemoteI18nData;
+	subTitle?: RemoteI18nData;
 	date?: string;
 	image?: string;
 }
