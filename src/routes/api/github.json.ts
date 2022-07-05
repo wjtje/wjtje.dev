@@ -15,6 +15,8 @@ export const get: RequestHandler = async () => {
 	const { id, cacheState } = await checkCacheState('github');
 
 	if (!cacheState) {
+		console.log('[github.json.ts]: Updating cache')
+
 		// Get new JSON data from GitHub
 		try {
 			const response = await fetch(

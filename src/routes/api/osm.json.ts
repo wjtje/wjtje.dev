@@ -14,6 +14,8 @@ export const get: RequestHandler = async () => {
 	const { id, cacheState } = await checkCacheState('osm');
 
 	if (!cacheState) {
+		console.log('[osm.json.ts]: Updating cache');
+
 		// Fetch the data
 		try {
 			const responseChangesets = await fetchOsmData();

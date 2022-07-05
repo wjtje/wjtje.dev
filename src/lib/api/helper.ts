@@ -28,6 +28,8 @@ export async function checkCacheState(name: string): Promise<{ cacheState: boole
 
 	// Check if cache exist
 	if (cacheState == null) {
+		console.warn(`[helper.ts]: Creating cache for ${name}`);
+
 		cacheState = await prisma.remoteSource.create({
 			data: {
 				name: name
