@@ -154,6 +154,27 @@ export const get: RequestHandler = async () => {
 
 							data.subTitle = event.payload?.issue?.title;
 							break;
+						case 'MemberEvent':
+							if (event.payload?.action == 'added') {
+								data.mainTitle = {
+									id: `GitHubActivity.MemberEvent.added`,
+									data: {
+										member: event.payload?.member?.login,
+										member_url: event.payload?.member?.url,
+										repo: event.repo.name
+									}
+								};
+							} else {
+								data.mainTitle = {
+									id: 'GitHubActivity.MemberEvent.unknown',
+									data: {
+										id: event.id
+									}
+								};
+							}
+
+							data.subTitle = event.payload?.issue?.title;
+							break;
 						case 'PublicEvent':
 							data.mainTitle = {
 								id: 'GitHubActivity.PublicEvent',
