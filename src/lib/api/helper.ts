@@ -8,9 +8,9 @@ export interface RemoteI18nData {
 }
 
 export interface RemoteData {
-	mainTitle: RemoteI18nData;
-	subTitle?: RemoteI18nData;
-	date?: string;
+	mainTitle: RemoteI18nData | string;
+	subTitle?: RemoteI18nData | string;
+	date?: string | Date;
 	image?: string;
 }
 

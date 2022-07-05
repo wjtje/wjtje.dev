@@ -1,17 +1,14 @@
 <script lang="ts">
 	import ActivityItem from './ActivityItem.svelte';
 	import { t } from '$lib/i18n';
-	import type { GithubEvent } from '$lib/@types/github';
 	import { onMount } from 'svelte';
 	import { scale } from 'svelte/transition';
 	import MiniPostLoader from '$lib/components/common/MiniPostLoader.svelte';
-	import { GitHubUsername } from '$lib/common';
+	import type { RemoteData } from '@prisma/client';
 
 	onMount(async () => {
 		// Fetch the GitHub events
-		const response = await fetch(
-			`https://api.github.com/users/${GitHubUsername}/events/public?per_page=10`
-		);
+		const response = await fetch(`/api/github.json`);
 		const json = await response.json();
 
 		// Set the GitHub events
@@ -19,7 +16,7 @@
 		githubStatus = response.status;
 	});
 
-	let githubEvent: GithubEvent<any>[]; // eslint-disable-line @typescript-eslint/no-explicit-any
+	let githubEvent: RemoteData[];
 	let githubStatus: number;
 </script>
 
@@ -28,7 +25,13 @@
 {:else if githubStatus == 200}
 	{#each githubEvent as event, i}
 		<div in:scale={{ duration: 400, delay: i * 50 }}>
-			<ActivityItem {event} />
+			<ActivityItem
+				event={{
+					date: event.date,
+					mainTitle: JSON.parse(event.mainTitle),
+					subTitle: JSON.parse(event.subTitle)
+				}}
+			/>
 		</div>
 	{/each}
 {:else}
