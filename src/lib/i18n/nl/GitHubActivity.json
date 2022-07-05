@@ -43,7 +43,7 @@
 	"PullRequestReviewEvent": "Een [recensie]({{review_url:gh;}}) achtergelaten op [{{pull_request:gh;}}]({{pull_request_url:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 	"PullRequestReviewCommentEvent": "Heeft een [opmerking]({{comment_url:gh;}}) bij een beoordeling van een pull-request ([{{pull_request:gh;}}]({{pull_request_url:gh;}})) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 	"PushEvent": "{{size}} {{size; 1:commit; default:commits;}} gepushed naar [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
-	"PushEventSubtitle": "{{commit:capitalize:gh; default: Er is geen bericht bij deze push event}} {{size:gt; 0:en nog {{size:gh;}} {{size; 1:commit; default:commits;}}}}",
+	"PushEventSubtitle": "{{commit:capitalize:gh; default: Er is geen bericht bij deze push event}} {{size:gt; 1:en nog {{size:min;}} {{size; 2:commit; default:commits;}}}}",
 	"ReleaseEvent": "Uitgegeven [{{name:gh;}}]({{html_url:gh;}}) van [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 	"WatchEvent": "Is nu [{{repo:gh;}}](https://github.com/{{repo:gh;}}) aan het volgen"
 }

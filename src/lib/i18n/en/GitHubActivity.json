@@ -42,7 +42,7 @@
 	"PullRequestReviewEvent": "Left a [review]({{review_url:gh;}}) on [{{pull_request:gh;}}]({{pull_request_url:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 	"PullRequestReviewCommentEvent": "Left a [comment]({{comment_url:gh;}}) on a review of a pull request ([{{pull_request:gh;}}]({{pull_request_url:gh;}})) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 	"PushEvent": "Pushed {{size:gh;}} {{size; 1:commit; default:commits;}} to [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
-	"PushEventSubtitle": "{{commit:capitalize:gh; default: There is no commit message with this push}} {{size:gt; 0:and {{size:gh;}} more {{size; 1:commit; default:commits;}}}}",
+	"PushEventSubtitle": "{{commit:capitalize:gh; default: There is no commit message with this push}} {{size:gt; 1:and {{size:min;}} more {{size; 2:commit; default:commits;}}}}",
 	"ReleaseEvent": "Released [{{name:gh;}}]({{html_url:gh;}}) of [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 	"WatchEvent": "Now watching [{{repo:gh;}}](https://github.com/{{repo:gh;}})"
 }
