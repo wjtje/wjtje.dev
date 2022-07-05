@@ -1,5 +1,4 @@
 {
-	"LoadFailed": "Failed to load the GitHub activity ({{status:gh;}})",
 	"UnknownEvent": "Unknown {{type::gh;}}",
 	"UnknownEventSubtitle": "Whoops, something is not right. (id: {{id:gh;}})",
 	"CommitCommentEvent": "Commented on [commit]({{html_url:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",

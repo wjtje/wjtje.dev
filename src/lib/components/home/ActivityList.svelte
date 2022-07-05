@@ -16,24 +16,24 @@
 		status = response.status;
 	});
 
-	let events: RemoteData[];
+	let events: RemoteData[] = [];
 	let status: number;
 </script>
 
 {#if status == undefined}
 	<MiniPostLoader />
-{:else if status == 200}
-	{#each events as event, i}
-		<div in:scale={{ duration: 400, delay: i * 50 }}>
-			<ActivityItem
-				event={{
-					date: event.date,
-					mainTitle: JSON.parse(event.mainTitle),
-					subTitle: JSON.parse(event.subTitle)
-				}}
-			/>
-		</div>
-	{/each}
-{:else}
-	<h3>{$t('GitHubActivity.LoadFailed', { status: status })}</h3>
+{:else if status != 200}
+	<h3>{$t('home.dataLoadingFailed', { status: status })}</h3>
 {/if}
+
+{#each events as event, i}
+	<div in:scale={{ duration: 400, delay: i * 50 }}>
+		<ActivityItem
+			event={{
+				date: event.date,
+				mainTitle: JSON.parse(event.mainTitle),
+				subTitle: JSON.parse(event.subTitle)
+			}}
+		/>
+	</div>
+{/each}
