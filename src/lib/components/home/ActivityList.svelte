@@ -6,24 +6,24 @@
 	import MiniPostLoader from '$lib/components/common/MiniPostLoader.svelte';
 	import type { RemoteData } from '@prisma/client';
 
+	export let activityName: string;
+
 	onMount(async () => {
-		// Fetch the GitHub events
-		const response = await fetch(`/api/github.json`);
+		const response = await fetch(`/api/${activityName}.json`);
 		const json = await response.json();
 
-		// Set the GitHub events
-		githubEvent = json;
-		githubStatus = response.status;
+		events = json;
+		status = response.status;
 	});
 
-	let githubEvent: RemoteData[];
-	let githubStatus: number;
+	let events: RemoteData[];
+	let status: number;
 </script>
 
-{#if githubStatus == undefined}
+{#if status == undefined}
 	<MiniPostLoader />
-{:else if githubStatus == 200}
-	{#each githubEvent as event, i}
+{:else if status == 200}
+	{#each events as event, i}
 		<div in:scale={{ duration: 400, delay: i * 50 }}>
 			<ActivityItem
 				event={{
@@ -35,5 +35,5 @@
 		</div>
 	{/each}
 {:else}
-	<h3>{$t('GitHubActivity.LoadFailed', { status: githubStatus })}</h3>
+	<h3>{$t('GitHubActivity.LoadFailed', { status: status })}</h3>
 {/if}
