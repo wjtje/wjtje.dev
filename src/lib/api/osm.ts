@@ -1,12 +1,23 @@
-import type { Changeset, OsmRootObject, ParsedTags } from '$lib/@types/osm';
+import type { Changeset, OsmEditor, OsmRootObject, ParsedTags } from '$lib/@types/osm';
+import { OSMUsername } from '$lib/common';
 import { XMLParser } from 'fast-xml-parser';
-import { parseOsmEditor } from './parseOsmEditor';
 
-export const fetchOsmData = async (displayName: string): Promise<Changeset[]> => {
-	// Fetch the data from the OSM API
+export const parseOsmEditor = (editor: string): OsmEditor => {
+	const result = new RegExp(
+		/(?<name>[a-zA-Z]+)[ /](?<version>[0-9.]+)[ (]*(?<build>[0-9]*) *(?<locale>[a-z_A-Z]*)\)*/
+	).exec(editor);
+
+	return {
+		name: result?.groups?.name ?? 'Unknown editor',
+		...result.groups
+	};
+};
+
+export const fetchOsmData = async (): Promise<Changeset[]> => {
+	// Get new data from osm
 	const response = await fetch(
 		`https://api.allorigins.win/get?url=${encodeURIComponent(
-			`https://openstreetmap.org/api/0.6/changesets?display_name=${displayName}`
+			`https://openstreetmap.org/api/0.6/changesets?display_name=${OSMUsername}`
 		)}`
 	);
 

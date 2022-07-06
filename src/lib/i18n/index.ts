@@ -2,8 +2,7 @@ import i18n from 'sveltekit-i18n';
 import type { Config } from 'sveltekit-i18n';
 import lang from './lang.json';
 
-// Import modifiers from svelte-github-activity
-import * as SvelteGitHubActivityModifiers from '$lib/i18n/modifiers';
+import * as customModifiers from './modifiers';
 
 export const defaultLocale = 'en';
 
@@ -55,7 +54,7 @@ type PayloadProps = {
 
 const config: Config<PayloadProps, Record<string, unknown>> = {
 	parserOptions: {
-		customModifiers: SvelteGitHubActivityModifiers
+		customModifiers
 	},
 	translations: {
 		en: { lang },

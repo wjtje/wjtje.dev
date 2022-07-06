@@ -8,7 +8,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 	const { pathname } = url;
 
 	// If this request is a route request
-	if (routeRegex.test(pathname)) {
+	if (routeRegex.test(pathname) && !pathname.startsWith('/api')) {
 		// Get defined locales
 		const supportedLocales = locales.get();
 
@@ -38,7 +38,11 @@ export const handle: Handle = async ({ event, resolve }) => {
 		const response = await resolve(event);
 		const body = await response.text();
 
-		return new Response(`${body}`.replace(/<html.*>/, `<html lang="${locale}">`), response);
+		if (!response || !body) {
+			console.warn('[hooks.ts]: Empty response');
+		} else {
+			return new Response(`${body}`.replace(/<html.*>/, `<html lang="${locale}">`), response);
+		}
 	}
 
 	return resolve(event);
