@@ -40,7 +40,13 @@
 		"reopened": "Een pull-request heropend in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 		"subtitle": "[{{title:gh;}}]({{html_url:gh;}}) ({{changed_files:gh;}} {{changed_files; 1:bestand; default:bestanden}} veranderd)"
 	},
-	"PullRequestReviewEvent": "Een [recensie]({{review_url:gh;}}) achtergelaten op [{{pull_request:gh;}}]({{pull_request_url:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+	"PullRequestReviewEvent": {
+		"created": {
+			"approved": "Heetft de pull request [{{pr:gh;}}]({{pr_url:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}}) toegestaan",
+			"default": "Een [recensie]({{review_url:gh;}}) achtergelaten op pull request [{{pr:gh;}}]({{pull_request_url:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})"
+		},
+		"unknown": "Een onbekende PullRequestReviewEvent actie is voorgekomen ({{id:gh;}})"
+	},
 	"PullRequestReviewCommentEvent": "Heeft een [opmerking]({{comment_url:gh;}}) bij een beoordeling van een pull-request ([{{pull_request:gh;}}]({{pull_request_url:gh;}})) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 	"PushEvent": "{{size}} {{size; 1:commit; default:commits;}} gepushed naar [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 	"PushEventSubtitle": "{{commit:pushEventSubtitle; default: Er is geen bericht bij deze push event}} {{size:gt; 1:en nog {{size:min;}} {{size; 2:commit; default:commits;}}}}",

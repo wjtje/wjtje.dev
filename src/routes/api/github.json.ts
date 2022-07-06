@@ -219,6 +219,39 @@ export const get: RequestHandler = async () => {
 								data.subTitle = null;
 							}
 							break;
+						case 'PullRequestReviewEvent':
+							if (event.payload?.action == 'created') {
+								if (event.payload?.review?.state == 'approved') {
+									data.mainTitle = {
+										id: `GitHubActivity.PullRequestReviewEvent.created.${event.payload?.review?.state}`,
+										data: {
+											pr: event.payload?.pull_request?.number,
+											pr_url: event.payload?.pull_request?.url,
+											repo: event.repo.name
+										}
+									};
+								} else {
+									data.mainTitle = {
+										id: `GitHubActivity.PullRequestReviewEvent.created.default`,
+										data: {
+											pr: event.payload?.pull_request?.number,
+											pr_url: event.payload?.pull_request?.url,
+											repo: event.repo.name,
+											review_url: event.payload?.review?.html_url
+										}
+									};
+								}
+								data.subTitle = event.payload?.pull_request?.title;
+							} else {
+								data.mainTitle = {
+									id: `GitHubActivity.PullRequestReviewEvent.unknown`,
+									data: {
+										id: event.id
+									}
+								};
+								data.subTitle = null;
+							}
+							break;
 						case 'PullRequestReviewCommentEvent':
 							data.mainTitle = {
 								id: 'GitHubActivity.PullRequestReviewCommentEvent',

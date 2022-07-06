@@ -39,7 +39,13 @@
 		"reopened": "Reopened a pull request in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 		"subtitle": "[{{title:gh;}}]({{html_url:gh;}}) ({{changed_files:gh;}} {{changed_files; 1:file; default:files;}} changed)"
 	},
-	"PullRequestReviewEvent": "Left a [review]({{review_url:gh;}}) on [{{pull_request:gh;}}]({{pull_request_url:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+	"PullRequestReviewEvent": {
+		"created": {
+			"approved": "Approved pull request [{{pr:gh;}}]({{pr_url:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+			"default": "Left a [review]({{review_url:gh;}}) on pull request [{{pr:gh;}}]({{pr_url:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})"
+		},
+		"unknown": "An unknown PullRequestReviewEvent has occurred ({{id:gh;}})"
+	},
 	"PullRequestReviewCommentEvent": "Left a [comment]({{comment_url:gh;}}) on a review of a pull request ([{{pull_request:gh;}}]({{pull_request_url:gh;}})) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 	"PushEvent": "Pushed {{size:gh;}} {{size; 1:commit; default:commits;}} to [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 	"PushEventSubtitle": "{{commit:pushEventSubtitle; default: There is no commit message with this push}} {{size:gt; 1:and {{size:min;}} more {{size; 2:commit; default:commits;}}}}",
