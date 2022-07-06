@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { t } from '$lib/i18n';
-	import { capitalizeFirstLetter } from '$lib/common';
 
 	import MdEmail from 'svelte-icons/md/MdEmail.svelte';
 	import GoMarkGithub from 'svelte-icons/go/GoMarkGithub.svelte';
@@ -17,7 +16,7 @@
 	<meta name="description" content={$t('contact.meta')} />
 </svelte:head>
 
-<h1>{capitalizeFirstLetter($t('contact.title'))}</h1>
+<h1>{$t('contact.title')}</h1>
 
 <p>{$t('contact.description')}</p>
 

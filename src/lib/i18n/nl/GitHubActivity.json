@@ -4,15 +4,16 @@
 	"UnknownEventSubtitle": "Oeps, iets is niet helemaal goed gegaan. (id: {{id:gh;}})",
 	"CommitCommentEvent": "Heeft gereageerd op [commit]({{html_url:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 	"CreateEvent": {
-		"branch": "{{ref_type:gh;}} [{{ref:gh;}}](https://github.com/{{repo;:gh;}}/tree/{{ref;:gh;}}) aangemaakt in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
-		"tag": "{{ref_type:gh;}} [{{ref:gh;}}](https://github.com/{{repo;:gh;}}/tree/{{ref;:gh;}}) aangemaakt in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"branch": "{{ref_type:gh;}} [{{ref:gh;}}](https://github.com/{{repo:gh;}}/tree/{{ref:gh;}}) aangemaakt in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"tag": "{{ref_type:gh;}} [{{ref:gh;}}](https://github.com/{{repo:gh;}}/tree/{{ref:gh;}}) aangemaakt in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 		"repository": "Nieuwe repository genaamd [{{repo:gh;}}](https://github.com/{{repo:gh;}}) aangemaakt",
 		"unknown": "Een onbekende CreateEvent actie is voorgekomen ({{id:gh;}})"
 	},
 	"DeleteEvent": {
 		"branch": "{{ref_type:gh;}} {{ref:gh;}} verwijderd van [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 		"tag": "{{ref_type:gh;}} {{ref:gh;}} verwijderd van [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
-		"repository": "De repository genaamd [{{repo:gh;}}](https://github.com/{{repo:gh;}}) is verwijderd"
+		"repository": "De repository genaamd [{{repo:gh;}}](https://github.com/{{repo:gh;}}) is verwijderd",
+		"unknown": "Een onbekende DeleteEvent actie is voorgekomen ({{id:gh;}})"
 	},
 	"ForkEvent": "Een [fork]({{html_url:gh;}} gemaakt van [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 	"GollumEvent": "Een wiki pagina aangepast van [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
@@ -20,14 +21,16 @@
 	"IssueCommentEvent": {
 		"created": "Heeft gereageerd op een [probleem]({{issue_html:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 		"edited": "Een opmerking over een [probleem]({{issue_html:gh;}}) bewerkt in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
-		"deleted": "Reactie op een [probleem]({{issue_html:gh;}}) verwijderd in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
-		"unknown": "Een onbekende IssueCommentEvent actie is voorgekomen ({{id:gh;}})"
+		"deleted": "Reactie op een [probleem]({{issue_html:gh;}}) verwijderd in [{{repo:gh;}}](https://github.com/{{repo:gh;}})"
 	},
 	"IssuesEvent": {
 		"opened": "Een nieuw [probleem]({{issue_html:gh;}}) geopend in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 		"edited": "Een [probleem]({{issue_html:gh;}}) bewerkt in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
-		"closed": "Sloot een [probleem]({{issue_html:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
-		"unknown": "Een onbekende IssuesEvent actie is voorgekomen ({{id:gh;}})"
+		"closed": "Sloot een [probleem]({{issue_html:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})"
+	},
+	"MemberEvent": {
+		"added": "[{{member:gh;}}]({{member_url}}) toegevoegt aan [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+		"unknown": "Een onbekende MemberEvent actie is voorgekomen ({{id:gh;}})"
 	},
 	"PublicEvent": "De repo [{{repo:gh;}}](https://github.com/{{repo:gh;}}) is publiek gemaakt",
 	"PullRequestEvent": {
@@ -35,15 +38,18 @@
 		"edited": "Een pull-request bewerkt in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 		"closed": "Een pull-request gesloten in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 		"reopened": "Een pull-request heropend in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
-		"unknown": "Een onbekende PullRequestEvent actie is voorgekomen ({{id:gh;}})",
 		"subtitle": "[{{title:gh;}}]({{html_url:gh;}}) ({{changed_files:gh;}} {{changed_files; 1:bestand; default:bestanden}} veranderd)"
 	},
-	"PullRequestReviewEvent": "Een [recensie]({{review_url:gh;}}) achtergelaten op [{{pull_request:gh;}}]({{pull_request_url:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+	"PullRequestReviewEvent": {
+		"created": {
+			"approved": "Heetft de pull request [{{pr:gh;}}]({{pr_url:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}}) toegestaan",
+			"default": "Een [recensie]({{review_url:gh;}}) achtergelaten op pull request [{{pr:gh;}}]({{pull_request_url:gh;}}) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})"
+		},
+		"unknown": "Een onbekende PullRequestReviewEvent actie is voorgekomen ({{id:gh;}})"
+	},
 	"PullRequestReviewCommentEvent": "Heeft een [opmerking]({{comment_url:gh;}}) bij een beoordeling van een pull-request ([{{pull_request:gh;}}]({{pull_request_url:gh;}})) in [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 	"PushEvent": "{{size}} {{size; 1:commit; default:commits;}} gepushed naar [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
-	"PushEventSubtitle": "{{commit:capitalize;:gh;}}",
-	"PushEventSubtitleEmpty": "Er is geen bericht bij deze push event",
-	"PushEventSubtitleMore": "en nog {{count:gh;}} {{count; 1:commit; default:commits;}}",
+	"PushEventSubtitle": "{{commit:pushEventSubtitle; default: Er is geen bericht bij deze push event}} {{size:gt; 1:en nog {{size:min;}} {{size; 2:commit; default:commits;}}}}",
 	"ReleaseEvent": "Uitgegeven [{{name:gh;}}]({{html_url:gh;}}) van [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 	"WatchEvent": "Is nu [{{repo:gh;}}](https://github.com/{{repo:gh;}}) aan het volgen"
 }

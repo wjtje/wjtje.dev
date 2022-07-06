@@ -1,5 +1,4 @@
 {
-	"LoadFailed": "Failed to load the OpenStreetMap activity",
 	"defaultText": "Changeset [{{id}}](https://osm.org/changeset/{{id}}) uploaded with {{editor}} version {{version}}",
 	"editor": {
 		"MapComplete": {

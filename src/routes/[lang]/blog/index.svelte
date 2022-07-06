@@ -1,11 +1,13 @@
 <script lang="ts">
 	import MiniPost from '$lib/components/common/MiniPost.svelte';
 	import { locale, t } from '$lib/i18n';
-	import type { Post, User } from '@prisma/client';
 
-	export let posts: (Post & {
-		author: User;
-	})[] = [];
+	export let posts: {
+		createdAt: Date;
+		title: string;
+		slug: string;
+		preview: string;
+	}[] = [];
 </script>
 
 <svelte:head>

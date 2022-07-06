@@ -8,6 +8,9 @@
 	export let title: string;
 	export let subtitle: string = undefined;
 
+	// Remove images from the subtitle
+	$: subtitleClean = String(subtitle).replaceAll(/!\[[^\]]*\]\((.*?)\s*("(?:.*[^"])")?\s*\)/g, '');
+
 	$: dateString = DateTime.fromJSDate(new Date(date)).toRelative({
 		locale: $locale
 	});
@@ -18,12 +21,14 @@
 		{#if date}
 			<span aria-label="Date">{dateString}</span>
 		{/if}
+
 		<h3 aria-label="Main title">
 			<Markdown md={title} />
 		</h3>
+
 		<div class="subtitle" aria-label="Subtitle">
 			{#if subtitle}
-				<Markdown md={subtitle} />
+				<Markdown md={subtitleClean} />
 			{/if}
 			<slot />
 		</div>

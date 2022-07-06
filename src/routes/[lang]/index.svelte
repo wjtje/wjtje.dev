@@ -1,6 +1,5 @@
 <script lang="ts">
-	import GithubActivity from '$lib/components/home/GithubActivity/GithubActivity.svelte';
-	import OsmActivity from '$lib/components/home/OsmActivity/OsmActivity.svelte';
+	import ActivityList from '$lib/components/home/ActivityList.svelte';
 	import Profile from '$lib/components/home/Profile.svelte';
 	import { t } from '$lib/i18n';
 </script>
@@ -16,13 +15,13 @@
 	<section class="github">
 		<h2>{$t('home.ghactivity')}</h2>
 
-		<GithubActivity />
+		<ActivityList activityName="github" />
 	</section>
 
 	<section class="osm">
 		<h2>{$t('home.osmactivity')}</h2>
 
-		<OsmActivity />
+		<ActivityList activityName="osm" />
 	</section>
 </section>
 

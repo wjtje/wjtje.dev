@@ -7,15 +7,18 @@ export const get: RequestHandler = async ({ params }) => {
 	// TODO: Pagination
 	const posts = await prisma.post.findMany({
 		take: 10,
-		include: {
-			author: true
-		},
 		where: {
 			published: true,
 			language: params.lang.toUpperCase() as Language
 		},
 		orderBy: {
 			createdAt: 'desc'
+		},
+		select: {
+			title: true,
+			createdAt: true,
+			preview: true,
+			slug: true
 		}
 	});
 
