@@ -16,7 +16,7 @@ const config = {
 			out: 'build'
 		}),
 		version: {
-			name: '0.1-beta.3'
+			name: '0.1-beta.4'
 		}
 	}
 };
