@@ -176,7 +176,7 @@ const csv = `"Quest Name", "Question", "Package name", "Default Priority", "Wiki
 // Parse the CSV into an object
 const parsedCsv = Papa.parse(csv);
 
-export function getStreetCompleteDetails(quest: string): string {
+export function getStreetCompleteDetails(quest: string): string | null {
 	console.log(parsedCsv.data);
 	console.log(quest);
 	const questDetails = parsedCsv.data.find((item) => item[0] === quest);
@@ -185,5 +185,5 @@ export function getStreetCompleteDetails(quest: string): string {
 		console.log(questDetails[5].substr(2, questDetails[5].length - 3));
 		return questDetails[5].substr(2, questDetails[5].length - 3);
 	}
-	return 'noIcon';
+	return null;
 }
