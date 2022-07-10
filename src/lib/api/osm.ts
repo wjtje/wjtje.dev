@@ -2,9 +2,15 @@ import type { Changeset, OsmEditor, OsmRootObject, ParsedTags } from '$lib/@type
 import { OSMUsername } from '$lib/common';
 import { XMLParser } from 'fast-xml-parser';
 
+/**
+ * This function tries to decode the `created_by` key to a useable format.
+ *
+ * @param editor The editor string as provided by the `created_by` key
+ * @returns {OsmEditor} An object where the editor's name, version, buildnumber, and locale is decoded.
+ */
 export const parseOsmEditor = (editor: string): OsmEditor => {
 	const result = new RegExp(
-		/(?<name>[a-zA-Z]+)[ /](?<version>[0-9.]+)[ (]*(?<build>[0-9]*) *(?<locale>[a-z_A-Z]*)\)*/
+		/(?<name>[a-zA-Z !\-_.]+)[ /]*(?<version>[\d\w-.]+)*[ (]*(?<build>[\d]*) *(?<locale>[\w_]*)\)*/
 	).exec(editor);
 
 	return {
@@ -13,6 +19,10 @@ export const parseOsmEditor = (editor: string): OsmEditor => {
 	};
 };
 
+/**
+ * This function fetches the latest changesets from openstreetmap and parces the json data.
+ * @returns {Changeset[]} A list of changesets
+ */
 export const fetchOsmData = async (): Promise<Changeset[]> => {
 	// Get new data from osm
 	const response = await fetch(

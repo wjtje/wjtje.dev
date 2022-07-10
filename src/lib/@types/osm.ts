@@ -9,8 +9,25 @@ export interface Tag {
 }
 
 export interface OsmEditor {
+	/**
+	 * The name of the editor
+	 * @type {string}
+	 */
 	name: string;
+	/**
+	 * The version of the editor
+	 * @type {string|null}
+	 */
 	version?: string;
+	/**
+	 * The build number of the editor
+	 * @type {string|null}
+	 */
+	build?: string;
+	/**
+	 * The locale of the editor
+	 * @type {string|null}
+	 */
 	locale?: string;
 }
 
