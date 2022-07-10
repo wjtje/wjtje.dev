@@ -1,6 +1,7 @@
 <script lang="ts" context="module">
 	import { loadTranslations, locale } from '$lib/i18n';
 	import type { Load } from '@sveltejs/kit';
+	import { page } from '$app/stores';
 
 	export const load: Load = async ({ url }) => {
 		const { pathname } = url;
@@ -23,7 +24,7 @@
 	} from '$lib/components/navigation';
 	import LanguageSwitcher from '$lib/components/common/LanguageSwitcher.svelte';
 	import ThemeSwitcher from '$lib/components/common/ThemeSwitcher.svelte';
-	import { t } from '$lib/i18n';
+	import { locales, t } from '$lib/i18n';
 	import '../app.css';
 	import PageTransition from '$lib/components/common/PageTransition.svelte';
 
@@ -46,8 +47,16 @@
 		}
 	];
 
+	$: ({ route } = $page.stuff);
+
 	export let url: URL;
 </script>
+
+<svelte:head>
+	{#each $locales as locale}
+		<link rel="alternate" hreflang={locale} href={`/${locale}${route}`} />
+	{/each}
+</svelte:head>
 
 <Navigation>
 	<NavigationTitle><a href={`/${$locale}/`}>{$t('common.title')}</a></NavigationTitle>
