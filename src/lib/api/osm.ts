@@ -10,7 +10,7 @@ import { XMLParser } from 'fast-xml-parser';
  */
 export const parseOsmEditor = (editor: string): OsmEditor => {
 	const result = new RegExp(
-		/(?<name>[a-zA-Z !\-_.]+)[ /]*(?<version>[\d\w-.]+)*[ (]*(?<build>[\d]*) *(?<locale>[\w_]*)\)*/
+		/(?<name>[a-zA-Z !\-_.]+(?=[ /]))[ /]*(?<version>[\d\w-.]+)*[ (]*(?<build>[\d]*) *(?<locale>[\w_]*)\)*/
 	).exec(editor);
 
 	return {
