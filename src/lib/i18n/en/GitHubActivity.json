@@ -14,7 +14,7 @@
 		"repository": "Deleted the repository named [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 		"unknown": "An unknown DeleteEvent has occurred ({{id:gh;}})"
 	},
-	"ForkEvent": "Created a [fork]({{html_url:gh;}} of [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+	"ForkEvent": "Created a [fork]({{html_url:gh;}}) of [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 	"GollumEvent": "Changed a wiki page of [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 	"GollumEventSubtitle": "{{pages:gh;}} {{pages; 1:page; default:pages;}} {{pages; 1:has; default:have;}} been changed",
 	"IssueCommentEvent": {

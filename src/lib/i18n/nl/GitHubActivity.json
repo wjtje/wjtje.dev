@@ -15,7 +15,7 @@
 		"repository": "De repository genaamd [{{repo:gh;}}](https://github.com/{{repo:gh;}}) is verwijderd",
 		"unknown": "Een onbekende DeleteEvent actie is voorgekomen ({{id:gh;}})"
 	},
-	"ForkEvent": "Een [fork]({{html_url:gh;}} gemaakt van [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
+	"ForkEvent": "Een [fork]({{html_url:gh;}}) gemaakt van [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 	"GollumEvent": "Een wiki pagina aangepast van [{{repo:gh;}}](https://github.com/{{repo:gh;}})",
 	"GollumEventSubtitle": "{{pages}} {{pages; 1:pagina; default:paginas;}} {{pages; 1:is; default:zijn;}} veranderd",
 	"IssueCommentEvent": {
