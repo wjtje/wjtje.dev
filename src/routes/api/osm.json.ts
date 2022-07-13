@@ -11,7 +11,7 @@ import { fetchOsmData } from '$lib/api/osm';
 import {
 	getStreetCompleteImage,
 	updateStreetCompleteCache
-} from '$lib/api/getStreetcompleteDetails';
+} from '$lib/api/getStreetCompleteDetails';
 
 export const get: RequestHandler = async () => {
 	// Get information about the cache

@@ -51,10 +51,15 @@ async function getStreetCompleteCSV() {
 	// Extract the zip file
 	const zip = new zipJs.ZipReader(new zipJs.BlobReader(artifact_zip));
 	const zip_entries = await zip.getEntries();
-	// TODO: Check for file name
-	const data = await zip_entries[0].getData(new zipJs.TextWriter(), {
-		useWebWorkers: false
-	});
+	const data = await zip_entries
+		.find((entry) => entry.filename == 'quest-list.csv')
+		.getData(new zipJs.TextWriter(), {
+			useWebWorkers: false
+		});
+
+	if (data == null) {
+		console.warn(`[GetStreetCompleteDetails.ts]: Could not find required file`);
+	}
 
 	console.log(`[getStreetCompleteDetails.ts]: Got data with size: ${data.length}`);
 
@@ -81,8 +86,7 @@ export async function updateStreetCompleteCache() {
 			// Save new data in the cache
 			await Promise.all(
 				parsedCsv.data.map(async (row) => {
-					if (row[0] != '' && row[0] != '??' && row[0] != 'Quest Name') {
-						// TODO: filter null values, and better url seperation
+					if (row[0] != '' && row[0] != '???' && row[0] != 'Quest Name') {
 						await prisma.streetCompleteQuest.create({
 							data: {
 								name: row[0],
