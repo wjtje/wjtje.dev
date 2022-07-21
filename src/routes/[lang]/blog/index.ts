@@ -2,7 +2,7 @@ import { prisma } from '$lib/prisma';
 import type { Language } from '@prisma/client';
 import type { RequestHandler } from './__types/index';
 
-export const get: RequestHandler = async ({ params }) => {
+export const GET: RequestHandler = async ({ params }) => {
 	// Get all the posts
 	// TODO: Pagination
 	const posts = await prisma.post.findMany({

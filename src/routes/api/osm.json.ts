@@ -13,7 +13,7 @@ import {
 	updateStreetCompleteCache
 } from '$lib/api/getStreetCompleteDetails';
 
-export const get: RequestHandler = async () => {
+export const GET: RequestHandler = async () => {
 	// Get information about the cache
 	const { id, cacheState } = await checkCacheState('osm');
 

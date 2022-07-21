@@ -1,5 +1,6 @@
 import { BaseURL } from '$lib/common';
 import { locales, defaultLocale } from '$lib/i18n';
+import type { RequestHandler } from './__types/sitemap.xml';
 
 interface page {
 	loc: string;
@@ -18,8 +19,7 @@ const pages: page[] = [
  * This will return a map of all the different pages of this website with every locale defined
  */
 
-/** @type {import(`./sitemap.xml`).RequestHandler} */
-export async function get() {
+export const GET: RequestHandler = async () => {
 	return {
 		headers: {
 			'Cache-Control': 'max-age=0, s-maxage=3600',
@@ -40,4 +40,4 @@ export async function get() {
 			)
 			.join('')}</urlset>`
 	};
-}
+};
