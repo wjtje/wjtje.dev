@@ -32,7 +32,8 @@
 			event={{
 				date: event.date,
 				mainTitle: JSON.parse(event.mainTitle),
-				subTitle: JSON.parse(event.subTitle)
+				subTitle: JSON.parse(event.subTitle),
+				image: event.image
 			}}
 		/>
 	</div>

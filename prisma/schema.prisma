@@ -50,3 +50,9 @@ model RemoteData {
   date           DateTime?
   image          String?
 }
+
+model StreetCompleteQuest {
+  id      Int     @id @default(autoincrement())
+  name    String?
+  iconUrl String?
+}

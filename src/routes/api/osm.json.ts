@@ -8,6 +8,10 @@ import {
 import { prisma } from '$lib/prisma';
 import type { RequestHandler } from './__types/osm.json';
 import { fetchOsmData } from '$lib/api/osm';
+import {
+	getStreetCompleteImage,
+	updateStreetCompleteCache
+} from '$lib/api/getStreetCompleteDetails';
 
 export const get: RequestHandler = async () => {
 	// Get information about the cache
@@ -19,6 +23,9 @@ export const get: RequestHandler = async () => {
 		// Fetch the data
 		try {
 			const responseChangesets = await fetchOsmData();
+
+			// Update streetComplete cache
+			await updateStreetCompleteCache();
 
 			// Remove old cache
 			await prisma.remoteData.deleteMany({
@@ -73,6 +80,9 @@ export const get: RequestHandler = async () => {
 									version: changeset.parsedTags.created_by.version
 								}
 							};
+							data.image = await getStreetCompleteImage(
+								changeset.parsedTags['StreetComplete:quest_type']
+							);
 							break;
 					}
 

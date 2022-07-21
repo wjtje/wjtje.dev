@@ -64,7 +64,8 @@ export async function getCacheData(id: number) {
 			select: {
 				mainTitle: true,
 				subTitle: true,
-				date: true
+				date: true,
+				image: true
 			},
 			orderBy: {
 				date: 'desc'

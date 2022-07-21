@@ -35,4 +35,4 @@
 			: $t(event.subTitle.id, event.subTitle.data ?? {});
 </script>
 
-<MiniPost date={event.date} {title} {subtitle} />
+<MiniPost date={event.date} {title} {subtitle} image={event.image} />
