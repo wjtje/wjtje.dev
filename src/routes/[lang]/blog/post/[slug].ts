@@ -2,7 +2,7 @@ import { prisma } from '$lib/prisma';
 import type { Language } from '@prisma/client';
 import type { RequestHandler } from './__types/[slug]';
 
-export const get: RequestHandler = async ({ params }) => {
+export const GET: RequestHandler = async ({ params }) => {
 	// Get the post
 	const post = await prisma.post.findUnique({
 		include: {

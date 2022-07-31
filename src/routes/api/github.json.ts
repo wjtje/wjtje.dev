@@ -10,7 +10,7 @@ import { GitHubUsername } from '$lib/common';
 import { prisma } from '$lib/prisma';
 import type { RequestHandler } from './__types/github.json';
 
-export const get: RequestHandler = async () => {
+export const GET: RequestHandler = async () => {
 	// Get information about the cache
 	const { id, cacheState } = await checkCacheState('github');
 
