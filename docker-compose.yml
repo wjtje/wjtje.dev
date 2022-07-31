@@ -8,6 +8,9 @@ services:
       - 5555:5555
     environment:
       - DATABASE_URL=postgresql://postgres:example@database:5432/postgres?schema=public
+      - OSM_USERNAME=name
+      - GITHUB_USERNAME=name
+      - GITHUB_TOKEN=token with public repo access
 
   database:
     image: postgres:latest
