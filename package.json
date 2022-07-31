@@ -26,7 +26,7 @@
 		"sveltekit-i18n": "^2.1.0"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-node": "^1.0.0-next.71",
+		"@sveltejs/adapter-node": "^1.0.0-next.85",
 		"@sveltejs/kit": "next",
 		"@types/luxon": "^3.0.0",
 		"@types/papaparse": "^5.3.2",
