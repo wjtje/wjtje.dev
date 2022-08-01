@@ -1,6 +1,6 @@
 import { prisma } from '$lib/prisma';
 import * as zipJs from '@zip.js/zip.js';
-import * as Papa from 'papaparse';
+import Papa from 'papaparse';
 import { checkCacheState, updateCacheState } from './helper';
 
 /**
