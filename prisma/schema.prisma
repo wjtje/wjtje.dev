@@ -56,3 +56,10 @@ model StreetCompleteQuest {
   name    String?
   iconUrl String?
 }
+
+model MapCompleteTheme {
+  id      Int     @id @default(autoincrement())
+  theme   String
+  name    String?
+  iconUrl String?
+}

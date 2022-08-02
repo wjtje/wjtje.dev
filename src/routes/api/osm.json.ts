@@ -12,6 +12,7 @@ import {
 	getStreetCompleteImage,
 	updateStreetCompleteCache
 } from '$lib/api/getStreetCompleteDetails';
+import { getMapCompleteImage, updateMapCompleteCache } from '$lib/api/getMapCompleteDetails';
 
 export const GET: RequestHandler = async () => {
 	// Get information about the cache
@@ -26,6 +27,9 @@ export const GET: RequestHandler = async () => {
 
 			// Update streetComplete cache
 			await updateStreetCompleteCache();
+
+			// Update MapComplete cache
+			await updateMapCompleteCache();
 
 			// Remove old cache
 			await prisma.remoteData.deleteMany({
@@ -71,6 +75,7 @@ export const GET: RequestHandler = async () => {
 									version: changeset.parsedTags.created_by.version
 								}
 							};
+							data.image = await getMapCompleteImage(changeset.parsedTags.theme);
 							break;
 						case 'StreetComplete':
 							data.subTitle = {
