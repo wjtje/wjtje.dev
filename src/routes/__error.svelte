@@ -1,10 +1,11 @@
 <script lang="ts" context="module">
 	import type { Load } from '@sveltejs/kit';
 
-	export const load: Load = ({ error, status }) => {
+	export const load: Load = ({ error, status, url }) => {
 		return {
 			props: {
-				status
+				status,
+				pathname: url.pathname
 			}
 		};
 	};
@@ -12,11 +13,15 @@
 
 <script lang="ts">
 	import E404 from '$lib/components/error/404.svelte';
+	import E418 from '$lib/components/error/418.svelte';
 
 	export let status: number;
+	export let pathname: string;
 </script>
 
-{#if status == 404}
+{#if pathname.endsWith('/418')}
+	<E418 />
+{:else if status == 404}
 	<E404 />
 {:else}
 	<h1>Unknown error</h1>

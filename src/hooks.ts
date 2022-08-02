@@ -41,7 +41,17 @@ export const handle: Handle = async ({ event, resolve }) => {
 		if (!response || !body) {
 			console.warn('[hooks.ts]: Empty response');
 		} else {
-			return new Response(`${body}`.replace(/<html.*>/, `<html lang="${locale}">`), response);
+			if (pathname.endsWith('/418')) {
+				return new Response(body, {
+					status: 418,
+					headers: {
+						...response.headers,
+						'content-type': 'text/html'
+					}
+				});
+			} else {
+				return new Response(`${body}`.replace(/<html.*>/, `<html lang="${locale}">`), response);
+			}
 		}
 	}
 
