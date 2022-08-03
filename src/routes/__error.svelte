@@ -2,6 +2,10 @@
 	import type { Load } from '@sveltejs/kit';
 
 	export const load: Load = ({ error, status, url }) => {
+		if (status == 500) {
+			console.error(error.stack);
+		}
+
 		return {
 			props: {
 				status,
