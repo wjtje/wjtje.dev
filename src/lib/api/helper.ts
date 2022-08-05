@@ -1,4 +1,5 @@
 import { cacheDuration } from '$lib/common';
+import { locales, defaultLocale } from '$lib/i18n';
 import { prisma } from '$lib/prisma';
 import { DateTime } from 'luxon';
 
@@ -106,4 +107,16 @@ export async function updateCacheState(id: number) {
 			lastUpdate: DateTime.now().toISO()
 		}
 	});
+}
+
+/**
+ * Get a language code from the URL object
+ *
+ * @param url {URL} The url object from the request
+ * @returns {string} A language code that is valid
+ */
+export function extractLangFromUrl(url: URL) {
+	const langFromUrl = url.searchParams.get('lang');
+	const lang = locales.get().includes(langFromUrl) ? langFromUrl : defaultLocale;
+	return lang;
 }
