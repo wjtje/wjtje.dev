@@ -19,12 +19,7 @@
 {:then events}
 	{#each events as event, i}
 		<div in:scale={{ duration: 400, delay: i * 50 }}>
-			<MiniPost
-				title={event.mainTitle}
-				subtitle={event.subTitle}
-				date={event.date}
-				image={event.image}
-			/>
+			<MiniPost {...event} />
 		</div>
 	{/each}
 {:catch error}
