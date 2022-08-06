@@ -1,5 +1,5 @@
 import { cacheDuration } from '$lib/common';
-import { locales, defaultLocale } from '$lib/i18n';
+import { locales, defaultLocale, t } from '$lib/i18n';
 import { prisma } from '$lib/prisma';
 import { DateTime } from 'luxon';
 
@@ -56,23 +56,21 @@ export async function checkCacheState(name: string): Promise<{ cacheState: boole
  * @returns A object that can be returned to the client
  */
 export async function getCacheData(id: number) {
-	return {
-		body: await prisma.remoteData.findMany({
-			where: {
-				remoteSourceId: id
-			},
-			take: 10,
-			select: {
-				mainTitle: true,
-				subTitle: true,
-				date: true,
-				image: true
-			},
-			orderBy: {
-				date: 'desc'
-			}
-		})
-	};
+	return await prisma.remoteData.findMany({
+		where: {
+			remoteSourceId: id
+		},
+		take: 10,
+		select: {
+			mainTitle: true,
+			subTitle: true,
+			date: true,
+			image: true
+		},
+		orderBy: {
+			date: 'desc'
+		}
+	});
 }
 
 /**
@@ -119,4 +117,29 @@ export function extractLangFromUrl(url: URL) {
 	const langFromUrl = url.searchParams.get('lang');
 	const lang = locales.get().includes(langFromUrl) ? langFromUrl : defaultLocale;
 	return lang;
+}
+
+export async function translateCache(id: number) {
+	return {
+		body: (await getCacheData(id)).map((item) => {
+			const mainTitle = JSON.parse(item.mainTitle);
+			const subTitle = JSON.parse(item.subTitle);
+
+			return {
+				...item,
+				mainTitle:
+					mainTitle == null
+						? null
+						: typeof mainTitle == 'string'
+						? mainTitle
+						: t.get(mainTitle.id, mainTitle.data ?? {}),
+				subTitle:
+					subTitle == null
+						? null
+						: typeof subTitle == 'string'
+						? subTitle
+						: t.get(subTitle.id, subTitle.data ?? {})
+			};
+		})
+	};
 }

@@ -1,15 +1,16 @@
 <script lang="ts">
-	import ActivityItem from './ActivityItem.svelte';
-	import { t } from '$lib/i18n';
+	import { locale, t } from '$lib/i18n';
 	import { onMount } from 'svelte';
 	import { scale } from 'svelte/transition';
 	import MiniPostLoader from '$lib/components/common/MiniPostLoader.svelte';
 	import type { RemoteData } from '@prisma/client';
+	import MiniPost from '../common/MiniPost.svelte';
 
 	export let activityName: string;
 
+	// TODO: Auto language update
 	onMount(async () => {
-		const response = await fetch(`/api/${activityName}.json`);
+		const response = await fetch(`/api/${activityName}.json?lang=${locale.get()}`);
 		const json = await response.json();
 
 		events = json;
@@ -28,13 +29,11 @@
 
 {#each events as event, i}
 	<div in:scale={{ duration: 400, delay: i * 50 }}>
-		<ActivityItem
-			event={{
-				date: event.date,
-				mainTitle: JSON.parse(event.mainTitle),
-				subTitle: JSON.parse(event.subTitle),
-				image: event.image
-			}}
+		<MiniPost
+			title={event.mainTitle}
+			subtitle={event.subTitle}
+			date={event.date}
+			image={event.image}
 		/>
 	</div>
 {/each}

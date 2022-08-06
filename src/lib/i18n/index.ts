@@ -21,7 +21,7 @@ const keys: key[] = [
 	},
 	{
 		key: 'GitHubActivity',
-		routes: ['/']
+		routes: ['/api/github']
 	},
 	{
 		key: 'OsmActivity',
