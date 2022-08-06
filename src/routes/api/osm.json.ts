@@ -1,7 +1,9 @@
 import {
 	checkCacheState,
+	extractLangFromUrl,
 	getCacheData,
 	saveCacheData,
+	translateCache,
 	updateCacheState,
 	type RemoteData
 } from '$lib/api/helper';
@@ -12,9 +14,10 @@ import {
 	getStreetCompleteImage,
 	updateStreetCompleteCache
 } from '$lib/api/getStreetCompleteDetails';
+import { loadTranslations } from '$lib/i18n';
 import { getMapCompleteImage, updateMapCompleteCache } from '$lib/api/getMapCompleteDetails';
 
-export const GET: RequestHandler = async () => {
+export const GET: RequestHandler = async ({ url }) => {
 	// Get information about the cache
 	const { id, cacheState } = await checkCacheState('osm');
 
@@ -106,5 +109,8 @@ export const GET: RequestHandler = async () => {
 		}
 	}
 
-	return await getCacheData(id);
+	// Load the required translations
+	await loadTranslations(extractLangFromUrl(url), '/api/osm');
+
+	return await translateCache(id);
 };
