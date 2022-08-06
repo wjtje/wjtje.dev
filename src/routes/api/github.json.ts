@@ -1,16 +1,19 @@
 import type { GithubEvent } from '$lib/@types/github';
 import {
 	checkCacheState,
+	extractLangFromUrl,
 	getCacheData,
 	saveCacheData,
 	updateCacheState,
+	translateCache,
 	type RemoteData
 } from '$lib/api/helper';
 import { GitHubUsername } from '$lib/common';
+import { loadTranslations } from '$lib/i18n';
 import { prisma } from '$lib/prisma';
 import type { RequestHandler } from './__types/github.json';
 
-export const GET: RequestHandler = async () => {
+export const GET: RequestHandler = async ({ url }) => {
 	// Get information about the cache
 	const { id, cacheState } = await checkCacheState('github');
 
@@ -317,5 +320,8 @@ export const GET: RequestHandler = async () => {
 		}
 	}
 
-	return await getCacheData(id);
+	// Load the required translations
+	await loadTranslations(extractLangFromUrl(url), '/api/github');
+
+	return await translateCache(id);
 };

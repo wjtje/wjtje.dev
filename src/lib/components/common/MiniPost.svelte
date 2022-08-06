@@ -5,11 +5,11 @@
 
 	export let image: string = undefined;
 	export let date: Date | string = undefined;
-	export let title: string;
-	export let subtitle: string = undefined;
+	export let mainTitle: string;
+	export let subTitle: string = undefined;
 
 	// Remove images from the subtitle
-	$: subtitleClean = String(subtitle).replaceAll(/!\[[^\]]*\]\((.*?)\s*("(?:.*[^"])")?\s*\)/g, '');
+	$: subtitleClean = String(subTitle).replaceAll(/!\[[^\]]*\]\((.*?)\s*("(?:.*[^"])")?\s*\)/g, '');
 
 	$: dateString = DateTime.fromJSDate(new Date(date)).toRelative({
 		locale: $locale
@@ -23,11 +23,11 @@
 		{/if}
 
 		<h3 aria-label="Main title">
-			<Markdown md={title} />
+			<Markdown md={mainTitle} />
 		</h3>
 
 		<div class="subtitle" aria-label="Subtitle">
-			{#if subtitle}
+			{#if subTitle}
 				<Markdown md={subtitleClean} />
 			{/if}
 			<slot />
@@ -35,7 +35,7 @@
 	</div>
 
 	{#if image}
-		<img src={image} alt={title} />
+		<img src={image} alt={mainTitle} />
 	{/if}
 </section>
 

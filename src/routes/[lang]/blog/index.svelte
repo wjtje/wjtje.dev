@@ -18,7 +18,7 @@
 
 <div>
 	{#each posts as post}
-		<MiniPost date={post.createdAt} title={post.title} subtitle={post.preview}>
+		<MiniPost date={post.createdAt} mainTitle={post.title} subTitle={post.preview}>
 			<a href={`/${$locale}/blog/post/${post.slug}`}>{$t('blog.more')}</a>
 		</MiniPost>
 	{/each}
