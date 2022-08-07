@@ -67,7 +67,7 @@ export const GET: RequestHandler = async ({ url }) => {
 								id: 'OsmActivity.editor.MapComplete.mainText',
 								data: {
 									count: changeset.parsedTags.answer,
-									theme: changeset.parsedTags.theme,
+									theme: { type: 'MapCompleteTheme', data: changeset.parsedTags.theme },
 									host: changeset.parsedTags.host
 								}
 							};

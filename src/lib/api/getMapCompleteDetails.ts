@@ -3,7 +3,7 @@ import { checkCacheState, updateCacheState } from './helper';
 
 interface Theme {
 	id: string;
-	name: string;
+	name: { [lang: string]: string };
 	icon: string;
 }
 
@@ -13,9 +13,9 @@ interface Theme {
  * @returns {Theme[]}
  */
 async function getThemes(): Promise<Theme[]> {
-	const apiUrl = 'https://api.github.com/repos/pietervdvn/MapComplete/contents/assets/themes';
-	const rawUrl = 'https://raw.githubusercontent.com/pietervdvn/MapComplete/master';
 	const branch = 'master';
+	const apiUrl = 'https://api.github.com/repos/pietervdvn/MapComplete/contents/assets/themes';
+	const rawUrl = 'https://raw.githubusercontent.com/pietervdvn/MapComplete/' + branch;
 
 	console.log('[getMapCompleteDetails.ts]: Start download');
 
@@ -41,11 +41,11 @@ async function getThemes(): Promise<Theme[]> {
 					rawUrl + '/assets/themes/' + themeFolder.name + '/' + themeFolder.name + '.json'
 				)
 			).json();
-			let title = '';
+			let title;
 			if (typeof theme.title === 'string') {
-				title = theme.title;
+				title = { en: theme.title };
 			} else {
-				title = theme.title.en ?? theme.title.nl ?? '';
+				title = theme.title;
 			}
 			themes.push({
 				id: theme.id,
@@ -85,7 +85,7 @@ export async function updateMapCompleteCache() {
 					await prisma.mapCompleteTheme.create({
 						data: {
 							theme: theme.id,
-							name: theme.name,
+							name: JSON.stringify(theme.name),
 							iconUrl: theme.icon
 						}
 					});
@@ -102,8 +102,8 @@ export async function updateMapCompleteCache() {
 }
 
 /**
- * Get an icon url from a theme name
- * @param theme The theme name
+ * Get an icon url from a theme ID
+ * @param theme The theme ID
  * @returns {Promise<string|null>} An icon url
  */
 export async function getMapCompleteImage(theme: string): Promise<string | null> {
@@ -114,4 +114,29 @@ export async function getMapCompleteImage(theme: string): Promise<string | null>
 			}
 		})
 	)?.iconUrl;
+}
+
+/**
+ * Get a localized name from a theme ID
+ * @param theme The theme ID
+ * @param lang The language
+ * @returns {Promise<string|null>} A localized name
+ */
+export async function getMapCompleteName(theme: string, lang: string): Promise<string> {
+	console.log(`[getMapCompleteName.ts]: Getting name for theme ${theme}`);
+	const themeData = await prisma.mapCompleteTheme.findFirst({
+		where: {
+			theme
+		}
+	});
+	if (!themeData) {
+		return 'unknown';
+	}
+	const name = JSON.parse(themeData.name);
+
+	if (!name[lang]) {
+		// Fallback to English
+		return name.en;
+	}
+	return name[lang];
 }
