@@ -29,6 +29,8 @@
 <style lang="scss">
 	button {
 		@apply md:hidden h-full p-3;
+		// This is a terrible fix for safari because it doesn't support justify-content: flex-start
+		@apply w-[46px] [@supports(justify-content:flex-start)]:w-auto;
 	}
 
 	section {
