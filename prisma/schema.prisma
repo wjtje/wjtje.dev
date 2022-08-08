@@ -56,3 +56,18 @@ model StreetCompleteQuest {
   name    String?
   iconUrl String?
 }
+
+model GithubRepo {
+  id              Int     @id @default(autoincrement())
+  name            String
+  description     String?
+  url             String
+  fork            Boolean
+  parentName      String?
+  parentUrl       String?
+  language        String?
+  forksCount      Int
+  stargazersCount Int
+  topics          String?
+  image           String?
+}

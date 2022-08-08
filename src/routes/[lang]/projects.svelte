@@ -1,4 +1,5 @@
 <script lang="ts">
+	import RepositoryList from '$lib/components/projects/RepositoryList.svelte';
 	import { t } from '$lib/i18n';
 </script>
 
@@ -11,4 +12,8 @@
 
 <p>
 	{@html $t('projects.temp')}
+</p>
+
+<p>
+	<RepositoryList />
 </p>
