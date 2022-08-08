@@ -9,6 +9,7 @@
 	export let parentUrl: string;
 	export let language: string;
 	export let topics: string;
+	export let image: string;
 
 	const topicsDisplay = JSON.parse(topics)
 		.map((topic) => "<a href='https://github.com/topics/" + topic + "'>" + topic + '</a>')
@@ -16,6 +17,9 @@
 </script>
 
 <section>
+	{#if !image.startsWith('https://avatars.githubusercontent.com/u/')}
+		<img src={image} alt={name} />
+	{/if}
 	<a href={url} class="name">{name}</a>
 	{#if language}
 		<LanguageIndicator {language} />
@@ -36,6 +40,9 @@
 <style lang="scss">
 	section {
 		@apply border-[1px] border-gray-800 rounded-lg mb-1 p-1;
+	}
+	img {
+		@apply float-right h-20;
 	}
 	a {
 		@apply hover:underline;

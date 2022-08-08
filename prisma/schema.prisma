@@ -58,7 +58,7 @@ model StreetCompleteQuest {
 }
 
 model GithubRepo {
-  id              Int     @id @default(autoincrement())
+  id              Int      @id @default(autoincrement())
   name            String
   description     String?
   url             String
@@ -70,4 +70,7 @@ model GithubRepo {
   stargazersCount Int
   topics          String?
   image           String?
+  pinned          Boolean
+  createdAt       DateTime
+  updatedAt       DateTime
 }
