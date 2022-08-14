@@ -80,7 +80,7 @@
 
 <style lang="scss">
 	div {
-		@apply flex-grow;
+		@apply md:flex-grow md:border-none border border-gray-500 bg-gray-500;
 	}
 
 	footer {
