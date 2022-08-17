@@ -40,6 +40,15 @@
 </div>
 
 <style lang="scss">
+	div.content {
+		@apply grid justify-items-center;
+
+		& > * {
+			grid-column-start: 1;
+			grid-row-start: 1;
+		}
+	}
+
 	div.loader {
 		@apply absolute top-12 w-screen h-1 z-50 bg-green-500;
 		animation: load-right 2s 1s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
