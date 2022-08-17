@@ -8,8 +8,23 @@
 
 	let particlesConfig = {
 		fullScreen: false,
-		detectRetina: true,
-		fpsLimit: 60,
+		retina_detect: true,
+		interactivity: {
+			detect_on: 'window',
+			events: {
+				onhover: {
+					enable: true,
+					mode: 'repulse'
+				},
+				resize: true
+			},
+			modes: {
+				repulse: {
+					distance: 100,
+					duration: 0.4
+				}
+			}
+		},
 		particles: {
 			color: {
 				value: '#fff',
