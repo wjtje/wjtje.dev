@@ -5,7 +5,7 @@
 
 /* Global body */
 body {
-	@apply dark:bg-gray-900 dark:text-white transition-colors overflow-x-hidden;
+	@apply dark:bg-zinc-900 dark:text-white transition-colors overflow-x-hidden;
 }
 
 /* Global headings */

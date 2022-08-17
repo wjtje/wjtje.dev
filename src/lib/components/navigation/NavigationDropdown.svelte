@@ -123,7 +123,7 @@
 			// Set it the correct position
 			@apply h-auto md:h-auto overflow-hidden md:absolute md:min-w-[6rem] md:w-fit px-4 left-[-0.5rem] md:right-0 transition-[height] ease-in-out;
 			// Give it the correct color and style
-			@apply md:rounded-md md:shadow-md md:bg-white md:dark:bg-gray-700;
+			@apply md:rounded-md md:shadow-md md:bg-white md:dark:bg-zinc-700;
 
 			&.mobile {
 				@apply md:hidden;
@@ -147,7 +147,7 @@
 				}
 
 				span {
-					@apply text-gray-900 md:dark:text-white text-base whitespace-nowrap;
+					@apply text-zinc-900 md:dark:text-white text-base whitespace-nowrap;
 				}
 			}
 		}

@@ -27,7 +27,7 @@
 		},
 		particles: {
 			color: {
-				value: '#fff',
+				value: '#A1A1AA',
 				animation: {
 					enable: true,
 					speed: 50,
@@ -36,7 +36,7 @@
 			},
 			links: {
 				color: {
-					value: 'random'
+					value: '#A1A1AA'
 				},
 				distance: 100,
 				enable: true,
@@ -55,7 +55,7 @@
 					factor: 1000
 				},
 				limit: 0,
-				value: 50
+				value: 70
 			},
 			opacity: {
 				random: {
