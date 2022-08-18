@@ -155,3 +155,15 @@ export async function translateCache(id: number) {
 		)
 	};
 }
+
+/**
+ * This generated a valid GitHub authorization header based on the values provided in the env file.
+ *
+ * @returns {string} A GitHub authorization header
+ */
+export function githubAuth() {
+	return `Basic ${Buffer.from(
+		`${process.env.GITHUB_USERNAME}:${process.env.GITHUB_TOKEN}`,
+		'utf-8'
+	).toString('base64')}`;
+}
