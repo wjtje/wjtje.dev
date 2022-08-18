@@ -1,3 +1,4 @@
+import type { MapCompleteTheme } from '$lib/@types/mapComplete';
 import { prisma } from '$lib/prisma';
 import { checkCacheState, updateCacheState } from './helper';
 
@@ -19,7 +20,7 @@ async function getThemes(): Promise<Theme[]> {
 
 	console.log('[getMapCompleteDetails.ts]: Start download');
 
-	const themeFolders = await (
+	const themeFolders: MapCompleteTheme[] = await (
 		await fetch(apiUrl + '?ref=' + branch, {
 			headers: {
 				Authorization: `Basic ${Buffer.from(
@@ -30,35 +31,43 @@ async function getThemes(): Promise<Theme[]> {
 		})
 	).json();
 
+	// Check if response is array
+	if (typeof themeFolders != 'object' || themeFolders.length == undefined) {
+		console.warn("[getMapCompleteDetails.ts]: Response isn't an array");
+		return;
+	}
+
 	console.log(`[getMapCompleteDetails.ts]: Got ${themeFolders.length} themes`);
 
 	const themes: Theme[] = [];
 
-	for (const themeFolder of themeFolders) {
-		try {
-			const theme = await (
-				await fetch(
-					rawUrl + '/assets/themes/' + themeFolder.name + '/' + themeFolder.name + '.json'
-				)
-			).json();
-			let title;
-			if (typeof theme.title === 'string') {
-				title = { en: theme.title };
-			} else {
-				title = theme.title;
-			}
-			themes.push({
-				id: theme.id,
-				name: title,
-				icon: rawUrl + theme.icon.replace('.', '')
-			});
+	await Promise.all(
+		themeFolders.map(async (themeFolder) => {
+			try {
+				const theme = await (
+					await fetch(
+						rawUrl + '/assets/themes/' + themeFolder.name + '/' + themeFolder.name + '.json'
+					)
+				).json();
+				let title;
+				if (typeof theme.title === 'string') {
+					title = { en: theme.title };
+				} else {
+					title = theme.title;
+				}
+				themes.push({
+					id: theme.id,
+					name: title,
+					icon: rawUrl + theme.icon.replace('.', '')
+				});
 
-			console.log(`[getMapCompleteDetails.ts]: Got theme: ${theme.id}`);
-		} catch (e) {
-			console.log(`[getMapCompleteDetails.ts]: Failed to get theme: ${themeFolder.name}`);
-			console.log(e);
-		}
-	}
+				console.log(`[getMapCompleteDetails.ts]: Got theme: ${theme.id}`);
+			} catch (e) {
+				console.log(`[getMapCompleteDetails.ts]: Failed to get theme: ${themeFolder.name}`);
+				console.log(e);
+			}
+		})
+	);
 
 	return themes;
 }
