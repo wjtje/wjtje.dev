@@ -1,26 +1,20 @@
-import type { MapCompleteTheme } from '$lib/@types/mapComplete';
+import type { MapCompleteThemeFolder, MapCompleteTheme } from '$lib/@types/mapComplete';
 import { prisma } from '$lib/prisma';
 import { checkCacheState, updateCacheState } from './helper';
-
-interface Theme {
-	id: string;
-	name: { [lang: string]: string };
-	icon: string;
-}
 
 /**
  * Get list of current official themes
  *
- * @returns {Theme[]}
+ * @returns {MapCompleteTheme[]}
  */
-async function getThemes(): Promise<Theme[]> {
+async function getThemes(): Promise<MapCompleteTheme[]> {
 	const branch = 'master';
 	const apiUrl = 'https://api.github.com/repos/pietervdvn/MapComplete/contents/assets/themes';
 	const rawUrl = 'https://raw.githubusercontent.com/pietervdvn/MapComplete/' + branch;
 
 	console.log('[getMapCompleteDetails.ts]: Start download');
 
-	const themeFolders: MapCompleteTheme[] = await (
+	const themeFolders: MapCompleteThemeFolder[] = await (
 		await fetch(apiUrl + '?ref=' + branch, {
 			headers: {
 				Authorization: `Basic ${Buffer.from(
@@ -39,7 +33,7 @@ async function getThemes(): Promise<Theme[]> {
 
 	console.log(`[getMapCompleteDetails.ts]: Got ${themeFolders.length} themes`);
 
-	const themes: Theme[] = [];
+	const themes: MapCompleteTheme[] = [];
 
 	await Promise.all(
 		themeFolders.map(async (themeFolder) => {
@@ -132,7 +126,7 @@ export async function getMapCompleteImage(theme: string): Promise<string | null>
  * @returns {Promise<string|null>} A localized name
  */
 export async function getMapCompleteName(theme: string, lang: string): Promise<string> {
-	console.log(`[getMapCompleteName.ts]: Getting name for theme ${theme}`);
+	console.log(`[getMapCompleteDetails.ts]: Getting name for theme ${theme}`);
 	const themeData = await prisma.mapCompleteTheme.findFirst({
 		where: {
 			theme

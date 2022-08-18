@@ -1,4 +1,4 @@
-export interface MapCompleteTheme {
+export interface MapCompleteThemeFolder {
 	name: string;
 	path: string;
 	sha: string;
@@ -8,11 +8,10 @@ export interface MapCompleteTheme {
 	git_url: string;
 	download_url?: null;
 	type: string;
-	_links: Links;
 }
 
-export interface Links {
-	self: string;
-	git: string;
-	html: string;
+export interface MapCompleteTheme {
+	id: string;
+	name: { [lang: string]: string };
+	icon: string;
 }
