@@ -31,7 +31,7 @@ export const GET: RequestHandler = async () => {
 										}
 									}
 								}
-								repositories(first: 100, orderBy: {field: UPDATED_AT, direction: DESC}) {
+								repositories(first: 100, orderBy: {field: UPDATED_AT, direction: DESC}, privacy: PUBLIC) {
 									nodes {
 										databaseId
 										name
