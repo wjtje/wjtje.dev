@@ -5,7 +5,7 @@
 
 	export let image: string = undefined;
 	export let date: Date | string = undefined;
-	export let mainTitle: string;
+	export let mainTitle: string = undefined;
 	export let subTitle: string = undefined;
 
 	// Remove images from the subtitle
@@ -18,19 +18,24 @@
 
 <section>
 	<div class="text">
+		<slot name="tags" />
+
 		{#if date}
 			<span aria-label="Date">{dateString}</span>
 		{/if}
 
 		<h3 aria-label="Main title">
-			<Markdown md={mainTitle} />
+			{#if mainTitle}
+				<Markdown md={mainTitle} />
+			{/if}
+			<slot name="mainTitle" />
 		</h3>
 
 		<div class="subtitle" aria-label="Subtitle">
 			{#if subTitle}
 				<Markdown md={subtitleClean} />
 			{/if}
-			<slot />
+			<slot name="subTitle" />
 		</div>
 	</div>
 
@@ -57,7 +62,7 @@
 
 			// The main title in large default color text with markdown support
 			h3 {
-				@apply text-xl truncate w-full block;
+				@apply text-xl truncate w-full;
 
 				:global(p) {
 					@apply truncate;

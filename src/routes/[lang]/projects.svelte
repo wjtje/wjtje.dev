@@ -10,10 +10,4 @@
 
 <h1>{$t('projects.title')}</h1>
 
-<p>
-	{@html $t('projects.temp')}
-</p>
-
-<p>
-	<RepositoryList />
-</p>
+<RepositoryList />
