@@ -44,7 +44,7 @@
 		@apply pb-4 flex flex-row;
 
 		img {
-			@apply h-16 ml-4 rounded-[50%];
+			@apply h-16 ml-4 rounded-[50%] bg-white;
 		}
 
 		div.text {

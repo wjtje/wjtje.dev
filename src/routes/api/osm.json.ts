@@ -15,6 +15,7 @@ import {
 	updateStreetCompleteCache
 } from '$lib/api/getStreetCompleteDetails';
 import { loadTranslations } from '$lib/i18n';
+import { getMapCompleteImage, updateMapCompleteCache } from '$lib/api/getMapCompleteDetails';
 
 export const GET: RequestHandler = async ({ url }) => {
 	// Get information about the cache
@@ -29,6 +30,9 @@ export const GET: RequestHandler = async ({ url }) => {
 
 			// Update streetComplete cache
 			await updateStreetCompleteCache();
+
+			// Update MapComplete cache
+			await updateMapCompleteCache();
 
 			// Remove old cache
 			await prisma.remoteData.deleteMany({
@@ -63,7 +67,7 @@ export const GET: RequestHandler = async ({ url }) => {
 								id: 'OsmActivity.editor.MapComplete.mainText',
 								data: {
 									count: changeset.parsedTags.answer,
-									theme: changeset.parsedTags.theme,
+									theme: { type: 'MapCompleteTheme', data: changeset.parsedTags.theme },
 									host: changeset.parsedTags.host
 								}
 							};
@@ -74,6 +78,7 @@ export const GET: RequestHandler = async ({ url }) => {
 									version: changeset.parsedTags.created_by.version
 								}
 							};
+							data.image = await getMapCompleteImage(changeset.parsedTags.theme);
 							break;
 						case 'StreetComplete':
 							data.subTitle = {
