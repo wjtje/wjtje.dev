@@ -40,10 +40,6 @@
 </div>
 
 <style lang="scss">
-	div.content {
-		@apply overflow-y-scroll overflow-x-hidden h-[calc(100vh-3rem)];
-	}
-
 	div.loader {
 		@apply absolute top-12 w-screen h-1 z-50 bg-green-500;
 		animation: load-right 2s 1s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
@@ -53,7 +49,7 @@
 	}
 
 	main {
-		@apply container mx-auto py-4 lg:py-8 px-4 lg:px-8 pb-16;
+		@apply container mx-auto py-4 lg:py-8 px-4 lg:px-8;
 	}
 
 	@keyframes load-right {
