@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
+
 	import { locale, t } from '$lib/i18n';
 	import type { GithubRepo } from '@prisma/client';
 	import GoRepoForked from 'svelte-icons/go/GoRepoForked.svelte';
@@ -23,7 +25,13 @@
 	<MiniPostLoader />
 {:then repos}
 	{#each repos as repo, i}
-		<div in:scale={{ duration: 400, delay: i * 50 }} class="project">
+		<div
+			in:scale={{ duration: 400, delay: i * 50 }}
+			class="project"
+			on:click={() => {
+				goto(`/${$locale}/projects/${encodeURI(repo.name)}`);
+			}}
+		>
 			<!-- <RepositoryCard {...repo} /> -->
 			<MiniPost subTitle={repo.description}>
 				<svelte:fragment slot="mainTitle">
@@ -48,7 +56,7 @@
 
 <style lang="scss">
 	div.project {
-		@apply w-full md:w-[60%] lg:w-[50%];
+		@apply w-full md:w-[60%] lg:w-[50%] cursor-pointer;
 
 		div.indicators {
 			@apply flex gap-2;
