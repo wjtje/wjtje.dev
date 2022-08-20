@@ -5,10 +5,12 @@
 	const color = colors[language]?.color ?? '#eeeeee';
 </script>
 
-<div>
-	<span style={`--color: ${color};`}>●</span>
-	{language}
-</div>
+{#if language != null}
+	<div>
+		<span style={`--color: ${color};`}>●</span>
+		{language}
+	</div>
+{/if}
 
 <style lang="scss">
 	div {
