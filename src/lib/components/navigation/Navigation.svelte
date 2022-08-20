@@ -14,5 +14,7 @@
 		@apply gdark:bg-green-700 gdark:border-green-600;
 		// Spacing of the items
 		@apply justify-between md:justify-start;
+		// Hide the navbar on prited pages
+		@apply print:hidden;
 	}
 </style>

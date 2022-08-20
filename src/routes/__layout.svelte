@@ -87,7 +87,7 @@
 	}
 
 	footer {
-		@apply fixed bottom-0 h-8 w-full flex flex-row px-8 justify-end;
+		@apply fixed bottom-0 h-8 w-full flex flex-row px-8 justify-end print:hidden;
 
 		a {
 			@apply text-sm text-zinc-600 hover:text-zinc-800 gdark:text-zinc-400 gdark:hover:text-zinc-200;
