@@ -6,8 +6,8 @@
 
 	let active = false;
 
-	let primaryColor = '#FFFFFF';
-	let secondaryColor = '#e5e7eb';
+	let primaryColor = '#F4F4F5';
+	let secondaryColor = '#E4E4E7';
 
 	// Store the value inside localStorage
 	const store = writableLocal('theme', 'system');
@@ -26,8 +26,8 @@
 					window.matchMedia('(prefers-color-scheme: dark)').matches) ||
 				theme == 'dark'
 			) {
-				primaryColor = '#111827';
-				secondaryColor = '#1f2937';
+				primaryColor = '#27272A';
+				secondaryColor = '#3F3F46';
 			}
 		}
 	}

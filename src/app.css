@@ -5,10 +5,17 @@
 
 /* Global body */
 body {
-	@apply dark:bg-gray-900 dark:text-white min-h-screen transition-colors overflow-hidden;
+	@apply dark:bg-zinc-900 dark:text-white transition-colors overflow-x-hidden;
 }
 
 /* Global headings */
 h1 {
 	@apply text-4xl pb-6;
+}
+
+div#tsparticles {
+	width: 100%;
+	position: absolute;
+	z-index: -1;
+	height: var(--height);
 }

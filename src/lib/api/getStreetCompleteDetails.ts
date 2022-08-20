@@ -2,6 +2,7 @@ import { prisma } from '$lib/prisma';
 import * as zipJs from '@zip.js/zip.js';
 import Papa from 'papaparse';
 import { checkCacheState, updateCacheState } from './helper';
+import { githubAuth } from './helper';
 
 /**
  * Gets the latest CSV file from the StreetComplete github page
@@ -38,10 +39,7 @@ async function getStreetCompleteCSV() {
 	const artifact_zip = await (
 		await fetch(`https://api.github.com/repos/${repo}/actions/artifacts/${artifact_id}/zip`, {
 			headers: {
-				Authorization: `Basic ${Buffer.from(
-					`${process.env.GITHUB_USERNAME}:${process.env.GITHUB_TOKEN}`,
-					'utf-8'
-				).toString('base64')}`
+				Authorization: githubAuth()
 			}
 		})
 	).blob();

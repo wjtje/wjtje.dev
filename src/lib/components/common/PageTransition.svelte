@@ -41,7 +41,12 @@
 
 <style lang="scss">
 	div.content {
-		@apply overflow-y-scroll overflow-x-hidden h-[calc(100vh-3rem)];
+		@apply grid justify-items-center;
+
+		& > * {
+			grid-column-start: 1;
+			grid-row-start: 1;
+		}
 	}
 
 	div.loader {
@@ -53,7 +58,7 @@
 	}
 
 	main {
-		@apply container mx-auto py-4 lg:py-8 px-4 lg:px-8 pb-16;
+		@apply container mx-auto py-4 lg:py-8 px-4 lg:px-8;
 	}
 
 	@keyframes load-right {

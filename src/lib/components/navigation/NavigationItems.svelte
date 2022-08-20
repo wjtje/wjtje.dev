@@ -29,6 +29,8 @@
 <style lang="scss">
 	button {
 		@apply md:hidden h-full p-3;
+		// This is a terrible fix for safari because it doesn't support justify-content: flex-start
+		@apply w-[46px] [@supports(justify-content:flex-start)]:w-auto;
 	}
 
 	section {
@@ -39,7 +41,7 @@
 		@apply hidden md:flex gap-1 md:gap-4 flex-col md:flex-row md:items-center;
 		// On small screen make it full screen,
 		// and on larger screens make it inline
-		@apply absolute top-0 left-0 w-full h-screen px-6 py-6 bg-gray-700;
+		@apply absolute top-0 left-0 w-full h-screen px-6 py-6 bg-zinc-700;
 		@apply md:relative md:w-auto md:h-full md:px-0 md:py-0 md:bg-transparent;
 
 		button {

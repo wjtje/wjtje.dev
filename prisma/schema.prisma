@@ -57,6 +57,13 @@ model StreetCompleteQuest {
   iconUrl String?
 }
 
+model MapCompleteTheme {
+  id      Int     @id @default(autoincrement())
+  theme   String
+  name    String?
+  iconUrl String?
+}
+
 model GithubRepo {
   id              Int      @id @default(autoincrement())
   name            String
