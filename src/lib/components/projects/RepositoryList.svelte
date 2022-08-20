@@ -23,7 +23,7 @@
 	<MiniPostLoader />
 {:then repos}
 	{#each repos as repo, i}
-		<div in:scale={{ duration: 400, delay: i * 50 }}>
+		<div in:scale={{ duration: 400, delay: i * 50 }} class="project">
 			<!-- <RepositoryCard {...repo} /> -->
 			<MiniPost subTitle={repo.description}>
 				<svelte:fragment slot="mainTitle">
@@ -47,7 +47,11 @@
 {/await}
 
 <style lang="scss">
-	div.indicators {
-		@apply flex gap-2;
+	div.project {
+		@apply w-full md:w-[60%] lg:w-[50%];
+
+		div.indicators {
+			@apply flex gap-2;
+		}
 	}
 </style>
