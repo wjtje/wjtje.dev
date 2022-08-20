@@ -1,5 +1,5 @@
 import { checkCacheState, updateCacheState } from '$lib/api/helper';
-import { GitHubUsername } from '$lib/common';
+import { GitHubUsername, ignoredRepos } from '$lib/common';
 import type { RequestHandler } from '@sveltejs/kit';
 import { getCacheData } from '$lib/api/helper';
 import { prisma } from '$lib/prisma';
@@ -114,6 +114,12 @@ export const GET: RequestHandler = async () => {
 	}
 
 	return {
-		body: await prisma.githubRepo.findMany()
+		body: await prisma.githubRepo.findMany({
+			where: {
+				name: {
+					notIn: ignoredRepos
+				}
+			}
+		})
 	};
 };
