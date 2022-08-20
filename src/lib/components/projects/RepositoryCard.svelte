@@ -25,9 +25,7 @@
 		<img src={image} alt={name} />
 	{/if}
 	<a href={url} class="name">{name}</a>
-	{#if language}
-		<LanguageIndicator {language} />
-	{/if}
+	<LanguageIndicator {language} />
 	{#if forksCount > 0}
 		<span><GoRepoForked />{forksCount}</span>
 	{/if}
