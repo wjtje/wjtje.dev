@@ -50,6 +50,6 @@
 	}
 
 	span {
-		@apply pb-3 inline-block text-gray-700 gdark:text-gray-300;
+		@apply pb-3 inline-block text-zinc-700 gdark:text-zinc-300;
 	}
 </style>

@@ -27,6 +27,7 @@
 	import { locales, t } from '$lib/i18n';
 	import '../app.css';
 	import PageTransition from '$lib/components/common/PageTransition.svelte';
+	import Particles from '$lib/components/common/Particles.svelte';
 
 	$: routes = [
 		{
@@ -58,6 +59,8 @@
 	{/each}
 </svelte:head>
 
+<Particles />
+
 <Navigation>
 	<NavigationTitle><a href={`/${$locale}/`}>{$t('common.title')}</a></NavigationTitle>
 	<NavigationItems>
@@ -80,14 +83,14 @@
 
 <style lang="scss">
 	div {
-		@apply md:flex-grow md:border-none border border-gray-500 bg-gray-500;
+		@apply md:flex-grow md:border-none border border-zinc-500 bg-zinc-500;
 	}
 
 	footer {
 		@apply fixed bottom-0 h-8 w-full flex flex-row px-8 justify-end;
 
 		a {
-			@apply text-sm text-gray-600 hover:text-gray-800 gdark:text-gray-400 gdark:hover:text-gray-200;
+			@apply text-sm text-zinc-600 hover:text-zinc-800 gdark:text-zinc-400 gdark:hover:text-zinc-200;
 		}
 	}
 </style>

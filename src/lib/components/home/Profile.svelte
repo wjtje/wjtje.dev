@@ -26,7 +26,7 @@
 		}
 
 		p {
-			@apply text-gray-900 dark:text-gray-100 col-span-2 md:col-span-1;
+			@apply text-zinc-900 dark:text-zinc-100 col-span-2 md:col-span-1;
 		}
 	}
 </style>

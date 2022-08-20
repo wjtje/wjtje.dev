@@ -52,7 +52,7 @@
 
 			// The date above the title shown in a light gray
 			span {
-				@apply text-xs text-gray-700 dark:text-gray-300 mb-[-0.1rem] block;
+				@apply text-xs text-zinc-700 dark:text-zinc-300 mb-[-0.1rem] block;
 			}
 
 			// The main title in large default color text with markdown support
