@@ -12,6 +12,7 @@
 	import LanguageIndicator from './LanguageIndicator.svelte';
 	import NumberIndicator from './NumberIndicator.svelte';
 	import RepositoryCard from './RepositoryCard.svelte';
+	import { GitHubUsername } from '$lib/common';
 
 	const getDataFromServer = async (lang: string) => {
 		const response = await fetch(`/api/projects.json?lang=${locale.get()}`);
@@ -35,7 +36,11 @@
 			<!-- <RepositoryCard {...repo} /> -->
 			<MiniPost subTitle={repo.description}>
 				<svelte:fragment slot="mainTitle">
-					{repo.name}
+					{#if repo.owner == GitHubUsername}
+						{repo.name}
+					{:else}
+						{repo.owner}/{repo.name}
+					{/if}
 				</svelte:fragment>
 				<div class="indicators" slot="tags">
 					<LanguageIndicator language={repo.language} />

@@ -57,6 +57,9 @@ export const GET: RequestHandler = async () => {
 										openGraphImageUrl
 										createdAt
 										updatedAt
+										owner {
+											login
+										}
 									}
 								}
 							}
@@ -82,6 +85,7 @@ export const GET: RequestHandler = async () => {
 					return prisma.githubRepo.create({
 						data: {
 							id: repo.databaseId,
+							owner: repo.owner.login,
 							name: repo.name,
 							description: repo.description,
 							url: repo.url,

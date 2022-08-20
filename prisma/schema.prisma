@@ -66,6 +66,7 @@ model MapCompleteTheme {
 
 model GithubRepo {
   id              Int      @id @default(autoincrement())
+  owner           String
   name            String
   description     String?
   url             String
