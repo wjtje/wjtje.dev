@@ -7,6 +7,8 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// Blog
+
 model User {
   id    Int    @id @default(autoincrement())
   name  String
@@ -33,6 +35,8 @@ enum Language {
   EN
   NL
 }
+
+// Remote data cache
 
 model RemoteSource {
   id         Int          @id @default(autoincrement())
@@ -63,6 +67,8 @@ model MapCompleteTheme {
   name    String?
   iconUrl String?
 }
+
+// Project page
 
 model GithubRepo {
   id              Int      @id @default(autoincrement())

@@ -28,11 +28,12 @@ export const GET: RequestHandler = async ({ url }) => {
 		try {
 			const responseChangesets = await fetchOsmData();
 
-			// Update streetComplete cache
-			await updateStreetCompleteCache();
-
-			// Update MapComplete cache
-			await updateMapCompleteCache();
+			await Promise.all([
+				// Update streetComplete cache
+				await updateStreetCompleteCache(),
+				// Update MapComplete cache
+				await updateMapCompleteCache()
+			]);
 
 			// Remove old cache
 			await prisma.remoteData.deleteMany({
