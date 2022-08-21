@@ -2,7 +2,7 @@
 	import { locale, t } from '$lib/i18n';
 	import { DateTime } from 'luxon';
 	import Markdown from 'svelte-exmarkdown';
-	import '../[slug].scss';
+	import './+page.scss';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
