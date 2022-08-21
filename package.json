@@ -11,7 +11,8 @@
 		"lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
 		"package": "svelte-kit package",
 		"prepare": "svelte-kit sync",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"git": "npm ci && npx prisma migrate deploy && npx prisma generate"
 	},
 	"dependencies": {
 		"@prisma/client": "^4.0.0",
