@@ -58,7 +58,7 @@
 	}
 
 	main {
-		@apply container mx-auto py-4 lg:py-8 px-4 lg:px-8;
+		@apply container mx-auto py-4 lg:py-8 px-4 lg:px-8 w-screen;
 	}
 
 	@keyframes load-right {
