@@ -1,8 +1,8 @@
 import { prisma } from '$lib/prisma';
 import type { Language } from '@prisma/client';
-import type { RequestHandler } from './__types/[slug]';
+import type { PageServerLoad } from './$types';
 
-export const GET: RequestHandler = async ({ params }) => {
+export const load: PageServerLoad = async ({ params }) => {
 	// Get the post
 	const post = await prisma.post.findUnique({
 		include: {
@@ -19,19 +19,17 @@ export const GET: RequestHandler = async ({ params }) => {
 	if (!post || !post.published) {
 		return {
 			status: 404,
-			body: {
+			errors: {
 				error: 'Not Found'
 			}
 		};
 	}
 
 	return {
-		status: 200,
-		body: {
-			post: {
-				...post,
-				body: atob(post.body)
-			}
+		post: {
+			...post,
+			createdAt: post.createdAt.toISOString(),
+			body: atob(post.body)
 		}
 	};
 };

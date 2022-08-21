@@ -1,16 +1,13 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-
 	import MiniPost from '$lib/components/common/MiniPost.svelte';
 	import { locale, t } from '$lib/i18n';
 	import { scale } from 'svelte/transition';
+	import type { PageData } from './$types';
 
-	export let posts: {
-		createdAt: Date;
-		title: string;
-		slug: string;
-		preview: string;
-	}[] = [];
+	export let data: PageData;
+
+	$: ({ posts } = data);
 </script>
 
 <svelte:head>

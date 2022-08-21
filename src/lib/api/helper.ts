@@ -121,39 +121,37 @@ export function extractLangFromUrl(url: URL) {
 }
 
 export async function translateCache(id: number) {
-	return {
-		body: await Promise.all(
-			(
-				await getCacheData(id)
-			).map(async (item) => {
-				const mainTitle = JSON.parse(item.mainTitle);
-				const subTitle = JSON.parse(item.subTitle);
+	return await Promise.all(
+		(
+			await getCacheData(id)
+		).map(async (item) => {
+			const mainTitle = JSON.parse(item.mainTitle);
+			const subTitle = JSON.parse(item.subTitle);
 
-				if (mainTitle.data?.theme?.type == 'MapCompleteTheme') {
-					mainTitle.data.theme = await getMapCompleteName(
-						mainTitle.data.theme.data,
-						locale.get() || defaultLocale
-					);
-				}
+			if (mainTitle.data?.theme?.type == 'MapCompleteTheme') {
+				mainTitle.data.theme = await getMapCompleteName(
+					mainTitle.data.theme.data,
+					locale.get() || defaultLocale
+				);
+			}
 
-				return {
-					...item,
-					mainTitle:
-						mainTitle == null
-							? null
-							: typeof mainTitle == 'string'
-							? mainTitle
-							: t.get(mainTitle.id, mainTitle.data ?? {}),
-					subTitle:
-						subTitle == null
-							? null
-							: typeof subTitle == 'string'
-							? subTitle
-							: t.get(subTitle.id, subTitle.data ?? {})
-				};
-			})
-		)
-	};
+			return {
+				...item,
+				mainTitle:
+					mainTitle == null
+						? null
+						: typeof mainTitle == 'string'
+						? mainTitle
+						: t.get(mainTitle.id, mainTitle.data ?? {}),
+				subTitle:
+					subTitle == null
+						? null
+						: typeof subTitle == 'string'
+						? subTitle
+						: t.get(subTitle.id, subTitle.data ?? {})
+			};
+		})
+	);
 }
 
 /**

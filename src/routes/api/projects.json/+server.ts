@@ -1,7 +1,6 @@
 import { checkCacheState, updateCacheState } from '$lib/api/helper';
 import { GitHubUsername, ignoredRepos } from '$lib/common';
 import type { RequestHandler } from '@sveltejs/kit';
-import { getCacheData } from '$lib/api/helper';
 import { prisma } from '$lib/prisma';
 
 export const GET: RequestHandler = async () => {
@@ -68,6 +67,10 @@ export const GET: RequestHandler = async () => {
 				})
 			});
 
+			if (response.status != 200) {
+				throw 'Faulty response';
+			}
+
 			const json = await response.json();
 
 			const pinnedRepos = json.data.user.pinnedItems.edges.map((item) => item.node.name);
@@ -110,20 +113,32 @@ export const GET: RequestHandler = async () => {
 			// Update the cache state
 			await updateCacheState(id);
 		} catch (error) {
-			return {
-				status: 500,
-				...(await getCacheData(id))
-			};
+			return new Response(
+				JSON.stringify(
+					await prisma.githubRepo.findMany({
+						where: {
+							name: {
+								notIn: ignoredRepos
+							}
+						}
+					})
+				),
+				{
+					status: 500
+				}
+			);
 		}
 	}
 
-	return {
-		body: await prisma.githubRepo.findMany({
-			where: {
-				name: {
-					notIn: ignoredRepos
+	return new Response(
+		JSON.stringify(
+			await prisma.githubRepo.findMany({
+				where: {
+					name: {
+						notIn: ignoredRepos
+					}
 				}
-			}
-		})
-	};
+			})
+		)
+	);
 };

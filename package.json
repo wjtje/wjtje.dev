@@ -14,7 +14,7 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
-		"@prisma/client": "^4.0.0",
+		"@prisma/client": "^4.2.1",
 		"@zip.js/zip.js": "^2.5.4",
 		"fast-xml-parser": "^4.0.7",
 		"gemoji": "^7.1.0",
@@ -42,7 +42,7 @@
 		"postcss-load-config": "^4.0.1",
 		"prettier": "^2.5.1",
 		"prettier-plugin-svelte": "^2.5.0",
-		"prisma": "^4.0.0",
+		"prisma": "^4.2.1",
 		"sass": "^1.49.9",
 		"svelte-check": "^2.2.6",
 		"svelte-content-loader": "^1.1.3",

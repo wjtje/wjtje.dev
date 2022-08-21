@@ -1,8 +1,8 @@
 import { prisma } from '$lib/prisma';
 import type { Language } from '@prisma/client';
-import type { RequestHandler } from './__types/index';
+import type { PageServerLoad } from './$types';
 
-export const GET: RequestHandler = async ({ params }) => {
+export const load: PageServerLoad = async ({ params }) => {
 	// Get all the posts
 	// TODO: Pagination
 	const posts = await prisma.post.findMany({
@@ -22,10 +22,11 @@ export const GET: RequestHandler = async ({ params }) => {
 		}
 	});
 
+	// This changes the Date object to a String to keep svelte kit happy
 	return {
-		status: 200,
-		body: {
-			posts: posts
-		}
+		posts: posts.map((post) => ({
+			...post,
+			createdAt: post.createdAt.toISOString()
+		}))
 	};
 };

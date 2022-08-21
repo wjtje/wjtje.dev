@@ -1,9 +1,7 @@
-import type { RequestHandler } from './__types/[project]';
+import type { PageServerLoad } from '../$types';
 
-export const GET: RequestHandler = ({ params }) => {
+export const load: PageServerLoad = ({ params }) => {
 	return {
-		body: {
-			title: params.project
-		}
+		title: params.project
 	};
 };

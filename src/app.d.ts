@@ -5,9 +5,6 @@
 declare namespace App {
 	// interface Locals {}
 	// interface Platform {}
-	// interface Session {}
-	interface Stuff {
-		route: string;
-		lang: string;
-	}
+	// interface PrivateEnv {}
+	// interface PublicEnv {}
 }
