@@ -9,6 +9,7 @@ on:
       - 'package.json'
       - 'package-lock.json'
       - '.github/workflows/docker.yml'
+      - 'Dockerfile'
 
 env:
   REGISTRY: ghcr.io

@@ -4,7 +4,7 @@ WORKDIR /app
 
 # Build the project
 COPY . .
-RUN npm install
+RUN npm ci
 RUN npm run build
 
 # Create smaller package
@@ -15,7 +15,7 @@ COPY ./prisma ./
 COPY package.json package-lock.json docker_start.sh ./
 
 ENV NODE_ENV=production
-RUN npm install --ignore-scripts --production
+RUN npm ci --ignore-scripts --production
 
 # Run the program
 EXPOSE 3000
