@@ -3,5 +3,6 @@
 	"about": "A 19-year-old developer from the Netherlands. That is currently experimenting with TypeScript, Svelte, GraphQL and Tailwind. And adding more details to OpenStreetMap.",
 	"ghactivity": "GitHub activity",
 	"osmactivity": "OpenStreetMap activity",
-	"dataLoadingFailed": "Fail to load the required data from the server. ({{status}})"
+	"noData": "Failed to load the required data from the server. ({{status}})",
+	"dataLoadingFailed": "Failed to load new data from github. ({{status}})"
 }

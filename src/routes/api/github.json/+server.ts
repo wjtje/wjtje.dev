@@ -25,7 +25,7 @@ export const GET: RequestHandler = async ({ url }) => {
 		// Get new JSON data from GitHub
 		try {
 			const response = await fetch(
-				`https://api.github.com/users/${GitHubUsername}/events/publics?per_page=10`
+				`https://api.github.com/users/${GitHubUsername}/events/public?per_page=10`
 			);
 			const json: GithubEvent<any>[] = await response.json(); // eslint-disable-line @typescript-eslint/no-explicit-any
 
