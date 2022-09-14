@@ -7,33 +7,45 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Blog
-
 model User {
   id    Int    @id @default(autoincrement())
   name  String
-  posts Post[]
-}
-
-model Post {
-  id        Int      @id @default(autoincrement())
-  title     String
-  body      String
-  slug      String
-  preview   String
-  image     String?
-  language  Language @default(EN)
-  published Boolean
-  createdAt DateTime @default(now())
-  author    User     @relation(fields: [authorId], references: [id])
-  authorId  Int
-
-  @@unique([slug, language])
+  pages Page[]
 }
 
 enum Language {
   EN
   NL
+}
+
+enum PageType {
+  BLOG
+  REPO
+}
+
+model Page {
+  id Int @id @default(autoincrement())
+
+  // Metadata
+  language  Language @default(EN)
+  visable   Boolean  @default(false)
+  pageType  PageType @default(BLOG)
+  createdAt DateTime @default(now())
+
+  // Page owner
+  owner   User @relation(fields: [ownerId], references: [id])
+  ownerId Int
+
+  // Url and (social)preview
+  slug    String
+  preview String
+  image   String?
+
+  // Page content
+  title String
+  body  String
+
+  @@unique([slug, language])
 }
 
 // Remote data cache
@@ -67,8 +79,6 @@ model MapCompleteTheme {
   name    String?
   iconUrl String?
 }
-
-// Project page
 
 model GithubRepo {
   id              Int      @id @default(autoincrement())

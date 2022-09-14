@@ -35,7 +35,7 @@
 
 <span
 	>{$t('blog.written_by', {
-		author: post.author.name,
+		author: post.owner.name,
 		date: date
 	})}</span
 >

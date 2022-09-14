@@ -4,9 +4,9 @@ import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params }) => {
 	// Get the post
-	const post = await prisma.post.findUnique({
+	const post = await prisma.page.findUnique({
 		include: {
-			author: true
+			owner: true
 		},
 		where: {
 			slug_language: {
@@ -16,7 +16,7 @@ export const load: PageServerLoad = async ({ params }) => {
 		}
 	});
 
-	if (!post || !post.published) {
+	if (!post || !post.visable || post.pageType != 'BLOG') {
 		return {
 			status: 404,
 			errors: {

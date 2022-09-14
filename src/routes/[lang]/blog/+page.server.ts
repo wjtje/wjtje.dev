@@ -5,10 +5,11 @@ import type { PageServerLoad } from './$types';
 export const load: PageServerLoad = async ({ params }) => {
 	// Get all the posts
 	// TODO: Pagination
-	const posts = await prisma.post.findMany({
+	const posts = await prisma.page.findMany({
 		take: 10,
 		where: {
-			published: true,
+			visable: true,
+			pageType: 'BLOG',
 			language: params.lang.toUpperCase() as Language
 		},
 		orderBy: {
