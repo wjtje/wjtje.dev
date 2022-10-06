@@ -59,6 +59,9 @@ export const GET: RequestHandler = async () => {
 										owner {
 											login
 										}
+										defaultBranchRef {
+											name
+										}
 									}
 								}
 							}
@@ -85,6 +88,11 @@ export const GET: RequestHandler = async () => {
 					const topics = JSON.stringify(
 						repo.repositoryTopics.nodes.map((topic) => topic.topic.name)
 					);
+					const readme = await fetch(
+						`https://raw.githubusercontent.com/${repo.owner.login}/${repo.name}/${repo.defaultBranchRef.name}/README.md`
+					);
+					// Save text if status is 200, otherwise save an empty string
+					const readmeText = readme.status == 200 ? await readme.text() : '';
 					return prisma.githubRepo.create({
 						data: {
 							id: repo.databaseId,
@@ -102,7 +110,8 @@ export const GET: RequestHandler = async () => {
 							image: repo.openGraphImageUrl,
 							pinned: pinnedRepos.includes(repo.name),
 							createdAt: repo.createdAt,
-							updatedAt: repo.updatedAt
+							updatedAt: repo.updatedAt,
+							readMe: readmeText
 						}
 					});
 				})
