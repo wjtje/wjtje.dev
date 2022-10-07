@@ -30,13 +30,21 @@ export const load: PageServerLoad = async ({ params }) => {
 		return {
 			title: repo.name,
 			createdAt: repo.updatedAt.toISOString(),
-			body
+			body,
+			repo: {
+				name: repo.name,
+				owner: repo.owner
+			}
 		};
 	} else {
 		return {
 			...page,
 			createdAt: page.createdAt.toISOString(),
-			body: atob(page.body)
+			body: atob(page.body),
+			repo: {
+				name: params.project,
+				owner: params.owner
+			}
 		};
 	}
 };
