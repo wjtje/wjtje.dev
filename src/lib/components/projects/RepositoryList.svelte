@@ -30,7 +30,9 @@
 			in:scale={{ duration: 400, delay: i * 50 }}
 			class="project"
 			on:click={() => {
-				goto(`/${$locale}/projects/${encodeURI(repo.name)}`);
+				goto(
+					`/${$locale}/projects/${encodeURIComponent(repo.owner)}/${encodeURIComponent(repo.name)}`
+				);
 			}}
 		>
 			<!-- <RepositoryCard {...repo} /> -->

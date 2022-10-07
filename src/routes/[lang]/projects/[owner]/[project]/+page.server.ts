@@ -12,12 +12,17 @@ export const load: PageServerLoad = async ({ params }) => {
 	});
 	// Check whether the page exists, if not return an auto-generated description page
 	if (!page) {
-		console.log(`[projects/[project]/+page.server.ts]: Page ${params.project} does not exist`);
+		console.log(
+			`[projects/[owner]/[project]/+page.server.ts]: Page ${params.project} does not exist`
+		);
 
 		// TODO: Won't work if a user has to repos with the same name, through editing rights
 		const repo = await prisma.githubRepo.findFirstOrThrow({
 			where: {
-				name: params.project
+				AND: {
+					name: params.project,
+					owner: params.owner
+				}
 			}
 		});
 		// Body is readme contents, description if empty, or a default message

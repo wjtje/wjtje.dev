@@ -3,6 +3,7 @@
 	import Markdown from 'svelte-exmarkdown';
 
 	export let data: PageData;
+	console.log(data);
 </script>
 
 <h1>{data.title}</h1>
