@@ -127,7 +127,8 @@ export const GET: RequestHandler = async () => {
 					await prisma.githubRepo.findMany({
 						where: {
 							name: {
-								notIn: ignoredRepos
+								notIn: ignoredRepos,
+								mode: 'insensitive'
 							}
 						}
 					})
@@ -144,7 +145,8 @@ export const GET: RequestHandler = async () => {
 			await prisma.githubRepo.findMany({
 				where: {
 					name: {
-						notIn: ignoredRepos
+						notIn: ignoredRepos,
+						mode: 'insensitive'
 					}
 				}
 			})
