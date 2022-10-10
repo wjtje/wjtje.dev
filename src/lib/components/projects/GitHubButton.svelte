@@ -21,7 +21,7 @@
 			@apply h-8 w-8 p-2 fill-current inline;
 		}
 
-		&:hover {
+		&.large:hover {
 			@apply bg-white text-black transition-colors duration-300;
 		}
 
