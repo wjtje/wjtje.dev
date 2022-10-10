@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import Markdown from 'svelte-exmarkdown';
-	import LargeGitHubButton from '$lib/components/projects/LargeGitHubButton.svelte';
+	import GitHubButton from '$lib/components/projects/GitHubButton.svelte';
 	export let data: PageData;
 
 	const link = `https://github.com/${data.repo.owner}/${data.repo.name}`;
@@ -9,7 +9,7 @@
 
 <h1>{data.title}</h1>
 
-<LargeGitHubButton {link} />
+<GitHubButton {link} type="large" />
 
 <div class="markdown">
 	<Markdown md={data.body} />
