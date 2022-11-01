@@ -8,6 +8,7 @@
 	import FaReddit from 'svelte-icons/fa/FaReddit.svelte';
 	import OsmIcon from '$lib/components/icons/OsmIcon.svelte';
 	import DiscordIcon from '$lib/components/icons/DiscordIcon.svelte';
+	import MastodonIcon from '$lib/components/icons/MastodonIcon.svelte';
 	import FaYoutube from 'svelte-icons/fa/FaYoutube.svelte';
 </script>
 
@@ -48,6 +49,10 @@
 		<FaTwitter title="Twitter" />
 		<span><a href="https://twitter.com/wjtje_wal">@wjtje_wal</a></span>
 	</li>
+	<li class="mastodon">
+		<MastodonIcon title="Mastodon" />
+		<span><a rel="me" href="https://mastodon.online/@wjtje">@wjtje</a></span>
+	</li>
 	<li class="youtube">
 		<FaYoutube title="Youtube" />
 		<span><a href="https://www.youtube.com/channel/UCIXqIlnYY016Dn1aSuYvTmg">wjtje</a></span>
@@ -73,7 +78,7 @@
 				@apply hover:text-red-600 gdark:hover:text-red-500;
 			}
 			// Define brands with custom styles
-			$brands: discord, osm, linkedin, reddit, twitter, youtube;
+			$brands: discord, osm, mastodon, linkedin, reddit, twitter, youtube;
 			@each $brand in $brands {
 				&.#{$brand} {
 					@apply #{'hover:text-' + $brand + '-brand'};

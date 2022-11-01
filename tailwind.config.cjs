@@ -5,6 +5,7 @@ module.exports = {
 		extend: {
 			colors: {
 				'discord-brand': '#5865F2', // https://discord.com/branding
+				'mastodon-brand': '#5C50E6',
 				'osm-brand': '#7ebc6f',
 				'reddit-brand': '#ff4500', // https://www.redditinc.com/brand
 				'twitter-brand': '#009EF7', // https://about.twitter.com/en/who-we-are/brand-toolkit
