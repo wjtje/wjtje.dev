@@ -51,7 +51,7 @@
 	</li>
 	<li class="mastodon">
 		<MastodonIcon title="Mastodon" />
-		<span><a rel="me" href="https://mastodon.online/@wjtje">@wjtje</a></span>
+		<span><a rel="me" href="https://social.wjtje.dev/@wjtje">@wjtje</a></span>
 	</li>
 	<li class="youtube">
 		<FaYoutube title="Youtube" />
