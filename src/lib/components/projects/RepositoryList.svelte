@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
-
 	import { locale, t } from '$lib/i18n';
 	import type { GithubRepo } from '@prisma/client';
 	import GoRepoForked from 'svelte-icons/go/GoRepoForked.svelte';
@@ -11,9 +9,8 @@
 	import ForkIndicator from './ForkIndicator.svelte';
 	import LanguageIndicator from './LanguageIndicator.svelte';
 	import NumberIndicator from './NumberIndicator.svelte';
-	import RepositoryCard from './RepositoryCard.svelte';
 	import { GitHubUsername } from '$lib/common';
-	import GitHubButton from './GitHubButton.svelte';
+	import GoMarkGithub from 'svelte-icons/go/GoMarkGithub.svelte';
 
 	const getDataFromServer = async (lang: string) => {
 		const response = await fetch(`/api/projects.json?lang=${locale.get()}`);
@@ -27,16 +24,13 @@
 	<MiniPostLoader />
 {:then repos}
 	{#each repos as repo, i}
-		<div
+		<a
 			in:scale={{ duration: 400, delay: i * 50 }}
 			class="project"
-			on:click={() => {
-				goto(
-					`/${$locale}/projects/${encodeURIComponent(repo.owner)}/${encodeURIComponent(repo.name)}`
-				);
-			}}
+			href={repo.detailPage
+				? `/${$locale}/projects/${encodeURIComponent(repo.owner)}/${encodeURIComponent(repo.name)}`
+				: repo.url}
 		>
-			<!-- <RepositoryCard {...repo} /> -->
 			<MiniPost subTitle={repo.description}>
 				<svelte:fragment slot="mainTitle">
 					{#if repo.owner == GitHubUsername}
@@ -44,7 +38,11 @@
 					{:else}
 						{repo.owner}/{repo.name}
 					{/if}
-					<GitHubButton link={repo.url} type="small" />
+					{#if !repo.detailPage}
+						<span class="github-readme">
+							<GoMarkGithub />
+						</span>
+					{/if}
 				</svelte:fragment>
 				<div class="indicators" slot="tags">
 					<LanguageIndicator language={repo.language} />
@@ -57,18 +55,22 @@
 					<ForkIndicator {...repo} />
 				</div>
 			</MiniPost>
-		</div>
+		</a>
 	{/each}
 {:catch error}
 	<h3>{$t('home.dataLoadingFailed', { status: error.message })}</h3>
 {/await}
 
 <style lang="scss">
-	div.project {
+	a.project {
 		@apply w-full md:w-[60%] lg:w-[50%] cursor-pointer;
 
 		div.indicators {
 			@apply flex gap-2;
+		}
+
+		span.github-readme :global(svg) {
+			@apply h-6 w-6 p-1 fill-white inline;
 		}
 	}
 </style>

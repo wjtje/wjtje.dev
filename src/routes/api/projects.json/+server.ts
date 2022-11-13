@@ -85,14 +85,19 @@ export const GET: RequestHandler = async () => {
 			await Promise.all(
 				json.data.user.repositories.nodes.map(async (repo) => {
 					console.log('[projects.json.ts]: Saving repo ' + repo.name);
+
 					const topics = JSON.stringify(
 						repo.repositoryTopics.nodes.map((topic) => topic.topic.name)
 					);
-					const readme = await fetch(
-						`https://raw.githubusercontent.com/${repo.owner.login}/${repo.name}/${repo.defaultBranchRef.name}/README.md`
-					);
-					// Save text if status is 200, otherwise save an empty string
-					const readmeText = readme.status == 200 ? await readme.text() : '';
+
+					// Check if there is a detail page
+					const detailPage = await prisma.page.findFirst({
+						where: {
+							pageType: 'REPO',
+							slug: `${repo.owner.login}/${repo.name}`
+						}
+					});
+
 					return prisma.githubRepo.create({
 						data: {
 							id: repo.databaseId,
@@ -111,7 +116,7 @@ export const GET: RequestHandler = async () => {
 							pinned: pinnedRepos.includes(repo.name),
 							createdAt: repo.createdAt,
 							updatedAt: repo.updatedAt,
-							readMe: readmeText
+							detailPage: Boolean(detailPage)
 						}
 					});
 				})

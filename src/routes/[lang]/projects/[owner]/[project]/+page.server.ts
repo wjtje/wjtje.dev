@@ -1,11 +1,12 @@
 import { prisma } from '$lib/prisma';
+import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params }) => {
 	const page = await prisma.page.findUnique({
 		where: {
 			slug_language: {
-				slug: params.project,
+				slug: `${params.owner}/${params.project}`,
 				language: 'EN'
 			}
 		}
@@ -15,27 +16,7 @@ export const load: PageServerLoad = async ({ params }) => {
 		console.log(
 			`[projects/[owner]/[project]/+page.server.ts]: Page ${params.project} does not exist`
 		);
-
-		// TODO: Won't work if a user has to repos with the same name, through editing rights
-		const repo = await prisma.githubRepo.findFirstOrThrow({
-			where: {
-				AND: {
-					name: params.project,
-					owner: params.owner
-				}
-			}
-		});
-		// Body is readme contents, description if empty, or a default message
-		const body = repo.readMe || repo.description || 'No description available';
-		return {
-			title: repo.name,
-			createdAt: repo.updatedAt.toISOString(),
-			body,
-			repo: {
-				name: repo.name,
-				owner: repo.owner
-			}
-		};
+		throw error(404, 'Page not found');
 	} else {
 		return {
 			...page,

@@ -14,3 +14,9 @@
 <div class="markdown">
 	<Markdown md={data.body} />
 </div>
+
+<style lang="scss">
+	div.markdown {
+		@apply mt-4;
+	}
+</style>

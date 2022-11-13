@@ -75,7 +75,7 @@
 
 			// The subtitle is mid size default color text
 			div.subtitle {
-				@apply flex gap-2 h-5 w-full overflow-hidden;
+				@apply flex gap-2 max-h-5 w-full overflow-hidden;
 
 				:global(*) {
 					display: none;

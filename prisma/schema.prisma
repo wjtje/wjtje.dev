@@ -97,5 +97,5 @@ model GithubRepo {
   pinned          Boolean
   createdAt       DateTime
   updatedAt       DateTime
-  readMe          String?
+  detailPage      Boolean  @default(false)
 }
