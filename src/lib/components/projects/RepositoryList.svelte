@@ -63,7 +63,7 @@
 
 <style lang="scss">
 	a.project {
-		@apply w-full md:w-[60%] lg:w-[50%] cursor-pointer;
+		@apply w-full md:w-[60%] lg:w-[50%] cursor-pointer block;
 
 		div.indicators {
 			@apply flex gap-2;
