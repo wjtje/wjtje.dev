@@ -75,18 +75,18 @@
 
 			// The subtitle is mid size default color text
 			div.subtitle {
-				@apply flex gap-2;
+				@apply flex gap-2 h-5 w-full overflow-hidden;
+
+				:global(*) {
+					display: none;
+				}
 
 				:global(p) {
-					@apply text-sm truncate;
+					@apply text-sm truncate inline;
 				}
 
 				:global(a) {
-					@apply text-sm whitespace-nowrap text-sky-700 gdark:text-blue-200 hover:text-blue-700 gdark:hover:text-sky-600 transition-colors;
-				}
-
-				:global(ul) {
-					display: none;
+					@apply text-sm whitespace-nowrap text-sky-700 gdark:text-blue-200 hover:text-blue-700 gdark:hover:text-sky-600 transition-colors  inline;
 				}
 			}
 		}
