@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { browser } from '$app/env';
+	import { browser } from '$app/environment';
 	import { writableLocal } from '$lib/store-localstorage';
 	import { onMount } from 'svelte';
 	import ContentLoader from 'svelte-content-loader';
