@@ -31,6 +31,10 @@ export const fetchOsmData = async (): Promise<Changeset[]> => {
 		)}`
 	);
 
+	if (response.status != 200) {
+		throw 'Faulty response';
+	}
+
 	const parser = new XMLParser({
 		ignoreAttributes: false
 	});

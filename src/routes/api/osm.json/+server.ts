@@ -1,14 +1,13 @@
 import {
 	checkCacheState,
 	extractLangFromUrl,
-	getCacheData,
 	saveCacheData,
 	translateCache,
 	updateCacheState,
 	type RemoteData
 } from '$lib/api/helper';
 import { prisma } from '$lib/prisma';
-import type { RequestHandler } from './__types/osm.json';
+import type { RequestHandler } from './$types';
 import { fetchOsmData } from '$lib/api/osm';
 import {
 	getStreetCompleteImage,
@@ -28,11 +27,12 @@ export const GET: RequestHandler = async ({ url }) => {
 		try {
 			const responseChangesets = await fetchOsmData();
 
-			// Update streetComplete cache
-			await updateStreetCompleteCache();
-
-			// Update MapComplete cache
-			await updateMapCompleteCache();
+			await Promise.all([
+				// Update streetComplete cache
+				await updateStreetCompleteCache(),
+				// Update MapComplete cache
+				await updateMapCompleteCache()
+			]);
 
 			// Remove old cache
 			await prisma.remoteData.deleteMany({
@@ -102,15 +102,14 @@ export const GET: RequestHandler = async ({ url }) => {
 			// Update the cache state
 			await updateCacheState(id);
 		} catch {
-			return {
-				status: 500,
-				...(await getCacheData(id))
-			};
+			return new Response(JSON.stringify(await translateCache(id)), {
+				status: 500
+			});
 		}
 	}
 
 	// Load the required translations
 	await loadTranslations(extractLangFromUrl(url), '/api/osm');
 
-	return await translateCache(id);
+	return new Response(JSON.stringify(await translateCache(id)));
 };

@@ -4,7 +4,7 @@
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 
-	$: ({ route } = $page.stuff);
+	$: ({ route } = $page.data);
 	let active = 0;
 
 	$: {

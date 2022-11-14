@@ -1,7 +1,8 @@
 <script>
-	import { browser } from '$app/env';
+	import { browser } from '$app/environment';
 
 	import { onMount } from 'svelte';
+	import { fade } from 'svelte/transition';
 
 	import Particles from 'svelte-particles';
 	import { loadFull } from 'tsparticles';
@@ -133,11 +134,13 @@
 	});
 </script>
 
-<div use:styles={{ height: `${height}px` }}>
-	<Particles
-		id="tsparticles"
-		options={particlesConfig}
-		on:particlesLoaded={onParticlesLoaded}
-		{particlesInit}
-	/>
-</div>
+{#key height}
+	<div use:styles={{ height: `${height}px` }} in:fade={{ delay: 500 }}>
+		<Particles
+			id="tsparticles"
+			options={particlesConfig}
+			on:particlesLoaded={onParticlesLoaded}
+			{particlesInit}
+		/>
+	</div>
+{/key}

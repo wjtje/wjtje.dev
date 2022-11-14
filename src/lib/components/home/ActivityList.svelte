@@ -8,20 +8,26 @@
 
 	const getDataFromServer = async (lang: string) => {
 		const response = await fetch(`/api/${activityName}.json?lang=${locale.get()}`);
-		return await response.json();
+		return {
+			status: response.status,
+			events: await response.json()
+		};
 	};
 
-	$: response = getDataFromServer($locale);
+	$: request = getDataFromServer($locale);
 </script>
 
-{#await response}
+{#await request}
 	<MiniPostLoader />
-{:then events}
-	{#each events as event, i}
+{:then response}
+	{#if response.status != 200}
+		<h3>{$t('home.dataLoadingFailed', { status: response.status })}</h3>
+	{/if}
+	{#each response.events as event, i}
 		<div in:scale={{ duration: 400, delay: i * 50 }}>
 			<MiniPost {...event} />
 		</div>
 	{/each}
 {:catch error}
-	<h3>{$t('home.dataLoadingFailed', { status: error.message })}</h3>
+	<h3>{$t('home.noData', { status: error.message })}</h3>
 {/await}

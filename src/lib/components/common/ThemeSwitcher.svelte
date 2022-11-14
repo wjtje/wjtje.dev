@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { browser } from '$app/env';
+	import { browser } from '$app/environment';
 	import { writableLocal } from '$lib/store-localstorage';
 	import { NavigationDropdown } from '$lib/components/navigation';
 	import { t } from '$lib/i18n';

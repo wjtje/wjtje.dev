@@ -2,7 +2,6 @@ import type { GithubEvent } from '$lib/@types/github';
 import {
 	checkCacheState,
 	extractLangFromUrl,
-	getCacheData,
 	saveCacheData,
 	updateCacheState,
 	translateCache,
@@ -11,9 +10,12 @@ import {
 import { GitHubUsername } from '$lib/common';
 import { loadTranslations } from '$lib/i18n';
 import { prisma } from '$lib/prisma';
-import type { RequestHandler } from './__types/github.json';
+import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = async ({ url }) => {
+	// Load the required translations
+	await loadTranslations(extractLangFromUrl(url), '/api/github');
+
 	// Get information about the cache
 	const { id, cacheState } = await checkCacheState('github');
 
@@ -26,6 +28,10 @@ export const GET: RequestHandler = async ({ url }) => {
 				`https://api.github.com/users/${GitHubUsername}/events/public?per_page=10`
 			);
 			const json: GithubEvent<any>[] = await response.json(); // eslint-disable-line @typescript-eslint/no-explicit-any
+
+			if (response.status != 200) {
+				throw 'Faulty response';
+			}
 
 			// Remove old cache
 			await prisma.remoteData.deleteMany({
@@ -313,15 +319,11 @@ export const GET: RequestHandler = async ({ url }) => {
 			// Update the cache state
 			await updateCacheState(id);
 		} catch {
-			return {
-				status: 500,
-				...(await getCacheData(id))
-			};
+			return new Response(JSON.stringify(await translateCache(id)), {
+				status: 500
+			});
 		}
 	}
 
-	// Load the required translations
-	await loadTranslations(extractLangFromUrl(url), '/api/github');
-
-	return await translateCache(id);
+	return new Response(JSON.stringify(await translateCache(id)));
 };

@@ -1,20 +1,3 @@
-<script lang="ts" context="module">
-	import { loadTranslations, locale } from '$lib/i18n';
-	import type { Load } from '@sveltejs/kit';
-	import { page } from '$app/stores';
-
-	export const load: Load = async ({ url }) => {
-		const { pathname } = url;
-		const lang = `${pathname.match(/\w+?(?=\/|$)/) || ''}`;
-		const route = pathname.replace(new RegExp(`^/${lang}`), '');
-
-		await loadTranslations(lang, route);
-		locale.set(lang);
-
-		return { stuff: { route, lang }, props: { url } };
-	};
-</script>
-
 <script lang="ts">
 	import {
 		Navigation,
@@ -24,10 +7,11 @@
 	} from '$lib/components/navigation';
 	import LanguageSwitcher from '$lib/components/common/LanguageSwitcher.svelte';
 	import ThemeSwitcher from '$lib/components/common/ThemeSwitcher.svelte';
-	import { locales, t } from '$lib/i18n';
+	import { locales, t, locale } from '$lib/i18n';
 	import '../app.css';
 	import PageTransition from '$lib/components/common/PageTransition.svelte';
 	import Particles from '$lib/components/common/Particles.svelte';
+	import type { LayoutData } from './$types';
 
 	$: routes = [
 		{
@@ -48,9 +32,8 @@
 		}
 	];
 
-	$: ({ route } = $page.stuff);
-
-	export let url: URL;
+	export let data: LayoutData;
+	$: ({ url, lang, route } = data);
 </script>
 
 <svelte:head>
@@ -87,7 +70,7 @@
 	}
 
 	footer {
-		@apply fixed bottom-0 h-8 w-full flex flex-row px-8 justify-end;
+		@apply fixed bottom-0 h-8 w-full flex flex-row px-8 justify-end print:hidden;
 
 		a {
 			@apply text-sm text-zinc-600 hover:text-zinc-800 gdark:text-zinc-400 gdark:hover:text-zinc-200;

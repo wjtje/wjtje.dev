@@ -1,6 +1,6 @@
 import { BaseURL } from '$lib/common';
 import { locales, defaultLocale } from '$lib/i18n';
-import type { RequestHandler } from './__types/sitemap.xml';
+import type { RequestHandler } from '../$types';
 
 interface page {
 	loc: string;
@@ -20,12 +20,8 @@ const pages: page[] = [
  */
 
 export const GET: RequestHandler = async () => {
-	return {
-		headers: {
-			'Cache-Control': 'max-age=0, s-maxage=3600',
-			'Content-Type': 'application/xml'
-		},
-		body: `<?xml version="1.0" encoding="UTF-8" ?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">${pages
+	return new Response(
+		`<?xml version="1.0" encoding="UTF-8" ?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">${pages
 			.map(
 				(page) =>
 					`<url><loc>${BaseURL}${defaultLocale}${page.loc}</loc><priority>${
@@ -38,6 +34,12 @@ export const GET: RequestHandler = async () => {
 						)
 						.join('')}</url>`
 			)
-			.join('')}</urlset>`
-	};
+			.join('')}</urlset>`,
+		{
+			headers: {
+				'Cache-Control': 'max-age=0, s-maxage=3600',
+				'Content-Type': 'application/xml'
+			}
+		}
+	);
 };

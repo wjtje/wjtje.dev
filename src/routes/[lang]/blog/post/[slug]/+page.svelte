@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { locale, t } from '$lib/i18n';
-	import type { Post, User } from '@prisma/client';
 	import { DateTime } from 'luxon';
 	import Markdown from 'svelte-exmarkdown';
-	import './[slug].scss';
+	import './+page.scss';
+	import type { PageData } from './$types';
 
-	export let post: Post & {
-		author: User;
-	};
+	export let data: PageData;
+
+	$: ({ post } = data);
 
 	$: date = DateTime.fromJSDate(new Date(post.createdAt)).toRelative({
 		locale: $locale
@@ -35,7 +35,7 @@
 
 <span
 	>{$t('blog.written_by', {
-		author: post.author.name,
+		author: post.owner.name,
 		date: date
 	})}</span
 >
