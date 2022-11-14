@@ -11,7 +11,7 @@ export const load: PageServerLoad = async ({ params }) => {
 			}
 		}
 	});
-	// Check whether the page exists, if not return an auto-generated description page
+	// Check whether the page exists, if not return a 404 error
 	if (!page) {
 		console.log(
 			`[projects/[owner]/[project]/+page.server.ts]: Page ${params.project} does not exist`
