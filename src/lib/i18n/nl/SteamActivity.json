@@ -1,0 +1,3 @@
+{
+	"PlayedGame": "Speelde [{{name}}](https://store.steampowered.com/app/{{appid}}/) voor {{playtime_2weeks}} {{playtime_2weeks; 1:minuut; default:minuten}} in de afgelopen twee weken"
+}

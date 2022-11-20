@@ -28,6 +28,10 @@ const keys: key[] = [
 		routes: ['/']
 	},
 	{
+		key: 'SteamActivity',
+		routes: ['/api/steam']
+	},
+	{
 		key: 'projects',
 		routes: ['/projects']
 	},

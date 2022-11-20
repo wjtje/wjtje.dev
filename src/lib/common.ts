@@ -3,3 +3,4 @@ export const GitHubUsername = 'wjtje';
 export const OSMUsername = 'wjtje';
 export const cacheDuration = 10; // Minutes
 export const ignoredRepos = [GitHubUsername, `${GitHubUsername}.github.io`];
+export const SteamUserID = '76561198261211843';

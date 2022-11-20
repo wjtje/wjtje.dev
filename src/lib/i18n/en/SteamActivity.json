@@ -1,0 +1,4 @@
+{
+	"PlayedGameTitle": "Played [{{name}}](https://store.steampowered.com/app/{{appid}}/)",
+	"PlayedGameSubTitle": "For {{playtime_2weeks}} {{playtime_2weeks; 1:minute; default:minutes}} in the last two weeks"
+}

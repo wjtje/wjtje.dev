@@ -23,6 +23,12 @@
 
 		<ActivityList activityName="osm" />
 	</section>
+
+	<section class="steam">
+		<h2>{$t('home.steamactivity')}</h2>
+
+		<ActivityList activityName="steam" />
+	</section>
 </section>
 
 <style lang="scss">
