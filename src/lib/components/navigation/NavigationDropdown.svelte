@@ -1,19 +1,16 @@
 <script lang="ts">
-	import { browser } from '$app/environment';
-	import { getContext, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 
 	import { createMedia } from 'svelte-match-media';
 	import type { mediaObject } from 'svelte-match-media';
-	import { fly } from 'svelte/transition';
-	import type { Writable } from 'svelte/store';
+	import type { TransitionConfig } from 'svelte/transition';
+	import { cubicOut } from 'svelte/easing';
 
 	// Props
 	export let title: string;
 	export let options: string[];
 	export let action: (e: number) => void;
 	export let active = -1;
-
-	let showMobileMenu: Writable<boolean> = getContext('showMobileMenu');
 
 	// Register media querys
 	let media: mediaObject;
@@ -26,76 +23,70 @@
 
 	// State
 	let hovering = false;
-	let dropdown: HTMLUListElement;
+	let selected = false;
+	$: expanded = (hovering && $media.md) || selected;
 
-	// Functions
-	function mouseEnter() {
+	// Animation
+	function showAnimation(node: Element): TransitionConfig {
+		// Desktop animation (e.g. fly)
 		if ($media.md) {
-			hovering = true;
+			const duration = 50;
+			const style = getComputedStyle(node);
+			const target_opacity = +style.opacity;
+
+			return {
+				duration,
+				easing: cubicOut,
+				css: (t, u) => `
+					transform: translate(0, ${(1 - t) * 50}px);
+					opacity: ${target_opacity - target_opacity * u};
+				`
+			};
+		} else {
+			// Mobile animation (e.g. scale)
+			const duration = 400;
+			const style = getComputedStyle(node);
+
+			return {
+				duration,
+				easing: cubicOut,
+				css: (t, u) => `
+					height: ${Number(style.height.split('px')[0]) * t}px;
+				`
+			};
 		}
-	}
-
-	function mouseLeave() {
-		hovering = false;
-	}
-
-	function buttonClick() {
-		// Check if we need to run the animation
-		if (dropdown == null) {
-			return;
-		}
-
-		// clear the current animation
-		dropdown.style.height = '';
-		dropdown.style.transition = 'none';
-
-		// Get the current height
-		const startHeight = (browser && window).getComputedStyle(dropdown).height ?? '0';
-
-		// Get the new height
-		dropdown.classList.toggle('collapsed');
-		const height = (browser && window).getComputedStyle(dropdown).height ?? '0';
-
-		// Start the animation
-		dropdown.style.height = startHeight;
-
-		requestAnimationFrame(() => {
-			dropdown.style.transition = '';
-
-			requestAnimationFrame(() => {
-				dropdown.style.height = height;
-			});
-		});
 	}
 </script>
 
-<div on:mouseenter={mouseEnter} on:mouseleave={mouseLeave}>
-	<button on:click={buttonClick}>
-		<span>{title}</span>
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+<div
+	on:mouseenter={() => {
+		hovering = true;
+	}}
+	on:mouseleave={() => {
+		hovering = false;
+		selected = false;
+	}}
+	aria-expanded={expanded}
+	aria-label={title}
+>
+	<!-- TODO: i18n the a11y -->
+	<button
+		on:click={() => {
+			selected = !selected;
+		}}
+		aria-label="Expand dropdown"
+	>
+		<span aria-hidden="true">{title}</span>
+		<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
 			<path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
 		</svg>
 	</button>
 
-	{#if hovering && $media.md}
-		<ul transition:fly={{ y: 50, duration: 50 }}>
+	{#if expanded}
+		<ul transition:showAnimation>
 			{#each options as option, index}
-				<li on:click={() => action(index)} class:active={active == index}>
-					<span>{option}</span>
-				</li>
-			{/each}
-		</ul>
-	{:else}
-		<ul bind:this={dropdown} class="collapsed mobile">
-			{#each options as option, index}
-				<li
-					on:click={() => {
-						action(index);
-						$showMobileMenu = false;
-					}}
-					class:active={active == index}
-				>
-					{option}
+				<li class:active={active == index}>
+					<button on:click={() => action(index)}>{option}</button>
 				</li>
 			{/each}
 		</ul>
@@ -121,17 +112,9 @@
 
 		ul {
 			// Set it the correct position
-			@apply h-auto md:h-auto overflow-hidden md:absolute md:min-w-[6rem] md:w-fit px-4 left-[-0.5rem] md:right-0 transition-[height] ease-in-out;
+			@apply h-auto md:h-auto overflow-hidden md:absolute md:min-w-[6rem] md:w-fit px-4 left-[-0.5rem] md:right-0;
 			// Give it the correct color and style
 			@apply md:rounded-md md:shadow-md md:bg-white md:dark:bg-zinc-700;
-
-			&.mobile {
-				@apply md:hidden;
-			}
-
-			&.collapsed {
-				@apply h-0;
-			}
 
 			li {
 				// Make it the correct size
@@ -146,8 +129,8 @@
 					@apply text-green-400 md:text-white font-semibold md:font-bold;
 				}
 
-				span {
-					@apply text-zinc-900 md:dark:text-white text-base whitespace-nowrap;
+				button {
+					@apply md:text-zinc-900 md:dark:text-white text-base whitespace-nowrap;
 				}
 			}
 		}

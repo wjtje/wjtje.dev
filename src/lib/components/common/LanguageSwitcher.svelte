@@ -16,7 +16,7 @@
 	}
 
 	function dropdownAction(e: number) {
-		goto(`/${$locales[e]}${route}`, { noscroll: true });
+		goto(`/${$locales[e]}${route}`);
 	}
 </script>
 
