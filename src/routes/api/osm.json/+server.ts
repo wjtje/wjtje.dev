@@ -48,12 +48,12 @@ export const GET: RequestHandler = async ({ url }) => {
 				responseChangesets.map(async (changeset) => {
 					// Create base object
 					const data: RemoteData = {
-						date: changeset['@_created_at'],
+						date: changeset.created_at,
 						mainTitle: changeset.parsedTags.comment,
 						subTitle: {
 							id: 'OsmActivity.defaultText',
 							data: {
-								id: changeset['@_id'],
+								id: changeset.id,
 								editor: changeset.parsedTags.created_by.name,
 								version: changeset.parsedTags.created_by.version
 							}
@@ -74,7 +74,7 @@ export const GET: RequestHandler = async ({ url }) => {
 							data.subTitle = {
 								id: 'OsmActivity.editor.MapComplete.subText',
 								data: {
-									id: changeset['@_id'],
+									id: changeset.id,
 									version: changeset.parsedTags.created_by.version
 								}
 							};
@@ -84,7 +84,7 @@ export const GET: RequestHandler = async ({ url }) => {
 							data.subTitle = {
 								id: 'OsmActivity.editor.StreetComplete.subText',
 								data: {
-									id: changeset['@_id'],
+									id: changeset.id,
 									version: changeset.parsedTags.created_by.version
 								}
 							};

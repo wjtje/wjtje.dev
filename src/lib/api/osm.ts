@@ -1,6 +1,5 @@
-import type { Changeset, OsmEditor, OsmRootObject, ParsedTags } from '$lib/@types/osm';
+import type { Changeset, OsmEditor, Osm, ParsedTags } from '$lib/@types/osm';
 import { OSMUsername } from '$lib/common';
-import { XMLParser } from 'fast-xml-parser';
 
 /**
  * This function tries to decode the `created_by` key to a useable format.
@@ -26,28 +25,22 @@ export const parseOsmEditor = (editor: string): OsmEditor => {
 export const fetchOsmData = async (): Promise<Changeset[]> => {
 	// Get new data from osm
 	const response = await fetch(
-		`https://api.allorigins.win/get?url=${encodeURIComponent(
-			`https://openstreetmap.org/api/0.6/changesets?display_name=${OSMUsername}`
-		)}`
+		`https://openstreetmap.org/api/0.6/changesets.json?display_name=${OSMUsername}`
 	);
 
 	if (response.status != 200) {
 		throw 'Faulty response';
 	}
 
-	const parser = new XMLParser({
-		ignoreAttributes: false
-	});
-
-	const osmXml: OsmRootObject = parser.parse(String((await response.json())?.contents) ?? '');
+	const osmJson: Osm = await response.json();
 
 	// Parse the data
 	const responseChangesets: Changeset[] = [];
 
-	const length = osmXml.osm.changeset.length < 10 ? osmXml.osm.changeset.length : 10;
+	const length = osmJson.changesets.length < 10 ? osmJson.changesets.length : 10;
 
 	for (let i = 0; i < length; i++) {
-		const changeset = osmXml.osm.changeset[i];
+		const changeset = osmJson.changesets[i];
 		const tags: ParsedTags = {
 			comment: '',
 			created_by: {
@@ -56,11 +49,11 @@ export const fetchOsmData = async (): Promise<Changeset[]> => {
 			source: ''
 		};
 
-		changeset.tag.forEach((element) => {
-			if (element['@_k'] === 'created_by') {
-				tags.created_by = parseOsmEditor(element['@_v']);
+		Object.keys(changeset.tags).forEach((key) => {
+			if (key == 'created_by') {
+				tags.created_by = parseOsmEditor(changeset.tags[key]);
 			} else {
-				tags[element['@_k']] = element['@_v'];
+				tags[key] = changeset.tags[key];
 			}
 		});
 
