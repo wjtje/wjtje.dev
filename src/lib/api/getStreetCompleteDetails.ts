@@ -19,7 +19,7 @@ async function getStreetCompleteCSV() {
 		(
 			await (
 				await fetch(
-					`https://api.github.com/repos/${repo}/actions/workflows/generate-quest-list.yml/runs`
+					`https://api.github.com/repos/${repo}/actions/workflows/generate-quest-list.yml/runs?status=success&per_page=1`
 				)
 			).json()
 		)?.workflow_runs[0]?.id ?? 0;
