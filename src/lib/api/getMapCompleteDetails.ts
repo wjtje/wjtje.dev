@@ -37,27 +37,47 @@ async function getThemes(): Promise<MapCompleteTheme[]> {
 	await Promise.all(
 		themeFolders.map(async (themeFolder) => {
 			try {
-				const theme = await (
-					await fetch(
-						rawUrl + '/assets/themes/' + themeFolder.name + '/' + themeFolder.name + '.json'
-					)
+				// Look at all JSON files in the theme folder, except for the license_info.json
+				const themeFiles = await (
+					await fetch(apiUrl + '/' + themeFolder.name + '?ref=' + branch, {
+						headers: {
+							Authorization: githubAuth()
+						}
+					})
 				).json();
 
-				let title: Record<string, string>;
-
-				if (typeof theme.title === 'string') {
-					title = { en: theme.title };
-				} else {
-					title = theme.title;
+				// Check if response is array
+				if (typeof themeFiles != 'object' || themeFiles.length == undefined) {
+					console.warn("[getMapCompleteDetails.ts]: Response isn't an array");
+					return;
 				}
 
-				themes.push({
-					id: theme.id,
-					name: title,
-					icon: rawUrl + theme.icon.replace('.', '')
-				});
+				// Get the different theme files
+				await Promise.all(
+					themeFiles.map(async (themeFile) => {
+						if (themeFile.name != 'license_info.json' && themeFile.name.endsWith('.json')) {
+							const theme = await (
+								await fetch(rawUrl + '/assets/themes/' + themeFolder.name + '/' + themeFile.name)
+							).json();
 
-				console.log(`[getMapCompleteDetails.ts]: Got theme: ${theme.id}`);
+							let title: Record<string, string>;
+
+							if (typeof theme.title === 'string') {
+								title = { en: theme.title };
+							} else {
+								title = theme.title;
+							}
+
+							themes.push({
+								id: theme.id,
+								name: title,
+								icon: rawUrl + theme.icon.replace('.', '')
+							});
+
+							console.log(`[getMapCompleteDetails.ts]: Got theme: ${theme.id}`);
+						}
+					})
+				);
 			} catch (e) {
 				console.log(`[getMapCompleteDetails.ts]: Failed to get theme: ${themeFolder.name}`);
 				console.log(e);
