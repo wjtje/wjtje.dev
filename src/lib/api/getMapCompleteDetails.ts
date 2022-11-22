@@ -37,7 +37,7 @@ async function getThemes(): Promise<MapCompleteTheme[]> {
 	await Promise.all(
 		themeFolders.map(async (themeFolder) => {
 			try {
-				// Look at all JSON files in the theme folder, except for the license_info.json
+				// Get list of files in theme folder
 				const themeFiles = await (
 					await fetch(apiUrl + '/' + themeFolder.name + '?ref=' + branch, {
 						headers: {
@@ -52,9 +52,10 @@ async function getThemes(): Promise<MapCompleteTheme[]> {
 					return;
 				}
 
-				// Get the different theme files
+				// Loop through all files in theme folder
 				await Promise.all(
 					themeFiles.map(async (themeFile) => {
+						// Check if file is a JSON file and is not the license file
 						if (themeFile.name != 'license_info.json' && themeFile.name.endsWith('.json')) {
 							const theme = await (
 								await fetch(rawUrl + '/assets/themes/' + themeFolder.name + '/' + themeFile.name)
@@ -62,12 +63,14 @@ async function getThemes(): Promise<MapCompleteTheme[]> {
 
 							let title: Record<string, string>;
 
+							// Check if title is a translation, othewise use the title as english title
 							if (typeof theme.title === 'string') {
 								title = { en: theme.title };
 							} else {
 								title = theme.title;
 							}
 
+							// Add theme to themes array
 							themes.push({
 								id: theme.id,
 								name: title,
