@@ -135,7 +135,7 @@
 </script>
 
 {#key height}
-	<div use:styles={{ height: `${height}px` }} in:fade={{ delay: 500 }}>
+	<div use:styles={{ height: `${height}px` }} in:fade={{ delay: 500 }} aria-hidden="true">
 		<Particles
 			id="tsparticles"
 			options={particlesConfig}
