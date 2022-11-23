@@ -10,6 +10,8 @@
 	import DiscordIcon from '$lib/components/icons/DiscordIcon.svelte';
 	import MastodonIcon from '$lib/components/icons/MastodonIcon.svelte';
 	import FaYoutube from 'svelte-icons/fa/FaYoutube.svelte';
+	import ContactLink from '$lib/components/contact/ContactLink.svelte';
+	import { LinkType } from '$lib/components/contact/linktype';
 </script>
 
 <svelte:head>
@@ -22,68 +24,19 @@
 <p>{$t('contact.description')}</p>
 
 <ul>
-	<li class="discord">
-		<DiscordIcon />
-		<span><a href="https://discord.com/users/389862864409853952">WJTJE#7243</a></span>
-	</li>
-	<li class="email">
-		<MdEmail title="email" />
-		<span><a href="mailto:me@wjtje.dev">me@wjtje.dev</a></span>
-	</li>
-	<li class="github">
-		<GoMarkGithub title="Github" />
-		<span><a href="https://www.github.com/wjtje">wjtje</a></span>
-	</li>
-	<li class="linkedin">
-		<FaLinkedin title="LinkedIn" />
-		<span><a href="https://www.linkedin.com/in/wjtje/">Wouter van der Wal</a></span>
-	</li>
-	<li class="osm">
-		<OsmIcon />
-		<span><a href="https://www.openstreetmap.org/user/wjtje">wjtje</a></span>
-	</li>
-	<li class="reddit">
-		<FaReddit title="Reddit" /><span><a href="https://www.reddit.com/u/wjtje">u/wjtje</a></span>
-	</li>
-	<li class="twitter">
-		<FaTwitter title="Twitter" />
-		<span><a href="https://twitter.com/wjtje_wal">@wjtje_wal</a></span>
-	</li>
-	<li class="mastodon">
-		<MastodonIcon title="Mastodon" />
-		<span><a rel="me" href="https://social.wjtje.dev/@wjtje">@wjtje</a></span>
-	</li>
-	<li class="youtube">
-		<FaYoutube title="Youtube" />
-		<span><a href="https://www.youtube.com/channel/UCIXqIlnYY016Dn1aSuYvTmg">wjtje</a></span>
-	</li>
+	<ContactLink type={LinkType.Discord} username="WJTJE#7243" userid="389862864409853952" />
+	<ContactLink type={LinkType.Email} username="me@wjtje.dev" />
+	<ContactLink type={LinkType.Github} username="wjtje" />
+	<ContactLink type={LinkType.LinkedIn} username="wjtje">Wouter van der Wal</ContactLink>
+	<ContactLink type={LinkType.OpenStreetMap} username="wjtje" />
+	<ContactLink type={LinkType.Reddit} username="wjtje" />
+	<ContactLink type={LinkType.Twitter} username="wjtje_wal" />
+	<ContactLink type={LinkType.Mastodon} username="@wjtje@social.wjtje.dev">@wjtje</ContactLink>
+	<ContactLink type={LinkType.Youtube} username="wjtje" userid="UCIXqIlnYY016Dn1aSuYvTmg" />
 </ul>
 
 <style lang="scss">
 	p {
 		@apply pb-4;
-	}
-
-	ul {
-		li {
-			@apply h-8 flex flex-row gap-2 items-center mb-2 transition-[color] duration-200 w-auto;
-			:global(svg) {
-				@apply h-8 w-8 p-1 fill-current;
-			}
-			span {
-				@apply h-auto whitespace-nowrap;
-			}
-			// Custom hover effects
-			&.email {
-				@apply hover:text-red-600 gdark:hover:text-red-500;
-			}
-			// Define brands with custom styles
-			$brands: discord, osm, mastodon, linkedin, reddit, twitter, youtube;
-			@each $brand in $brands {
-				&.#{$brand} {
-					@apply #{'hover:text-' + $brand + '-brand'};
-				}
-			}
-		}
 	}
 </style>
