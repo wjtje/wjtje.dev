@@ -16,7 +16,7 @@
 	},
 	"dependencies": {
 		"@prisma/client": "^4.2.1",
-		"@zip.js/zip.js": "^2.5.4",
+		"@zip.js/zip.js": "^2.6.60",
 		"gemoji": "^7.1.0",
 		"github-colors": "github:ozh/github-colors",
 		"luxon": "^3.0.1",
