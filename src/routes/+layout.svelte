@@ -10,7 +10,6 @@
 	import { locales, t, locale } from '$lib/i18n';
 	import '../app.css';
 	import PageTransition from '$lib/components/common/PageTransition.svelte';
-	import Particles from '$lib/components/common/Particles.svelte';
 	import type { LayoutData } from './$types';
 
 	$: routes = [
@@ -41,8 +40,6 @@
 		<link rel="alternate" hreflang={locale} href={`/${locale}${route}`} />
 	{/each}
 </svelte:head>
-
-<Particles />
 
 <Navigation>
 	<NavigationTitle><a href={`/${$locale}/`}>{$t('common.title')}</a></NavigationTitle>
