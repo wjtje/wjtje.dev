@@ -58,7 +58,7 @@
 		</a>
 	{/each}
 {:catch error}
-	<h3>{$t('home.dataLoadingFailed', { status: error.message })}</h3>
+	<h3>{$t('projects.dataLoadingFailed', { status: error.message })}</h3>
 {/await}
 
 <style lang="scss">

@@ -4,5 +4,5 @@
 	"ghactivity": "GitHub activity",
 	"osmactivity": "OpenStreetMap activity",
 	"noData": "Failed to load the required data from the server. ({{status}})",
-	"dataLoadingFailed": "Failed to load new data from github. ({{status}})"
+	"dataLoadingFailed": "Failed to load new data from GitHub. ({{status}})"
 }

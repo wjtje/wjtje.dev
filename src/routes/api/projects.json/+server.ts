@@ -71,6 +71,7 @@ export const GET: RequestHandler = async () => {
 			});
 
 			if (response.status != 200) {
+				console.log(`[projects.json.ts]: Status: ${response.status}`);
 				throw 'Faulty response';
 			}
 
