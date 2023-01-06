@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import Markdown from 'svelte-exmarkdown';
-	import GitHubButton from '$lib/components/projects/GitHubButton.svelte';
+	import GitHubButton from './GitHubButton.svelte';
 	export let data: PageData;
 
 	const link = `https://github.com/${data.repo.owner}/${data.repo.name}`;
