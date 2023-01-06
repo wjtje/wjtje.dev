@@ -1,6 +1,5 @@
 import type { PageServerLoad } from './$types';
 import { checkCacheState, updateCacheState } from '$lib/api/helper';
-import { GitHubUsername, ignoredRepos } from '$lib/common';
 import { prisma } from '$lib/prisma';
 import type { GithubRepo } from '@prisma/client';
 
@@ -22,7 +21,7 @@ export const load: PageServerLoad<{ repos: GithubRepo[] }> = async () => {
 				body: JSON.stringify({
 					query: `
 						query {
-							user(login: "${GitHubUsername}") {
+							user(login: "${process.env['GITHUB_USERNAME']}") {
 								pinnedItems(first: 6) {
 									edges {
 										node {
@@ -134,11 +133,13 @@ export const load: PageServerLoad<{ repos: GithubRepo[] }> = async () => {
 		}
 	}
 
+	console.log(JSON.parse(process.env['IGNORED_REPOS'].replaceAll("'", '"') ?? '[]'));
+
 	return {
 		repos: await prisma.githubRepo.findMany({
 			where: {
 				name: {
-					notIn: ignoredRepos,
+					notIn: JSON.parse(process.env['IGNORED_REPOS'].replaceAll("'", '"') ?? '[]'),
 					mode: 'insensitive'
 				}
 			}

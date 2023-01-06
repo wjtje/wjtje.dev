@@ -1,5 +1,4 @@
 import type { Changeset, OsmEditor, Osm, ParsedTags } from '$lib/@types/osm';
-import { OSMUsername } from '$lib/common';
 
 /**
  * This function tries to decode the `created_by` key to a useable format.
@@ -25,7 +24,7 @@ export const parseOsmEditor = (editor: string): OsmEditor => {
 export const fetchOsmData = async (): Promise<Changeset[]> => {
 	// Get new data from osm
 	const response = await fetch(
-		`https://openstreetmap.org/api/0.6/changesets.json?display_name=${OSMUsername}`
+		`https://openstreetmap.org/api/0.6/changesets.json?display_name=${process.env['OSM_USERNAME']}`
 	);
 
 	if (response.status != 200) {

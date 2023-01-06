@@ -11,6 +11,9 @@ services:
       - OSM_USERNAME=name
       - GITHUB_USERNAME=name
       - GITHUB_TOKEN=token with public repo access
+      - BASE_URL=https://name.io/
+      - CACHE_DURATION=10
+      - IGNORED_REPOS=["name","name.github.io"]
 
   database:
     image: postgres:latest

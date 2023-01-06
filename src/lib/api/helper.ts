@@ -1,4 +1,3 @@
-import { cacheDuration } from '$lib/common';
 import { locales, defaultLocale, t, locale } from '$lib/i18n';
 import { prisma } from '$lib/prisma';
 import { DateTime } from 'luxon';
@@ -44,7 +43,8 @@ export async function checkCacheState(name: string): Promise<{ cacheState: boole
 		cacheState: !(
 			cacheState == null ||
 			cacheState?.lastUpdate == null ||
-			DateTime.fromJSDate(cacheState?.lastUpdate).diffNow('minutes').minutes < -cacheDuration
+			DateTime.fromJSDate(cacheState?.lastUpdate).diffNow('minutes').minutes <
+				-Number(process.env['CACHE_DURATION'])
 		),
 		id: cacheState.id
 	};
