@@ -1,6 +1,5 @@
-import { BaseURL } from '$lib/common';
 import { locales, defaultLocale } from '$lib/i18n';
-import type { RequestHandler } from '../$types';
+import type { RequestHandler } from './$types';
 
 interface page {
 	loc: string;
@@ -24,13 +23,13 @@ export const GET: RequestHandler = async () => {
 		`<?xml version="1.0" encoding="UTF-8" ?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">${pages
 			.map(
 				(page) =>
-					`<url><loc>${BaseURL}${defaultLocale}${page.loc}</loc><priority>${
+					`<url><loc>${process.env['BASE_URL']}${defaultLocale}${page.loc}</loc><priority>${
 						page.priority
 					}</priority>${locales
 						.get()
 						.map(
 							(locale) =>
-								`<xhtml:link rel="alternate" hreflang="${locale}" href="${BaseURL}${locale}${page.loc}" />`
+								`<xhtml:link rel="alternate" hreflang="${locale}" href="${process.env['BASE_URL']}${locale}${page.loc}" />`
 						)
 						.join('')}</url>`
 			)

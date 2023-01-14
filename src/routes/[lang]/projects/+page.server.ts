@@ -1,9 +1,10 @@
+import type { PageServerLoad } from './$types';
 import { checkCacheState, updateCacheState } from '$lib/api/helper';
-import { GitHubUsername, ignoredRepos } from '$lib/common';
-import type { RequestHandler } from '@sveltejs/kit';
 import { prisma } from '$lib/prisma';
+import type { GithubRepo } from '@prisma/client';
 
-export const GET: RequestHandler = async () => {
+/** @type {import('./$types').PageServerLoad} */
+export const load: PageServerLoad<{ repos: GithubRepo[] }> = async () => {
 	// Get information about the cache
 	const { id, cacheState } = await checkCacheState('github-repos');
 
@@ -20,7 +21,7 @@ export const GET: RequestHandler = async () => {
 				body: JSON.stringify({
 					query: `
 						query {
-							user(login: "${GitHubUsername}") {
+							user(login: "${process.env['GITHUB_USERNAME']}") {
 								pinnedItems(first: 6) {
 									edges {
 										node {
@@ -71,6 +72,7 @@ export const GET: RequestHandler = async () => {
 			});
 
 			if (response.status != 200) {
+				console.log(`[projects.json.ts]: Status: ${response.status}`);
 				throw 'Faulty response';
 			}
 
@@ -127,34 +129,20 @@ export const GET: RequestHandler = async () => {
 			// Update the cache state
 			await updateCacheState(id);
 		} catch (error) {
-			return new Response(
-				JSON.stringify(
-					await prisma.githubRepo.findMany({
-						where: {
-							name: {
-								notIn: ignoredRepos,
-								mode: 'insensitive'
-							}
-						}
-					})
-				),
-				{
-					status: 500
-				}
-			);
+			console.log('[projects.json.ts]: Failed to update cache');
 		}
 	}
 
-	return new Response(
-		JSON.stringify(
-			await prisma.githubRepo.findMany({
-				where: {
-					name: {
-						notIn: ignoredRepos,
-						mode: 'insensitive'
-					}
+	console.log(JSON.parse(process.env['IGNORED_REPOS'].replaceAll("'", '"') ?? '[]'));
+
+	return {
+		repos: await prisma.githubRepo.findMany({
+			where: {
+				name: {
+					notIn: JSON.parse(process.env['IGNORED_REPOS'].replaceAll("'", '"') ?? '[]'),
+					mode: 'insensitive'
 				}
-			})
-		)
-	);
+			}
+		})
+	};
 };

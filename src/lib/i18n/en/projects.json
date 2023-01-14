@@ -1,4 +1,4 @@
 {
 	"title": "Projects",
-	"temp": "This section is comming soon, at the mean time you can checkout my Github profile: <a href=\"https://www.github.com/wjtje\">wjtje</a>."
+	"dataLoadingFailed": "Failed to load new data from GitHub. ({{status}})"
 }
