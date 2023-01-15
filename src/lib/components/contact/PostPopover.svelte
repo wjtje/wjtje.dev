@@ -10,6 +10,6 @@
 	}
 </script>
 
-<span hidden={!active} class="border-2 rounded-lg p-2 text-white"
+<span hidden={!active} class="border-2 rounded-lg p-2 text-white bg-slate-900"
 	><ActivityList activityName={type} /></span
 >

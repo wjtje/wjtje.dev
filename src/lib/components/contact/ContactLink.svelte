@@ -76,6 +76,7 @@
 			text = `${username}`;
 			icon = MastodonIcon;
 			title = 'Mastodon';
+			popover = true;
 			break;
 		case LinkType.Youtube:
 			link = `https://www.youtube.com/channel/${userid}`;
