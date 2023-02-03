@@ -66,7 +66,6 @@
 			text = `@${username}`;
 			icon = FaTwitter;
 			title = 'Twitter';
-			popover = true;
 			break;
 		case LinkType.Mastodon:
 			// TODO: Add support for instances using a different domain via webfinger
