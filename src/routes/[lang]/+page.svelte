@@ -1,5 +1,6 @@
 <script lang="ts">
 	import ActivityList from '$lib/components/home/ActivityList.svelte';
+	import Gallery from '$lib/components/home/Gallery.svelte';
 	import Profile from '$lib/components/home/Profile.svelte';
 	import { t } from '$lib/i18n';
 </script>
@@ -23,6 +24,12 @@
 
 		<ActivityList activityName="osm" />
 	</section>
+</section>
+
+<section class="gallery">
+	<h2>{$t('home.gallery')}</h2>
+
+	<Gallery />
 </section>
 
 <style lang="scss">
