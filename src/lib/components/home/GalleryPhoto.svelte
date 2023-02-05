@@ -29,7 +29,7 @@
 		@apply flex flex-col m-2;
 
 		img {
-			@apply h-64 w-auto;
+			@apply object-cover block h-64 w-64 max-w-none;
 		}
 
 		div.text {
