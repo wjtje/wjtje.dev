@@ -34,6 +34,6 @@
 
 <style lang="scss">
 	div.gallery {
-		@apply flex flex-row;
+		@apply flex flex-row flex-wrap;
 	}
 </style>
