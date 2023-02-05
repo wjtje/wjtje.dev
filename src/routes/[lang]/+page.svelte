@@ -53,4 +53,10 @@
 			@apply text-3xl pb-3;
 		}
 	}
+
+	section.gallery {
+		h2 {
+			@apply text-3xl pb-3;
+		}
+	}
 </style>
