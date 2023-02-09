@@ -29,10 +29,10 @@ export const GET: RequestHandler = async ({ url }) => {
 			});
 
 			const statuses = (await (
-				await fetch(`https://pixey.org/api/v1/accounts/495231949355662185/statuses?limit=10`, {
+				await fetch(`${process.env.PIXELFED_URL}?limit=10`, {
 					headers: {
 						Accept: 'application/json',
-						Authorization: `Bearer ${process.env.PIXEY_TOKEN}`
+						Authorization: `Bearer ${process.env.PIXELFED_TOKEN}`
 					}
 				})
 			).json()) as Status[];
