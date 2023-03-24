@@ -133,13 +133,16 @@ export const load: PageServerLoad<{ repos: GithubRepo[] }> = async () => {
 		}
 	}
 
-	console.log(JSON.parse(process.env['IGNORED_REPOS'].replaceAll("'", '"') ?? '[]'));
+	let ignoredRepos = process.env['IGNORED_REPOS'] ?? '[]';
+	ignoredRepos = ignoredRepos.replaceAll("'", '"');
+
+	console.log(JSON.parse(ignoredRepos));
 
 	return {
 		repos: await prisma.githubRepo.findMany({
 			where: {
 				name: {
-					notIn: JSON.parse(process.env['IGNORED_REPOS'].replaceAll("'", '"') ?? '[]'),
+					notIn: JSON.parse(ignoredRepos),
 					mode: 'insensitive'
 				}
 			}
