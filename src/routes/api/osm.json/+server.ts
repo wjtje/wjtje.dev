@@ -15,6 +15,7 @@ import {
 } from '$lib/api/getStreetCompleteDetails';
 import { loadTranslations } from '$lib/i18n';
 import { getMapCompleteImage, updateMapCompleteCache } from '$lib/api/getMapCompleteDetails';
+import type { Changeset } from '$lib/@types/osm';
 
 export const GET: RequestHandler = async ({ url }) => {
 	// Get information about the cache
@@ -64,9 +65,11 @@ export const GET: RequestHandler = async ({ url }) => {
 					switch (changeset.parsedTags.created_by.name) {
 						case 'MapComplete':
 							data.mainTitle = {
-								id: 'OsmActivity.editor.MapComplete.mainText',
+								id: determineMapCompleteString(changeset),
 								data: {
-									count: changeset.parsedTags.answer,
+									answer: changeset.parsedTags.answer,
+									create: changeset.parsedTags.create,
+									image: changeset.parsedTags['add-image'],
 									theme: { type: 'MapCompleteTheme', data: changeset.parsedTags.theme },
 									host: changeset.parsedTags.host
 								}
@@ -113,3 +116,26 @@ export const GET: RequestHandler = async ({ url }) => {
 
 	return new Response(JSON.stringify(await translateCache(id)));
 };
+
+function determineMapCompleteString(changeset: Changeset): string {
+	if (
+		changeset.parsedTags.answer &&
+		changeset.parsedTags.create &&
+		changeset.parsedTags['add-image']
+	) {
+		return 'OsmActivity.editor.MapComplete.mainText.all';
+	} else if (changeset.parsedTags.answer && changeset.parsedTags.create) {
+		return 'OsmActivity.editor.MapComplete.mainText.answerAndCreate';
+	} else if (changeset.parsedTags.answer && changeset.parsedTags['add-image']) {
+		return 'OsmActivity.editor.MapComplete.mainText.answerAndImage';
+	} else if (changeset.parsedTags.create && changeset.parsedTags['add-image']) {
+		return 'OsmActivity.editor.MapComplete.mainText.createAndImage';
+	} else if (changeset.parsedTags.create) {
+		return 'OsmActivity.editor.MapComplete.mainText.create';
+	} else if (changeset.parsedTags.answer) {
+		return 'OsmActivity.editor.MapComplete.mainText.answer';
+	} else if (changeset.parsedTags['add-image']) {
+		return 'OsmActivity.editor.MapComplete.mainText.image';
+	}
+	return 'OsmActivity.editor.MapComplete.mainText.default';
+}

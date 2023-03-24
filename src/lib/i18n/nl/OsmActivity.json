@@ -3,10 +3,19 @@
 	"defaultText": "Changeset [{{id}}](https://osm.org/changeset/{{id}}) geupload met {{editor}} versie {{version}}",
 	"editor": {
 		"MapComplete": {
-			"mainText": "{{count}} {{count; 1:vraag; default:vragen}} beantwoord met behulp van {{theme}}",
+			"mainText": {
+				"default": "Wijzigingen gemaakt met {{theme}}",
+				"answer": "{{answer}} {{answer; 1:vraag; default:vragen}} beantwoord met behulp van {{theme}}",
+				"create": "{{create}} {{create; 1:punt; default:punten}} aangemaakt met behulp van {{theme}}",
+				"image": "{{image}} {{image; 1:foto; default:foto's}} toegevoegd met behulp van {{theme}}",
+				"answerAndCreate": "{{create}} {{create; 1:punt; default:punten}} aangemaakt en {{answer}} {{answer; 1:vraag; default:vragen}} beantwoord met behulp van {{theme}}",
+				"answerAndImage": "{{image}} {{image; 1:foto; default:foto's}} toegevoegd en {{answer}} {{answer; 1:vraag; default:vragen}} beantwoord met behulp van {{theme}}",
+				"createAndImage": "{{create}} {{create; 1:punt; default:punten}} aangemaakt en {{image}} {{image; 1:foto; default:foto's}} toegevoegd met behulp van {{theme}}",
+				"all": "{{create}} {{create; 1:punt; default:punten}} aangemaakt, {{image}} {{image; 1:foto; default:foto's}} toegevoegd en {{answer}} {{answer; 1:vraag; default:vragen}} beantwoord met behulp van {{theme}}"
+			},
 			"subText": "Changeset [{{id}}](https://osm.org/changeset/{{id}}) geupload met [MapComplete](https://mapcomplete.osm.be/) versie {{version}}",
 			"themes": {
-				"default": "een onbekende thema",
+				"default": "een onbekend thema",
 				"aed": "de [open AED-kaart]({{host}})",
 				"artwork": "de [open kunstwerken-kaart]({{host}})",
 				"benches": "de [zitbanken]({{host}}) thema",

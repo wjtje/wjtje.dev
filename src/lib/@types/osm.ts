@@ -33,6 +33,7 @@ export interface ParsedTags {
 	comment: string;
 	answer?: number;
 	create?: number;
+	'add-image'?: number;
 	theme?: string;
 	host?: string;
 }
