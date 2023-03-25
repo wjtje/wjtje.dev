@@ -65,18 +65,18 @@ export const GET: RequestHandler = async ({ url }) => {
 					switch (changeset.parsedTags.created_by.name) {
 						case 'MapComplete':
 							data.mainTitle = {
-								id: determineMapCompleteString(changeset),
+								id: 'OsmActivity.editor.MapComplete.mainText',
 								data: {
-									answer: changeset.parsedTags.answer,
-									create: changeset.parsedTags.create,
-									image: changeset.parsedTags['add-image'],
 									theme: { type: 'MapCompleteTheme', data: changeset.parsedTags.theme },
 									host: changeset.parsedTags.host
 								}
 							};
 							data.subTitle = {
-								id: 'OsmActivity.editor.MapComplete.subText',
+								id: determineMapCompleteString(changeset),
 								data: {
+									answer: changeset.parsedTags.answer,
+									create: changeset.parsedTags.create,
+									image: changeset.parsedTags['add-image'],
 									id: changeset.id,
 									version: changeset.parsedTags.created_by.version
 								}
@@ -123,19 +123,19 @@ function determineMapCompleteString(changeset: Changeset): string {
 		changeset.parsedTags.create &&
 		changeset.parsedTags['add-image']
 	) {
-		return 'OsmActivity.editor.MapComplete.mainText.all';
+		return 'OsmActivity.editor.MapComplete.subText.all';
 	} else if (changeset.parsedTags.answer && changeset.parsedTags.create) {
-		return 'OsmActivity.editor.MapComplete.mainText.answerAndCreate';
+		return 'OsmActivity.editor.MapComplete.subText.answerAndCreate';
 	} else if (changeset.parsedTags.answer && changeset.parsedTags['add-image']) {
-		return 'OsmActivity.editor.MapComplete.mainText.answerAndImage';
+		return 'OsmActivity.editor.MapComplete.subText.answerAndImage';
 	} else if (changeset.parsedTags.create && changeset.parsedTags['add-image']) {
-		return 'OsmActivity.editor.MapComplete.mainText.createAndImage';
+		return 'OsmActivity.editor.MapComplete.subText.createAndImage';
 	} else if (changeset.parsedTags.create) {
-		return 'OsmActivity.editor.MapComplete.mainText.create';
+		return 'OsmActivity.editor.MapComplete.subText.create';
 	} else if (changeset.parsedTags.answer) {
-		return 'OsmActivity.editor.MapComplete.mainText.answer';
+		return 'OsmActivity.editor.MapComplete.subText.answer';
 	} else if (changeset.parsedTags['add-image']) {
-		return 'OsmActivity.editor.MapComplete.mainText.image';
+		return 'OsmActivity.editor.MapComplete.subText.image';
 	}
-	return 'OsmActivity.editor.MapComplete.mainText.default';
+	return 'OsmActivity.editor.MapComplete.subText.default';
 }
