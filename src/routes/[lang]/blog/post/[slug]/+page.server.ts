@@ -16,7 +16,7 @@ export const load: PageServerLoad = async ({ params }) => {
 		}
 	});
 
-	if (!post || !post.visable || post.pageType != 'BLOG') {
+	if (!post || !post.visible || post.pageType != 'BLOG') {
 		return {
 			status: 404,
 			errors: {
