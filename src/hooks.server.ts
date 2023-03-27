@@ -8,7 +8,11 @@ export const handle: Handle = async ({ event, resolve }) => {
 	const { pathname } = url;
 
 	// If this request is a route request
-	if (routeRegex.test(pathname) && !pathname.startsWith('/api')) {
+	if (
+		routeRegex.test(pathname) &&
+		!pathname.startsWith('/api') &&
+		!pathname.startsWith('/profile')
+	) {
 		// Get defined locales
 		const supportedLocales = locales.get();
 
