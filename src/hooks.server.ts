@@ -38,6 +38,14 @@ export const handle: Handle = async ({ event, resolve }) => {
 			});
 		}
 
+		// Redirect blog to first page
+		if (pathname.endsWith('/blog') || pathname.endsWith('/blog/')) {
+			return new Response(undefined, {
+				headers: { location: `/${locale}/blog/1` },
+				status: 301
+			});
+		}
+
 		// Add html `lang` attribute
 		const response = await resolve(event);
 		const body = await response.text();
