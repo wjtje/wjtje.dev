@@ -78,9 +78,9 @@ const geocodeChangeset = async (changeset: Changeset): Promise<string> => {
 	const result = (await response.json()) as NominatimResponse;
 
 	const location =
+		result.address.village ??
 		result.address.municipality ??
 		result.address.state_district ??
-		result.address.village ??
 		result.address.country;
 
 	console.log(`[osm.ts] Determined location for ${changeset.id}: ${location}`);
