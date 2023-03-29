@@ -13,6 +13,7 @@ export interface RemoteData {
 	subTitle?: RemoteI18nData | string;
 	date?: string | Date;
 	image?: string;
+	url?: string;
 }
 
 /**
@@ -66,7 +67,8 @@ export async function getCacheData(id: number) {
 			mainTitle: true,
 			subTitle: true,
 			date: true,
-			image: true
+			image: true,
+			url: true
 		},
 		orderBy: {
 			date: 'desc'
@@ -87,7 +89,8 @@ export async function saveCacheData(data: RemoteData, id: number) {
 			mainTitle: JSON.stringify(data.mainTitle),
 			subTitle: JSON.stringify(data.subTitle),
 			image: data.image,
-			remoteSourceId: id
+			remoteSourceId: id,
+			url: data.url
 		}
 	});
 }

@@ -44,7 +44,8 @@ export const GET: RequestHandler = async ({ url }) => {
 						date: status.created_at,
 						mainTitle: status.content,
 						image: status.media_attachments[0]?.url,
-						subTitle: status.media_attachments[0]?.description
+						subTitle: status.media_attachments[0]?.description,
+						url: status.url
 					};
 
 					// Save the data to the database
@@ -57,7 +58,10 @@ export const GET: RequestHandler = async ({ url }) => {
 		} catch (error) {
 			console.log('[pixey.json.ts]: Error while updating cache', error);
 			return new Response(JSON.stringify(await translateCache(id)), {
-				status: 500
+				status: 500,
+				headers: {
+					'Content-Type': 'application/json'
+				}
 			});
 		}
 	}
@@ -65,5 +69,9 @@ export const GET: RequestHandler = async ({ url }) => {
 	// Load the required translations
 	await loadTranslations(extractLangFromUrl(url), '/api/pixey');
 
-	return new Response(JSON.stringify(await translateCache(id)));
+	return new Response(JSON.stringify(await translateCache(id)), {
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	});
 };

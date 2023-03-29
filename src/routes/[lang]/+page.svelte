@@ -13,17 +13,17 @@
 <Profile />
 
 <section class="activity">
-	<section class="github">
+	<div>
 		<h2>{$t('home.ghactivity')}</h2>
 
 		<ActivityList activityName="github" />
-	</section>
+	</div>
 
-	<section class="osm">
+	<div>
 		<h2>{$t('home.osmactivity')}</h2>
 
 		<ActivityList activityName="osm" />
-	</section>
+	</div>
 </section>
 
 <section class="gallery">
@@ -33,30 +33,22 @@
 </section>
 
 <style lang="scss">
-	:global(section) {
-		@apply pb-8;
+	section {
+		@apply max-h-[30rem] overflow-hidden;
 
-		&:last-child {
-			@apply pb-0;
-		}
+		-webkit-mask-image: linear-gradient(180deg, #000 70%, transparent);
+		mask-image: linear-gradient(180deg, #000 70%, transparent);
 	}
 
 	section.activity {
-		@apply lg:flex lg:gap-4;
-	}
+		@apply lg:flex lg:gap-4 mb-6;
 
-	section.github,
-	section.osm {
-		@apply lg:w-[calc(50%-8px)] pb-8;
-
-		h2 {
-			@apply text-3xl pb-3;
+		div {
+			@apply lg:w-[calc(50%-8px)];
 		}
 	}
 
 	section.gallery {
-		h2 {
-			@apply text-3xl pb-3;
-		}
+		@apply mb-2;
 	}
 </style>

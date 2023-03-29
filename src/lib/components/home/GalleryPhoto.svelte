@@ -6,6 +6,7 @@
 	export let date: Date | string = undefined;
 	export let mainTitle: string = undefined;
 	export let subTitle: string = undefined;
+	export let url: string = undefined;
 
 	// Remove images from the subtitle
 	$: dateString = DateTime.fromJSDate(new Date(date)).toRelative({
@@ -21,7 +22,13 @@
 			<span aria-label="Date">{dateString}</span>
 		{/if}
 	</div>
-	<img src={image} alt={subTitle} />
+	{#if url}
+		<a href={url} target="_blank" rel="noopener noreferrer">
+			<img src={image} alt={subTitle} />
+		</a>
+	{:else}
+		<img src={image} alt={subTitle} />
+	{/if}
 </section>
 
 <style lang="scss">

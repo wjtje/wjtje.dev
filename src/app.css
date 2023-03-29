@@ -12,3 +12,7 @@ body {
 h1 {
 	@apply text-4xl pb-6;
 }
+
+h2 {
+	@apply text-3xl pb-3;
+}
