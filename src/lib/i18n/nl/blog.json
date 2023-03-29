@@ -1,5 +1,6 @@
 {
 	"title": "Blog",
 	"more": "Meer lezen",
+	"noPosts": "Geen berichten gevonden",
 	"written_by": "Geschreven door {{author}}, {{date}}"
 }
