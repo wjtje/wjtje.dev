@@ -1,5 +1,5 @@
 import { defaultLocale, locales } from '$lib/i18n';
-import type { Handle } from '@sveltejs/kit';
+import { redirect, type Handle } from '@sveltejs/kit';
 
 const routeRegex = new RegExp(/^\/[^.]*([?#].*)?$/);
 
@@ -28,18 +28,12 @@ export const handle: Handle = async ({ event, resolve }) => {
 			if (!supportedLocales.includes(locale)) locale = defaultLocale;
 
 			// 301 redirect
-			return new Response(undefined, {
-				headers: { location: `/${locale}${pathname}` },
-				status: 301
-			});
+			throw redirect(301, `/${locale}${pathname}`);
 		}
 
 		// Redirect blog to first page
 		if (pathname.endsWith('/blog') || pathname.endsWith('/blog/')) {
-			return new Response(undefined, {
-				headers: { location: `/${locale}/blog/1` },
-				status: 301
-			});
+			throw redirect(301, `/${locale}/blog/1`);
 		}
 
 		// Add html `lang` attribute
