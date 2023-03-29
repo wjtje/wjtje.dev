@@ -22,7 +22,7 @@
 			name: $t('navigation.projects')
 		},
 		{
-			path: `blog`,
+			path: `blog/1`,
 			name: $t('navigation.blog')
 		},
 		{
