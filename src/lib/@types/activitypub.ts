@@ -22,7 +22,7 @@ interface ActivityObject {
 	id: string;
 	type: string;
 	summary: string | null;
-	inReplyTo: string | null;
+	inReplyTo?: string | null;
 	published: string;
 	url: string;
 	attributedTo: string;
