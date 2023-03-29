@@ -1,4 +1,4 @@
-import type { Changeset, OsmEditor, Osm, ParsedTags } from '$lib/@types/osm';
+import type { Changeset, OsmEditor, Osm, ParsedTags, NominatimResponse } from '$lib/@types/osm';
 
 /**
  * This function tries to decode the `created_by` key to a useable format.
@@ -56,11 +56,34 @@ export const fetchOsmData = async (): Promise<Changeset[]> => {
 			}
 		});
 
+		const geocodedLocation = await geocodeChangeset(changeset);
+
 		responseChangesets.push({
 			...changeset,
-			parsedTags: tags as ParsedTags
+			parsedTags: tags as ParsedTags,
+			geocodedLocation
 		});
 	}
 
 	return responseChangesets;
+};
+
+const geocodeChangeset = async (changeset: Changeset): Promise<string> => {
+	console.log(`[osm.ts] Determining location for ${changeset.id}`);
+	const avgLon = (changeset.max_lon + changeset.min_lon) / 2;
+	const avgLat = (changeset.max_lat + changeset.min_lat) / 2;
+
+	const url = `https://nominatim.openstreetmap.org/reverse?lat=${avgLat}&lon=${avgLon}&format=jsonv2`;
+	const response = await fetch(url);
+	const result = (await response.json()) as NominatimResponse;
+
+	const location =
+		result.address.municipality ??
+		result.address.state_district ??
+		result.address.village ??
+		result.address.country;
+
+	console.log(`[osm.ts] Determined location for ${changeset.id}: ${location}`);
+
+	return location;
 };

@@ -110,6 +110,11 @@ export interface Changeset {
 	 * Object containing the parsed tags of the changeset
 	 */
 	parsedTags?: ParsedTags;
+
+	/**
+	 * Geocoded location
+	 */
+	geocodedLocation?: string;
 }
 
 export interface Osm {
@@ -152,4 +157,37 @@ export interface Osm {
 	 * Object containing all changesets
 	 */
 	changesets: Changeset[];
+}
+
+/**
+ * Nominatim response in JSON v2 format
+ */
+export interface NominatimResponse {
+	place_id: number;
+	license: string;
+	osm_type: string;
+	osm_id: number;
+	lat: string;
+	lon: string;
+	place_rank: number;
+	category: string;
+	type: string;
+	importance: number;
+	addresstype: string;
+	name: string | null;
+	display_name: string;
+	address: {
+		house_number: string;
+		highway?: string;
+		road: string;
+		village: string;
+		municipality?: string;
+		state_district?: string;
+		state: string;
+		'ISO3166-2-lv14': string;
+		country: string;
+		postcode: string;
+		country_code: string;
+	};
+	boundingbox: [number, number, number, number];
 }
