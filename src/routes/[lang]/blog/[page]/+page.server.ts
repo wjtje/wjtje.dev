@@ -16,7 +16,8 @@ export const load: PageServerLoad = async ({ params }) => {
 
 	const totalPages = Math.ceil(totalItems / pageLength);
 
-	if (parseInt(params.page) > totalPages) {
+	// If the page is out of range, throw a 404, unless it's the first page
+	if (parseInt(params.page) > totalPages && parseInt(params.page) !== 1) {
 		throw error(404, 'Page not found');
 	}
 
