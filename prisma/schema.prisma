@@ -65,6 +65,7 @@ model RemoteData {
   subTitle       String?
   date           DateTime?
   image          String?
+  url            String?
 }
 
 model StreetCompleteQuest {
