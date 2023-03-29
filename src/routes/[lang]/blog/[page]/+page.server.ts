@@ -4,7 +4,7 @@ import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params }) => {
-	const pageLength = 1;
+	const pageLength = 10;
 
 	const totalItems = await prisma.page.count({
 		where: {
