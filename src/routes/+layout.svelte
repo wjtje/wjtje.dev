@@ -22,7 +22,7 @@
 			name: $t('navigation.projects')
 		},
 		{
-			path: `blog`,
+			path: `blog/1`,
 			name: $t('navigation.blog')
 		},
 		{
@@ -32,7 +32,7 @@
 	];
 
 	export let data: LayoutData;
-	$: ({ url, lang, route } = data);
+	$: ({ url, route } = data);
 </script>
 
 <svelte:head>
