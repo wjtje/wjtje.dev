@@ -15,7 +15,7 @@
 
 <style lang="scss">
 	section {
-		@apply grid grid-cols-[8rem_1fr] grid-rows-[8rem_1fr] md:grid-rows-2 gap-4 items-center md:items-start;
+		@apply grid grid-cols-[8rem_1fr] grid-rows-[8rem_1fr] md:grid-rows-2 gap-4 items-center md:items-start mb-6;
 
 		img {
 			@apply rounded-full aspect-square h-32 md:row-span-2;

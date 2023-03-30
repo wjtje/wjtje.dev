@@ -4,5 +4,5 @@
 	"ghactivity": "GitHub activiteit",
 	"osmactivity": "OpenStreetMap activiteit",
 	"noData": "Kon de vereiste data niet krijgen van de server. ({{status}})",
-	"dataLoadingFailed": "kon geen nieuwe data krijgen van GitHub. ({{status}})"
+	"dataLoadingFailed": "kon geen nieuwe data krijgen van de externe server. ({{status}})"
 }
