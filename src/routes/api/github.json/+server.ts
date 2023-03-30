@@ -320,10 +320,17 @@ export const GET: RequestHandler = async ({ url }) => {
 			await updateCacheState(id);
 		} catch {
 			return new Response(JSON.stringify(await translateCache(id)), {
-				status: 500
+				status: 500,
+				headers: {
+					'Content-Type': 'application/json'
+				}
 			});
 		}
 	}
 
-	return new Response(JSON.stringify(await translateCache(id)));
+	return new Response(JSON.stringify(await translateCache(id)), {
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	});
 };

@@ -15,6 +15,7 @@ import {
 } from '$lib/api/getStreetCompleteDetails';
 import { loadTranslations } from '$lib/i18n';
 import { getMapCompleteImage, updateMapCompleteCache } from '$lib/api/getMapCompleteDetails';
+import type { Changeset } from '$lib/@types/osm';
 
 export const GET: RequestHandler = async ({ url }) => {
 	// Get information about the cache
@@ -67,14 +68,16 @@ export const GET: RequestHandler = async ({ url }) => {
 							data.mainTitle = {
 								id: 'OsmActivity.editor.MapComplete.mainText',
 								data: {
-									count: changeset.parsedTags.answer,
 									theme: { type: 'MapCompleteTheme', data: changeset.parsedTags.theme },
 									host: changeset.parsedTags.host
 								}
 							};
 							data.subTitle = {
-								id: 'OsmActivity.editor.MapComplete.subText',
+								id: determineMapCompleteString(changeset),
 								data: {
+									answer: changeset.parsedTags.answer,
+									create: changeset.parsedTags.create,
+									image: changeset.parsedTags['add-image'],
 									id: changeset.id,
 									version: changeset.parsedTags.created_by.version,
 									location: changeset.geocodedLocation
@@ -106,7 +109,10 @@ export const GET: RequestHandler = async ({ url }) => {
 			await updateCacheState(id);
 		} catch {
 			return new Response(JSON.stringify(await translateCache(id)), {
-				status: 500
+				status: 500,
+				headers: {
+					'Content-Type': 'application/json'
+				}
 			});
 		}
 	}
@@ -114,5 +120,32 @@ export const GET: RequestHandler = async ({ url }) => {
 	// Load the required translations
 	await loadTranslations(extractLangFromUrl(url), '/api/osm');
 
-	return new Response(JSON.stringify(await translateCache(id)));
+	return new Response(JSON.stringify(await translateCache(id)), {
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	});
 };
+
+function determineMapCompleteString(changeset: Changeset): string {
+	if (
+		changeset.parsedTags.answer &&
+		changeset.parsedTags.create &&
+		changeset.parsedTags['add-image']
+	) {
+		return 'OsmActivity.editor.MapComplete.subText.all';
+	} else if (changeset.parsedTags.answer && changeset.parsedTags.create) {
+		return 'OsmActivity.editor.MapComplete.subText.answerAndCreate';
+	} else if (changeset.parsedTags.answer && changeset.parsedTags['add-image']) {
+		return 'OsmActivity.editor.MapComplete.subText.answerAndImage';
+	} else if (changeset.parsedTags.create && changeset.parsedTags['add-image']) {
+		return 'OsmActivity.editor.MapComplete.subText.createAndImage';
+	} else if (changeset.parsedTags.create) {
+		return 'OsmActivity.editor.MapComplete.subText.create';
+	} else if (changeset.parsedTags.answer) {
+		return 'OsmActivity.editor.MapComplete.subText.answer';
+	} else if (changeset.parsedTags['add-image']) {
+		return 'OsmActivity.editor.MapComplete.subText.image';
+	}
+	return 'OsmActivity.editor.MapComplete.subText.default';
+}

@@ -3,10 +3,19 @@
 	"defaultText": "Changeset [{{id}}](https://osm.org/changeset/{{id}}) geupload met {{editor}} versie {{version}} nabij {{location}}",
 	"editor": {
 		"MapComplete": {
-			"mainText": "{{count}} {{count; 1:vraag; default:vragen}} beantwoord met behulp van {{theme}}",
-			"subText": "Changeset [{{id}}](https://osm.org/changeset/{{id}}) geupload met [MapComplete](https://mapcomplete.osm.be/) versie {{version}} nabij {{location}}",
+			"mainText": "Wijzigingen gemaakt met {{theme}} in [MapComplete](https://mapcomplete.osm.be/)",
+			"subText": {
+				"default": "Changeset [{{id}}](https://osm.org/changeset/{{id}}) met versie {{version}}",
+				"answer": "{{answer}} {{answer; 1:vraag; default:vragen}} beantwoord nabij {{location}} in changeset [{{id}}](https://osm.org/changeset/{{id}}) met versie {{version}}",
+				"create": "{{create}} {{create; 1:punt; default:punten}} aangemaakt nabij {{location}} in changeset [{{id}}](https://osm.org/changeset/{{id}}) met versie {{version}}",
+				"image": "{{image}} {{image; 1:foto; default:foto's}} toegevoegd nabij {{location}} in changeset [{{id}}](https://osm.org/changeset/{{id}}) met versie {{version}}",
+				"answerAndCreate": "{{create}} {{create; 1:punt; default:punten}} aangemaakt en {{answer}} {{answer; 1:vraag; default:vragen}} beantwoord nabij {{location}} in changeset [{{id}}](https://osm.org/changeset/{{id}}) met versie {{version}}",
+				"answerAndImage": "{{image}} {{image; 1:foto; default:foto's}} toegevoegd en {{answer}} {{answer; 1:vraag; default:vragen}} beantwoord nabij {{location}} in changeset [{{id}}](https://osm.org/changeset/{{id}}) met versie {{version}}",
+				"createAndImage": "{{create}} {{create; 1:punt; default:punten}} aangemaakt en {{image}} {{image; 1:foto; default:foto's}} toegevoegd nabij {{location}} in changeset [{{id}}](https://osm.org/changeset/{{id}}) met versie {{version}}",
+				"all": "{{create}} {{create; 1:punt; default:punten}} aangemaakt, {{image}} {{image; 1:foto; default:foto's}} toegevoegd en {{answer}} {{answer; 1:vraag; default:vragen}} beantwoord nabij {{location}} in changeset [{{id}}](https://osm.org/changeset/{{id}}) met versie {{version}}"
+			},
 			"themes": {
-				"default": "een onbekende thema",
+				"default": "een onbekend thema",
 				"aed": "de [open AED-kaart]({{host}})",
 				"artwork": "de [open kunstwerken-kaart]({{host}})",
 				"benches": "de [zitbanken]({{host}}) thema",
