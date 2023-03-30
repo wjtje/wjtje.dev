@@ -9,7 +9,7 @@ export const load: PageServerLoad<{ repos: GithubRepo[] }> = async () => {
 	const { id, cacheState } = await checkCacheState('github-repos');
 
 	if (!cacheState) {
-		console.log('[projects.json.ts]: Updating cache');
+		console.log('[projects/+page.server.ts]: Updating cache');
 
 		// Get new JSON data from GitHub
 		try {
@@ -72,7 +72,7 @@ export const load: PageServerLoad<{ repos: GithubRepo[] }> = async () => {
 			});
 
 			if (response.status != 200) {
-				console.log(`[projects.json.ts]: Status: ${response.status}`);
+				console.log(`[projects/+page.server.ts]: Status: ${response.status}`);
 				throw 'Faulty response';
 			}
 
@@ -86,7 +86,7 @@ export const load: PageServerLoad<{ repos: GithubRepo[] }> = async () => {
 			// Save the data in the cache
 			await Promise.all(
 				json.data.user.repositories.nodes.map(async (repo) => {
-					console.log('[projects.json.ts]: Saving repo ' + repo.name);
+					console.log('[projects/+page.server.ts]: Saving repo ' + repo.name);
 
 					const topics = JSON.stringify(
 						repo.repositoryTopics.nodes.map((topic) => topic.topic.name)
@@ -124,12 +124,12 @@ export const load: PageServerLoad<{ repos: GithubRepo[] }> = async () => {
 				})
 			);
 
-			console.log('[projects.json.ts]: Cache updated');
+			console.log('[projects/+page.server.ts]: Cache updated');
 
 			// Update the cache state
 			await updateCacheState(id);
 		} catch (error) {
-			console.log('[projects.json.ts]: Failed to update cache');
+			console.log('[projects/+page.server.ts]: Failed to update cache', error);
 		}
 	}
 
