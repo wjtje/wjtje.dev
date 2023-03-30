@@ -56,7 +56,8 @@ export const GET: RequestHandler = async ({ url }) => {
 							data: {
 								id: changeset.id,
 								editor: changeset.parsedTags.created_by.name,
-								version: changeset.parsedTags.created_by.version
+								version: changeset.parsedTags.created_by.version,
+								location: changeset.geocodedLocation
 							}
 						}
 					};
@@ -78,7 +79,8 @@ export const GET: RequestHandler = async ({ url }) => {
 									create: changeset.parsedTags.create,
 									image: changeset.parsedTags['add-image'],
 									id: changeset.id,
-									version: changeset.parsedTags.created_by.version
+									version: changeset.parsedTags.created_by.version,
+									location: changeset.geocodedLocation
 								}
 							};
 							data.image = await getMapCompleteImage(changeset.parsedTags.theme);
@@ -88,7 +90,8 @@ export const GET: RequestHandler = async ({ url }) => {
 								id: 'OsmActivity.editor.StreetComplete.subText',
 								data: {
 									id: changeset.id,
-									version: changeset.parsedTags.created_by.version
+									version: changeset.parsedTags.created_by.version,
+									location: changeset.geocodedLocation
 								}
 							};
 							data.image = await getStreetCompleteImage(

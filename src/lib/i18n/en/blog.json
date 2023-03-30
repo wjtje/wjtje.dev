@@ -1,5 +1,6 @@
 {
 	"title": "Blog",
 	"more": "Read more",
+	"noPosts": "No posts found",
 	"written_by": "Written by {{author}}, {{date}}"
 }

@@ -1,5 +1,5 @@
 {
-	"defaultText": "Changeset [{{id}}](https://osm.org/changeset/{{id}}) uploaded with {{editor}} version {{version}}",
+	"defaultText": "Changeset [{{id}}](https://osm.org/changeset/{{id}}) uploaded with {{editor}} version {{version}} near {{location}}",
 	"editor": {
 		"MapComplete": {
 			"mainText": "Made changes using {{theme}} in [MapComplete](https://mapcomplete.osm.be/)",
@@ -11,7 +11,7 @@
 				"answerAndCreate": "Added {{create}} {{create; 1:point; default:points}} and answered {{answer}} {{answer; 1:question; default:questions}} in changeset [{{id}}](https://osm.org/changeset/{{id}}) using version {{version}}",
 				"answerAndImage": "Answered {{answer}} {{answer; 1:question; default:questions}} and added {{image}} {{image; 1:image; default:images}} in changeset [{{id}}](https://osm.org/changeset/{{id}}) using version {{version}}",
 				"createAndImage": "Added {{create}} {{create; 1:point; default:points}} and added {{image}} {{image; 1:image; default:images}} in changeset [{{id}}](https://osm.org/changeset/{{id}}) using version {{version}}",
-				"all": "Added {{create}} {{create; 1:point; default:points}}, added {{image}} {{image; 1:image; default:images}} and answered {{answer}} {{answer; 1:question; default:questions}} in changeset [{{id}}](https://osm.org/changeset/{{id}}) using version {{version}}"
+				"all": "Added {{create}} {{create; 1:point; default:points}}, added {{image}} {{image; 1:image; default:images}} and answered {{answer}} {{answer; 1:question; default:questions}} in changeset [{{id}}](https://osm.org/changeset/{{id}}) using version {{version}} near {{location}}"
 			},
 			"themes": {
 				"default": "a unknown theme",
@@ -27,7 +27,7 @@
 			}
 		},
 		"StreetComplete": {
-			"subText": "Changeset [{{id}}](https://osm.org/changeset/{{id}}) uploaded with [StreetComplete](https://github.com/streetcomplete/StreetComplete) version {{version}}"
+			"subText": "Changeset [{{id}}](https://osm.org/changeset/{{id}}) uploaded with [StreetComplete](https://github.com/streetcomplete/StreetComplete) version {{version}} near {{location}}"
 		}
 	}
 }

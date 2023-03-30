@@ -1,6 +1,6 @@
 {
 	"LoadFailed": "Kon de OpenStreetMap activiteit niet ophalen",
-	"defaultText": "Changeset [{{id}}](https://osm.org/changeset/{{id}}) geupload met {{editor}} versie {{version}}",
+	"defaultText": "Changeset [{{id}}](https://osm.org/changeset/{{id}}) geupload met {{editor}} versie {{version}} nabij {{location}}",
 	"editor": {
 		"MapComplete": {
 			"mainText": {
@@ -13,7 +13,7 @@
 				"createAndImage": "{{create}} {{create; 1:punt; default:punten}} aangemaakt en {{image}} {{image; 1:foto; default:foto's}} toegevoegd met behulp van {{theme}}",
 				"all": "{{create}} {{create; 1:punt; default:punten}} aangemaakt, {{image}} {{image; 1:foto; default:foto's}} toegevoegd en {{answer}} {{answer; 1:vraag; default:vragen}} beantwoord met behulp van {{theme}}"
 			},
-			"subText": "Changeset [{{id}}](https://osm.org/changeset/{{id}}) geupload met [MapComplete](https://mapcomplete.osm.be/) versie {{version}}",
+			"subText": "Changeset [{{id}}](https://osm.org/changeset/{{id}}) geupload met [MapComplete](https://mapcomplete.osm.be/) versie {{version}} nabij {{location}}",
 			"themes": {
 				"default": "een onbekend thema",
 				"aed": "de [open AED-kaart]({{host}})",
@@ -28,7 +28,7 @@
 			}
 		},
 		"StreetComplete": {
-			"subText": "Changeset [{{id}}](https://osm.org/changeset/{{id}}) geupload met [StreetComplete](https://github.com/streetcomplete/StreetComplete) versie {{version}}"
+			"subText": "Changeset [{{id}}](https://osm.org/changeset/{{id}}) geupload met [StreetComplete](https://github.com/streetcomplete/StreetComplete) versie {{version}} nabij {{location}}"
 		}
 	}
 }
