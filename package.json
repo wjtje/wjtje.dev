@@ -52,6 +52,6 @@
 		"tailwindcss": "^3.2.7",
 		"tailwindcss-global-dark": "^1.0.1",
 		"tslib": "^2.5.0",
-		"typescript": "~5.0.2"
+		"typescript": "~5.0.3"
 	}
 }
