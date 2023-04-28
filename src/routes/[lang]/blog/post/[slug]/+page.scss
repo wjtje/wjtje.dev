@@ -14,10 +14,22 @@
 	}
 
 	p {
-		@apply py-2;
+		@apply pt-3 pb-1;
 	}
 
 	ul {
 		@apply list-disc pl-4;
+	}
+
+	ol {
+		@apply list-decimal pl-8;
+	}
+
+	code {
+		@apply font-mono text-[#a31515] dark:text-[#d7ba7d];
+	}
+
+	table {
+		@apply border-spacing-x-2 border-separate;
 	}
 }

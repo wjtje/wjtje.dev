@@ -2,6 +2,7 @@
 	import { locale, t } from '$lib/i18n';
 	import { DateTime } from 'luxon';
 	import Markdown from 'svelte-exmarkdown';
+	import { gfmPlugin } from 'svelte-exmarkdown/gfm';
 	import './+page.scss';
 	import type { PageData } from './$types';
 
@@ -41,7 +42,7 @@
 >
 
 <div class="markdown">
-	<Markdown md={post.body} />
+	<Markdown md={post.body} plugins={[gfmPlugin]} />
 </div>
 
 <style lang="scss">
