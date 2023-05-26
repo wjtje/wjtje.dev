@@ -10,7 +10,11 @@
 
 	<h1>{$t('home.name')}</h1>
 
-	<p>{$t('home.about')}</p>
+	<p>
+		{$t('home.about', {
+			birthday: process.env.BIRTHDAY
+		})}
+	</p>
 </section>
 
 <style lang="scss">

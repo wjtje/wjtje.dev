@@ -41,3 +41,11 @@ export const min: Modifier.T = (x) => {
 export const pushEventSubtitle: Modifier.T = (x) => {
 	return gh({ ...x, value: String(x.value || x.defaultValue).split('\n')[0] });
 };
+
+export const age: Modifier.T = ({ value, defaultValue }) => {
+	const date = new Date(value || defaultValue);
+	const now = new Date();
+	const diff = now.getTime() - date.getTime();
+	const age = new Date(diff);
+	return String(Math.abs(age.getUTCFullYear() - 1970));
+};

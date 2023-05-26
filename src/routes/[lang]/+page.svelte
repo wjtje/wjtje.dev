@@ -6,7 +6,12 @@
 
 <svelte:head>
 	<title>{$t('common.title')}</title>
-	<meta name="description" content={$t('common.description')} />
+	<meta
+		name="description"
+		content={$t('common.description', {
+			birthday: process.env.BIRTHDAY
+		})}
+	/>
 </svelte:head>
 
 <Profile />
