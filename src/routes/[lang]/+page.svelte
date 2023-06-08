@@ -2,6 +2,7 @@
 	import ActivityList from '$lib/components/home/ActivityList.svelte';
 	import Profile from '$lib/components/home/Profile.svelte';
 	import { t } from '$lib/i18n';
+	import { PUBLIC_BIRTHDAY } from '$env/static/public';
 </script>
 
 <svelte:head>
@@ -9,7 +10,7 @@
 	<meta
 		name="description"
 		content={$t('common.description', {
-			birthday: process.env.BIRTHDAY
+			birthday: PUBLIC_BIRTHDAY
 		})}
 	/>
 </svelte:head>
