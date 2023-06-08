@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { t } from '$lib/i18n';
-	import { PUBLIC_BIRTHDAY } from '$env/static/public';
+	import { env } from '$env/dynamic/public';
 </script>
 
 <section>
@@ -13,7 +13,7 @@
 
 	<p>
 		{$t('home.about', {
-			birthday: PUBLIC_BIRTHDAY
+			birthday: env.PUBLIC_BIRTHDAY
 		})}
 	</p>
 </section>
