@@ -7,7 +7,7 @@
 	export let activityName: string;
 
 	const getDataFromServer = async (lang: string) => {
-		const response = await fetch(`/api/${activityName}.json?lang=${locale.get()}`);
+		const response = await fetch(`/api/${activityName}.json?lang=${lang}`);
 		return {
 			status: response.status,
 			events: await response.json()
