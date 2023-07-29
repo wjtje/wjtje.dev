@@ -4,18 +4,18 @@ WORKDIR /app
 
 # Build the project
 COPY . .
-RUN npm ci
-RUN npm run build
+RUN npm install --global pnpm && pnpm install --frozen-lockfile
+RUN pnpm run build
 
 # Create smaller package
 FROM node:18-alpine AS runner
 
 COPY --from=builder /app/build ./build
 COPY ./prisma ./
-COPY package.json package-lock.json docker_start.sh ./
+COPY package.json pnpm-lock.yaml docker_start.sh ./
 
 ENV NODE_ENV=production
-RUN npm ci --ignore-scripts --production
+RUN npm install --global pnpm && pnpm install --frozen-lockfile --ignore-scripts --production
 
 # Run the program
 EXPOSE 3000
