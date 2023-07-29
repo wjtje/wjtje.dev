@@ -30,11 +30,6 @@
 </p>
 
 <p>
-	The 'Twitter logo' is trademarks of Twitter, Inc, and is used with their permission. This project
-	is not endorsed by or affiliated with Twitter, Inc.
-</p>
-
-<p>
 	The 'YouTube logo' and the color <span class="youtube">YouTube Red</span> are trademarks of YouTube,
 	LLC, and is used with their permission. This project is not endorsed by or affiliated with YouTube,
 	LLC.

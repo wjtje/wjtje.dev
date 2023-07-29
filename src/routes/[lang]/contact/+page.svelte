@@ -4,7 +4,6 @@
 	import MdEmail from 'svelte-icons/md/MdEmail.svelte';
 	import GoMarkGithub from 'svelte-icons/go/GoMarkGithub.svelte';
 	import FaLinkedin from 'svelte-icons/fa/FaLinkedin.svelte';
-	import FaTwitter from 'svelte-icons/fa/FaTwitter.svelte';
 	import FaReddit from 'svelte-icons/fa/FaReddit.svelte';
 	import OsmIcon from '$lib/components/icons/OsmIcon.svelte';
 	import DiscordIcon from '$lib/components/icons/DiscordIcon.svelte';
@@ -57,11 +56,7 @@
 <ul>
 	<li class="discord">
 		<DiscordIcon />
-		<span><a href="https://discord.com/users/389862864409853952">WJTJE#7243</a></span>
-	</li>
-	<li class="twitter">
-		<FaTwitter title="Twitter" />
-		<span><a href="https://twitter.com/wjtje_wal">@wjtje_wal</a></span>
+		<span><a href="https://discord.com/users/389862864409853952">wjtje</a></span>
 	</li>
 	<li class="youtube">
 		<FaYoutube title="Youtube" />
@@ -87,8 +82,9 @@
 			&.email {
 				@apply hover:text-red-600 gdark:hover:text-red-500;
 			}
+			
 			// Define brands with custom styles
-			$brands: discord, osm, mastodon, linkedin, reddit, twitter, youtube;
+			$brands: discord, osm, mastodon, linkedin, reddit, youtube;
 			@each $brand in $brands {
 				&.#{$brand} {
 					@apply #{'hover:text-' + $brand + '-brand'};
