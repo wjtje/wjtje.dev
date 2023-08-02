@@ -70,6 +70,13 @@ export const fetchOsmData = async (): Promise<Changeset[]> => {
 
 const geocodeChangeset = async (changeset: Changeset): Promise<string> => {
 	console.log(`[osm.ts] Determining location for ${changeset.id}`);
+
+	// Check if we actually have a bounding box
+	if (!changeset.max_lat || !changeset.max_lon || !changeset.min_lat || !changeset.min_lon) {
+		console.log(`[osm.ts] No bounding box for ${changeset.id}`);
+		return 'World';
+	}
+
 	const avgLon = (changeset.max_lon + changeset.min_lon) / 2;
 	const avgLat = (changeset.max_lat + changeset.min_lat) / 2;
 
