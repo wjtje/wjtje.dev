@@ -74,23 +74,31 @@ export interface Changeset {
 
 	/**
 	 * Minimum latitude of the changeset
+	 *
+	 * Can be empty if the changeset is empty or only edits relations
 	 */
-	min_lat: number;
+	min_lat?: number;
 
 	/**
 	 * Minimum longitude of the changeset
+	 *
+	 * Can be empty if the changeset is empty or only edits relations
 	 */
-	min_lon: number;
+	min_lon?: number;
 
 	/**
 	 * Maximum latitude of the changeset
+	 *
+	 * Can be empty if the changeset is empty or only edits relations
 	 */
-	max_lat: number;
+	max_lat?: number;
 
 	/**
 	 * Maximum longitude of the changeset
+	 *
+	 * Can be empty if the changeset is empty or only edits relations
 	 */
-	max_lon: number;
+	max_lon?: number;
 
 	/**
 	 * UID of the user who created this changeset
