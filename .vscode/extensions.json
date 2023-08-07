@@ -6,10 +6,10 @@
 		"bradlc.vscode-tailwindcss",
 		"github.vscode-pull-request-github",
 		"eamodio.gitlens",
-		"seatonjiang.gitmoji-vscode",
 		"redhat.vscode-yaml",
 		"ms-azuretools.vscode-docker",
 		"yzhang.markdown-all-in-one",
-		"Prisma.prisma"
+		"prisma.prisma",
+		"vivaxy.vscode-conventional-commits"
 	]
 }
