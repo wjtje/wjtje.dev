@@ -16,7 +16,7 @@ dependencies:
     version: 8.1.0
   github-colors:
     specifier: github:ozh/github-colors
-    version: github.com/ozh/github-colors/545af9e84becef111c5382a55a1cd8fffbfd2bfc
+    version: git/github.com+ozh/github-colors/545af9e84becef111c5382a55a1cd8fffbfd2bfc
   luxon:
     specifier: ^3.3.0
     version: 3.3.0
@@ -98,8 +98,8 @@ devDependencies:
     specifier: ^2.1.0
     version: 2.1.0
   svelte-particles:
-    specifier: ^2.11.0
-    version: 2.11.0(svelte@3.59.2)
+    specifier: ^2.12.0
+    version: 2.12.0(svelte@3.59.2)
   svelte-preprocess:
     specifier: ^5.0.4
     version: 5.0.4(postcss-load-config@4.0.1)(postcss@8.4.27)(sass@1.64.1)(svelte@3.59.2)(typescript@5.0.4)
@@ -2625,13 +2625,13 @@ packages:
     resolution: {integrity: sha512-+IR1e49LZgre4WDiKcnx+FsHU7zvd3/LWDNjSyt33EzvO0swsBHrSgy1sTDyx6ScdfFkvPkHakG0w57m96TcrA==}
     dev: false
 
-  /svelte-particles@2.11.0(svelte@3.59.2):
-    resolution: {integrity: sha512-YswKzqJo4xOhVmz0zGz+aSpQE381eEa110UWgJBAX74j8qF+w17hv+OUfSS92AMK+JcotLP+1vPvDBlOCS/45w==}
+  /svelte-particles@2.12.0(svelte@3.59.2):
+    resolution: {integrity: sha512-DISZn5RNIt7hP9SORogWmXyIA/MCha6kkcwRCa7fl3leD1+GFHeNMSjdmyhqlfgip82g17WUFxwyA8n/8EM5KQ==}
     peerDependencies:
       svelte: '>=3'
     dependencies:
       svelte: 3.59.2
-      tsparticles-engine: 2.11.1
+      tsparticles-engine: 2.12.0
     dev: true
 
   /svelte-preprocess@5.0.4(postcss-load-config@4.0.1)(postcss@8.4.27)(sass@1.64.1)(svelte@3.59.2)(typescript@5.0.4):
@@ -2793,8 +2793,8 @@ packages:
     resolution: {integrity: sha512-t0hLfiEKfMUoqhG+U1oid7Pva4bbDPHYfJNiB7BiIjRkj1pyC++4N3huJfqY6aRH6VTB0rvtzQwjM4K6qpfOig==}
     dev: true
 
-  /tsparticles-engine@2.11.1:
-    resolution: {integrity: sha512-tkoCi2SWIVcOkxni6I+ECRz3xfSX2dP/Wn+Kt8Qga/BGWlSrdvLVUn3DbXNJq6h/6efs6n4Db6uFtkceSyRWGg==}
+  /tsparticles-engine@2.12.0:
+    resolution: {integrity: sha512-ZjDIYex6jBJ4iMc9+z0uPe7SgBnmb6l+EJm83MPIsOny9lPpetMsnw/8YJ3xdxn8hV+S3myTpTN1CkOVmFv0QQ==}
     requiresBuild: true
     dev: true
 
@@ -3007,8 +3007,8 @@ packages:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
     dev: false
 
-  github.com/ozh/github-colors/545af9e84becef111c5382a55a1cd8fffbfd2bfc:
-    resolution: {tarball: https://codeload.github.com/ozh/github-colors/tar.gz/545af9e84becef111c5382a55a1cd8fffbfd2bfc}
+  git/github.com+ozh/github-colors/545af9e84becef111c5382a55a1cd8fffbfd2bfc:
+    resolution: {commit: 545af9e84becef111c5382a55a1cd8fffbfd2bfc, repo: git@github.com:ozh/github-colors.git, type: git}
     name: github-colors
     version: 1.0.0
     dev: false
