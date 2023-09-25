@@ -16,7 +16,7 @@ dependencies:
     version: 8.1.0
   github-colors:
     specifier: github:ozh/github-colors
-    version: github.com/ozh/github-colors/545af9e84becef111c5382a55a1cd8fffbfd2bfc
+    version: git/github.com+ozh/github-colors/d051281c51fa49f642363a77ea5af8cf0afea161
   luxon:
     specifier: ^3.3.0
     version: 3.3.0
@@ -89,8 +89,8 @@ devDependencies:
     specifier: ^1.64.1
     version: 1.64.1
   svelte-check:
-    specifier: ^3.4.6
-    version: 3.4.6(postcss-load-config@4.0.1)(postcss@8.4.27)(sass@1.64.1)(svelte@3.59.2)
+    specifier: ^3.5.2
+    version: 3.5.2(postcss-load-config@4.0.1)(postcss@8.4.27)(sass@1.64.1)(svelte@3.59.2)
   svelte-content-loader:
     specifier: ^1.1.3
     version: 1.1.3
@@ -2563,8 +2563,8 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /svelte-check@3.4.6(postcss-load-config@4.0.1)(postcss@8.4.27)(sass@1.64.1)(svelte@3.59.2):
-    resolution: {integrity: sha512-OBlY8866Zh1zHQTkBMPS6psPi7o2umTUyj6JWm4SacnIHXpWFm658pG32m3dKvKFL49V4ntAkfFHKo4ztH07og==}
+  /svelte-check@3.5.2(postcss-load-config@4.0.1)(postcss@8.4.27)(sass@1.64.1)(svelte@3.59.2):
+    resolution: {integrity: sha512-5a/YWbiH4c+AqAUP+0VneiV5bP8YOk9JL3jwvN+k2PEPLgpu85bjQc5eE67+eIZBBwUEJzmO3I92OqKcqbp3fw==}
     hasBin: true
     peerDependencies:
       svelte: ^3.55.0 || ^4.0.0-next.0 || ^4.0.0
@@ -3007,8 +3007,8 @@ packages:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
     dev: false
 
-  github.com/ozh/github-colors/545af9e84becef111c5382a55a1cd8fffbfd2bfc:
-    resolution: {tarball: https://codeload.github.com/ozh/github-colors/tar.gz/545af9e84becef111c5382a55a1cd8fffbfd2bfc}
+  git/github.com+ozh/github-colors/d051281c51fa49f642363a77ea5af8cf0afea161:
+    resolution: {commit: d051281c51fa49f642363a77ea5af8cf0afea161, repo: git@github.com:ozh/github-colors.git, type: git}
     name: github-colors
     version: 1.0.0
     dev: false
