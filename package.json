@@ -53,6 +53,6 @@
 		"tailwindcss-global-dark": "^1.0.1",
 		"tslib": "^2.6.1",
 		"typescript": "~5.0.4",
-		"vite": "^4.4.7"
+		"vite": "^4.5.0"
 	}
 }
