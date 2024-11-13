@@ -110,6 +110,12 @@ export async function updateStreetCompleteCache() {
  * @returns {Promise<string|null>} A icon url
  */
 export async function getStreetCompleteImage(quest: string): Promise<string | null> {
+	// Check if the quest name ends in Overlay, if so use the overlay function
+	// Currently these are not included in the quest list, so we have our own function for this
+	if (quest.endsWith('Overlay')) {
+		return getStreetCompleteOverlayImage(quest);
+	}
+
 	return (
 		await prisma.streetCompleteQuest.findFirst({
 			where: {
@@ -117,4 +123,41 @@ export async function getStreetCompleteImage(quest: string): Promise<string | nu
 			}
 		})
 	)?.iconUrl;
+}
+
+/**
+ * Get an icon url from an overlay name
+ * @param overlay The overlay name
+ * @returns {Promise<string|null>} A icon url
+ */
+export async function getStreetCompleteOverlayImage(overlay: string): Promise<string | null> {
+	// Currently these are not included in the quest list, so we have our own mapping for some of them
+	const overlayMapping = {
+		WayLitOverlay:
+			'https://raw.githubusercontent.com/streetcomplete/StreetComplete/refs/heads/master/res/graphics/quest/lantern.svg',
+		SurfaceOverlay:
+			'https://raw.githubusercontent.com/streetcomplete/StreetComplete/refs/heads/master/res/graphics/quest/street_surface.svg',
+		SidewalkOverlay:
+			'https://raw.githubusercontent.com/streetcomplete/StreetComplete/refs/heads/master/res/graphics/quest/sidewalk.svg',
+		CyclewayOverlay:
+			'https://raw.githubusercontent.com/streetcomplete/StreetComplete/refs/heads/master/res/graphics/quest/bicycleway.svg',
+		StreetParkingOverlay:
+			'https://raw.githubusercontent.com/streetcomplete/StreetComplete/refs/heads/master/res/graphics/quest/parking_lane.svg',
+		AddressOverlay:
+			'https://raw.githubusercontent.com/streetcomplete/StreetComplete/refs/heads/master/res/graphics/quest/housenumber.svg',
+		PlacesOverlay:
+			'https://raw.githubusercontent.com/streetcomplete/StreetComplete/refs/heads/master/res/graphics/quest/shop.svg',
+		ThingsOverlay:
+			'https://raw.githubusercontent.com/streetcomplete/StreetComplete/refs/heads/master/res/graphics/quest/dot.svg',
+		BuildingsOverlay:
+			'https://raw.githubusercontent.com/streetcomplete/StreetComplete/refs/heads/master/res/graphics/quest/building.svg'
+	};
+
+	// Check if the overlay is in the mapping
+	if (overlay in overlayMapping) {
+		return Promise.resolve(overlayMapping[overlay]);
+	}
+
+	// If not return null
+	return Promise.resolve(null);
 }
