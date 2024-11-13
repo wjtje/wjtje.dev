@@ -1,8 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-
-	import { createMedia } from 'svelte-match-media';
-	import type { mediaObject } from 'svelte-match-media';
 	import type { TransitionConfig } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 
@@ -13,23 +10,18 @@
 	export let active = -1;
 
 	// Register media querys
-	let media: mediaObject;
-
-	onMount(() => {
-		media = createMedia({
-			md: 'screen and (min-width: 768px)'
-		}).media;
-	});
+	let body_width: number = 0;
+	$: media_md = body_width > 768;
 
 	// State
 	let hovering = false;
 	let selected = false;
-	$: expanded = (hovering && $media.md) || selected;
+	$: expanded = (hovering && media_md) || selected;
 
 	// Animation
 	function showAnimation(node: Element): TransitionConfig {
 		// Desktop animation (e.g. fly)
-		if ($media.md) {
+		if (media_md) {
 			const duration = 50;
 			const style = getComputedStyle(node);
 			const target_opacity = +style.opacity;
@@ -57,6 +49,8 @@
 		}
 	}
 </script>
+
+<svelte:body bind:clientWidth={body_width}/>
 
 <div
 	on:mouseenter={() => {
