@@ -73,6 +73,7 @@ export const load: PageServerLoad<{ repos: GithubRepo[] }> = async () => {
 
 			if (response.status != 200) {
 				console.log(`[projects/+page.server.ts]: Status: ${response.status}`);
+				console.debug(`[projects/+page.server.ts]: Response: ${await response.text()}`);
 				throw 'Faulty response';
 			}
 
