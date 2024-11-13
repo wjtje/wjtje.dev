@@ -33,4 +33,4 @@
 
 ## License
 
-The MIT License (MIT) - Copyright (c) 2022 Wouter van der Wal
+The MIT License (MIT) - Copyright (c) 2022 Wouter

@@ -1,6 +1,6 @@
 {
-	"name": "Wouter van der Wal",
-	"about": "Een {{birthday:age}} jaar oude software ontwikkelaar uit Nederland, die op dit moment experimenteert met TypeScript, Svelte, GraphQL en Tailwind. En daarnaast zich bezig houd met details op OpenStreetMap toevoegen.",
+	"name": "Wouter",
+	"about": "Een {{birthday:age}} jaar oude software ontwikkelaar uit Nederland, die op dit moment experimenteert met C++, Svelte, embedded systems en daarnaast zich bezig houd met details op OpenStreetMap toevoegen.",
 	"ghactivity": "GitHub activiteit",
 	"osmactivity": "OpenStreetMap activiteit",
 	"noData": "Kon de vereiste data niet krijgen van de server. ({{status}})",

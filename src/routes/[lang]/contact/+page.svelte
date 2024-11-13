@@ -24,7 +24,7 @@
 <ul>
 	<li class="email">
 		<MdEmail title="email" />
-		<span><a href="mailto:me@wjtje.dev">me@wjtje.dev</a></span>
+		<span><a href="mailto:contact@wjt.je">contact@wjt.je</a></span>
 	</li>
 	<li class="github">
 		<GoMarkGithub title="Github" />
@@ -36,24 +36,24 @@
 	</li>
 	<li class="mastodon">
 		<MastodonIcon />
-		<span><a rel="me" href="https://social.wjtje.dev/@wjtje">@wjtje@wjtje.dev</a></span>
+		<span><a rel="me" href="https://social.wjt.je/@wouter">@wouter@wjt.je</a></span>
 	</li>
 	<li class="matrix">
 		<MatrixIcon />
-		<span><a href="https://matrix.to/#/@wjtje:wjtje.dev">@wjtje:wjtje.dev</a></span>
+		<span><a href="https://matrix.to/#/@wouter:wjt.je">@wouter:wjt.je</a></span>
 	</li>
 	<li class="osm">
 		<OsmIcon />
 		<span><a href="https://www.openstreetmap.org/user/wjtje">wjtje</a></span>
-	</li>
-	<li class="reddit">
-		<FaReddit title="Reddit" /><span><a href="https://www.reddit.com/u/wjtje">u/wjtje</a></span>
 	</li>
 </ul>
 
 <br />
 
 <ul>
+	<li class="reddit">
+		<FaReddit title="Reddit" /><span><a href="https://www.reddit.com/u/wjtje">u/wjtje</a></span>
+	</li>
 	<li class="discord">
 		<DiscordIcon />
 		<span><a href="https://discord.com/users/389862864409853952">wjtje</a></span>
