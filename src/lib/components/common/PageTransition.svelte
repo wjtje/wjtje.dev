@@ -29,9 +29,9 @@
 
 <div class="content">
 	{#key currentPage}
-		<main in:fly={{ x: -5, duration, delay: duration }} out:fly={{ x: 5, duration }}>
+		<div in:fly={{ x: -5, duration, delay: duration }} out:fly={{ x: 5, duration }}>
 			<slot />
-		</main>
+		</div>
 	{/key}
 
 	{#if isLoading}
@@ -41,7 +41,7 @@
 
 <style lang="scss">
 	div.content {
-		@apply grid justify-items-center;
+		@apply grid;
 
 		& > * {
 			grid-column-start: 1;
@@ -55,10 +55,6 @@
 		animation-iteration-count: infinite;
 		left: -100vw;
 		transform-origin: left;
-	}
-
-	main {
-		@apply container mx-auto py-4 lg:py-8 px-4 lg:px-8 w-screen;
 	}
 
 	@keyframes load-right {

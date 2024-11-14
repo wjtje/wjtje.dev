@@ -25,21 +25,23 @@
 	<meta name="og:description" content={post.preview} />
 	<meta name="og:image" content={post.image ?? ''} />
 	<!-- Custom tags for Mastodon -->
-	<meta name="fediverse:creator" content="@wouter@wjt.je">
+	<meta name="fediverse:creator" content="@wouter@wjt.je" />
 </svelte:head>
 
-<h1>{post.title}</h1>
+<main>
+	<h1>{post.title}</h1>
 
-<span
-	>{$t('blog.written_by', {
-		author: post.owner.name,
-		date: date
-	})}</span
->
+	<span
+		>{$t('blog.written_by', {
+			author: post.owner.name,
+			date: date
+		})}</span
+	>
 
-<div class="markdown">
-	<Markdown md={post.body} plugins={[gfmPlugin]} />
-</div>
+	<div class="markdown">
+		<Markdown md={post.body} plugins={[gfmPlugin]} />
+	</div>
+</main>
 
 <style lang="scss">
 	h1 {

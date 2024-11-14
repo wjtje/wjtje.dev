@@ -2,11 +2,14 @@
 	import { locale } from '$lib/i18n';
 	import { DateTime } from 'luxon';
 	import Markdown from 'svelte-exmarkdown';
+	import { scale } from 'svelte/transition';
 
 	export let image: string = undefined;
 	export let date: Date | string = undefined;
 	export let mainTitle: string = undefined;
 	export let subTitle: string = undefined;
+	export let index: number = 0;
+	export let url: string | undefined = undefined;
 
 	// Remove images from the subtitle
 	$: subtitleClean = String(subTitle).replaceAll(/!\[[^\]]*\]\((.*?)\s*("(?:.*[^"])")?\s*\)/g, '');
@@ -16,7 +19,7 @@
 	});
 </script>
 
-<section>
+<section in:scale={{ duration: 400, delay: index * 50 }}>
 	<div class="text">
 		<slot name="tags" />
 

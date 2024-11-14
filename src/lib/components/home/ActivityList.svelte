@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { locale, t } from '$lib/i18n';
-	import { scale } from 'svelte/transition';
 	import MiniPostLoader from '$lib/components/common/MiniPostLoader.svelte';
 	import MiniPost from '../common/MiniPost.svelte';
 
@@ -24,9 +23,7 @@
 		<h3>{$t('home.dataLoadingFailed', { status: response.status })}</h3>
 	{/if}
 	{#each response.events as event, i}
-		<div in:scale={{ duration: 400, delay: i * 50 }}>
-			<MiniPost {...event} />
-		</div>
+		<MiniPost {...event} index={i} />
 	{/each}
 {:catch error}
 	<h3>{$t('home.noData', { status: error.message })}</h3>

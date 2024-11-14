@@ -17,52 +17,54 @@
 	<meta name="description" content={$t('contact.meta')} />
 </svelte:head>
 
-<h1>{$t('contact.title')}</h1>
+<main>
+	<h1>{$t('contact.title')}</h1>
 
-<p>{$t('contact.description')}</p>
+	<p>{$t('contact.description')}</p>
 
-<ul>
-	<li class="email">
-		<MdEmail title="email" />
-		<span><a href="mailto:contact@wjt.je">contact@wjt.je</a></span>
-	</li>
-	<li class="github">
-		<GoMarkGithub title="Github" />
-		<span><a href="https://www.github.com/wjtje">wjtje</a></span>
-	</li>
-	<li class="linkedin">
-		<FaLinkedin title="LinkedIn" />
-		<span><a href="https://www.linkedin.com/in/wjtje/">Wouter van der Wal</a></span>
-	</li>
-	<li class="mastodon">
-		<MastodonIcon />
-		<span><a rel="me" href="https://social.wjt.je/@wouter">@wouter@wjt.je</a></span>
-	</li>
-	<li class="matrix">
-		<MatrixIcon />
-		<span><a href="https://matrix.to/#/@wouter:wjt.je">@wouter:wjt.je</a></span>
-	</li>
-	<li class="osm">
-		<OsmIcon />
-		<span><a href="https://www.openstreetmap.org/user/wjtje">wjtje</a></span>
-	</li>
-</ul>
+	<ul>
+		<li class="email">
+			<MdEmail title="email" />
+			<span><a href="mailto:contact@wjt.je">contact@wjt.je</a></span>
+		</li>
+		<li class="github">
+			<GoMarkGithub title="Github" />
+			<span><a href="https://www.github.com/wjtje">wjtje</a></span>
+		</li>
+		<li class="linkedin">
+			<FaLinkedin title="LinkedIn" />
+			<span><a href="https://www.linkedin.com/in/wjtje/">Wouter van der Wal</a></span>
+		</li>
+		<li class="mastodon">
+			<MastodonIcon />
+			<span><a rel="me" href="https://social.wjt.je/@wouter">@wouter@wjt.je</a></span>
+		</li>
+		<li class="matrix">
+			<MatrixIcon />
+			<span><a href="https://matrix.to/#/@wouter:wjt.je">@wouter:wjt.je</a></span>
+		</li>
+		<li class="osm">
+			<OsmIcon />
+			<span><a href="https://www.openstreetmap.org/user/wjtje">wjtje</a></span>
+		</li>
+	</ul>
 
-<br />
+	<br />
 
-<ul>
-	<li class="reddit">
-		<FaReddit title="Reddit" /><span><a href="https://www.reddit.com/u/wjtje">u/wjtje</a></span>
-	</li>
-	<li class="discord">
-		<DiscordIcon />
-		<span><a href="https://discord.com/users/389862864409853952">wjtje</a></span>
-	</li>
-	<li class="youtube">
-		<FaYoutube title="Youtube" />
-		<span><a href="https://www.youtube.com/channel/UCIXqIlnYY016Dn1aSuYvTmg">wjtje</a></span>
-	</li>
-</ul>
+	<ul>
+		<li class="reddit">
+			<FaReddit title="Reddit" /><span><a href="https://www.reddit.com/u/wjtje">u/wjtje</a></span>
+		</li>
+		<li class="discord">
+			<DiscordIcon />
+			<span><a href="https://discord.com/users/389862864409853952">wjtje</a></span>
+		</li>
+		<li class="youtube">
+			<FaYoutube title="Youtube" />
+			<span><a href="https://www.youtube.com/channel/UCIXqIlnYY016Dn1aSuYvTmg">wjtje</a></span>
+		</li>
+	</ul>
+</main>
 
 <style lang="scss">
 	p {

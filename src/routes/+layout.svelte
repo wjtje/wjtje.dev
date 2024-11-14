@@ -73,4 +73,19 @@
 			@apply text-sm text-zinc-600 hover:text-zinc-800 gdark:text-zinc-400 gdark:hover:text-zinc-200;
 		}
 	}
+
+	/* Global body */
+	:global(body) {
+		@apply gdark:bg-zinc-900 gdark:text-white transition-colors overflow-x-hidden;
+	}
+
+	/* Global headings */
+	:global(h1) {
+		@apply text-4xl pb-6;
+	}
+
+	:global(main),
+	:global(.main) {
+		@apply container mx-auto py-4 lg:py-8 px-4 lg:px-8 w-screen;
+	}
 </style>

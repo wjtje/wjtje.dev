@@ -23,48 +23,54 @@
 	<meta name="description" content={$t('projects.temp')} />
 </svelte:head>
 
-<h1>{$t('projects.title')}</h1>
+<main>
+	<h1>{$t('projects.title')}</h1>
 
-{#if ready}
-	{#each data.repos as repo, i}
-		<a
-			in:scale={{ duration: 400, delay: i * 50 }}
-			class="project"
-			href={repo.detailPage
-				? `/${$locale}/projects/${encodeURIComponent(repo.owner)}/${encodeURIComponent(repo.name)}`
-				: repo.url}
-		>
-			<MiniPost subTitle={repo.description}>
-				<svelte:fragment slot="mainTitle">
-					{#if repo.owner == GitHubUsername}
-						{repo.name}
-					{:else}
-						{repo.owner}/{repo.name}
-					{/if}
-					{#if !repo.detailPage}
-						<span class="github-readme">
-							<GoMarkGithub />
-						</span>
-					{/if}
-				</svelte:fragment>
-				<div class="indicators" slot="tags">
-					<LanguageIndicator language={repo.language} />
-					<NumberIndicator count={repo.forksCount}>
-						<GoRepoForked title="Number of forks" />
-					</NumberIndicator>
-					<NumberIndicator count={repo.stargazersCount}>
-						<GoStar title="Number of stars" />
-					</NumberIndicator>
-					<ForkIndicator fork={repo.fork} parentName={repo.parentName} parentUrl={repo.parentUrl} />
-				</div>
-			</MiniPost>
-		</a>
-	{/each}
-{/if}
+	{#if ready}
+		<div class="list">
+			{#each data.repos as repo, i}
+				<MiniPost
+					subTitle={repo.description}
+					index={i}
+					url={repo.detailPage
+						? `/${$locale}/projects/${encodeURIComponent(repo.owner)}/${encodeURIComponent(repo.name)}`
+						: repo.url}
+				>
+					<svelte:fragment slot="mainTitle">
+						{#if repo.owner == GitHubUsername}
+							{repo.name}
+						{:else}
+							{repo.owner}/{repo.name}
+						{/if}
+						{#if !repo.detailPage}
+							<span class="github-readme">
+								<GoMarkGithub />
+							</span>
+						{/if}
+					</svelte:fragment>
+					<div class="indicators" slot="tags">
+						<LanguageIndicator language={repo.language} />
+						<NumberIndicator count={repo.forksCount}>
+							<GoRepoForked title="Number of forks" />
+						</NumberIndicator>
+						<NumberIndicator count={repo.stargazersCount}>
+							<GoStar title="Number of stars" />
+						</NumberIndicator>
+						<ForkIndicator
+							fork={repo.fork}
+							parentName={repo.parentName}
+							parentUrl={repo.parentUrl}
+						/>
+					</div>
+				</MiniPost>
+			{/each}
+		</div>
+	{/if}
+</main>
 
 <style lang="scss">
-	a.project {
-		@apply w-full md:w-[60%] lg:w-[50%] cursor-pointer block;
+	div.list {
+		@apply w-full md:w-[60%] lg:w-[50%] block;
 
 		div.indicators {
 			@apply flex gap-2;

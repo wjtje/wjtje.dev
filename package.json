@@ -13,6 +13,8 @@
 		"git": "npm ci && npx prisma migrate deploy && npx prisma generate"
 	},
 	"dependencies": {
+		"@dotenvx/dotenvx": "^1.23.0",
+		"@prisma/client": "^5.22.0",
 		"@zip.js/zip.js": "^2.7.53",
 		"gemoji": "^8.1.0",
 		"github-colors": "github:ozh/github-colors",

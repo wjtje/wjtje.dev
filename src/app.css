@@ -3,12 +3,3 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Global body */
-body {
-	@apply gdark:bg-zinc-900 gdark:text-white transition-colors overflow-x-hidden;
-}
-
-/* Global headings */
-h1 {
-	@apply text-4xl pb-6;
-}

@@ -7,13 +7,15 @@
 	const link = `https://github.com/${data.repo.owner}/${data.repo.name}`;
 </script>
 
-<h1>{data.title}</h1>
+<main>
+	<h1>{data.title}</h1>
 
-<GitHubButton {link} type="large" />
+	<GitHubButton {link} type="large" />
 
-<div class="markdown">
-	<Markdown md={data.body} />
-</div>
+	<div class="markdown">
+		<Markdown md={data.body} />
+	</div>
+</main>
 
 <style lang="scss">
 	div.markdown {

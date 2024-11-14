@@ -17,19 +17,21 @@
 
 <Profile />
 
-<section class="activity">
-	<section class="github">
-		<h2>{$t('home.ghactivity')}</h2>
-
-		<ActivityList activityName="github" />
+<main>
+	<section class="activity">
+		<section class="github">
+			<h2>{$t('home.ghactivity')}</h2>
+			
+			<ActivityList activityName="github" />
+		</section>
+		
+		<section class="osm">
+			<h2>{$t('home.osmactivity')}</h2>
+			
+			<ActivityList activityName="osm" />
+		</section>
 	</section>
-
-	<section class="osm">
-		<h2>{$t('home.osmactivity')}</h2>
-
-		<ActivityList activityName="osm" />
-	</section>
-</section>
+</main>
 
 <style lang="scss">
 	:global(section) {
