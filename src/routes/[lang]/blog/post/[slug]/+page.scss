@@ -2,7 +2,7 @@
 	@apply xl:max-w-2xl 2xl:max-w-3xl;
 
 	a {
-		@apply text-sky-700 dark:text-blue-200 hover:text-blue-700 dark:hover:text-sky-600 transition-colors;
+		@apply text-sky-700 gdark:text-blue-200 hover:text-blue-700 gdark:hover:text-sky-600 transition-colors;
 	}
 
 	h2 {
@@ -26,7 +26,7 @@
 	}
 
 	code {
-		@apply font-mono text-[#a31515] dark:text-[#d7ba7d];
+		@apply font-mono text-[#a31515] gdark:text-[#d7ba7d];
 	}
 
 	table {
