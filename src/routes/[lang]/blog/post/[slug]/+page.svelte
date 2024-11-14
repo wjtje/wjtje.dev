@@ -18,18 +18,14 @@
 <svelte:head>
 	<title>{$t('common.title')} - {post.title}</title>
 	<meta name="description" content={post.preview} />
-	<!-- Custom tags for Twitter -->
-	<meta name="twitter:card" content="summary" />
-	<meta name="twitter:creator" content="@wjtje_wal" />
-	<meta name="twitter:title" content={`${post.title} - ${$t('common.title')}`} />
-	<meta name="twitter:description" content={post.preview} />
-	<meta name="twitter:image" content={post.image ?? ''} />
 	<!-- Custom tags for Open Graph -->
 	<meta name="og:title" content={`${post.title} - ${$t('common.title')}`} />
 	<meta name="og:type" content="article" />
 	<meta name="article:published_time" content={new Date(post.createdAt).toISOString()} />
 	<meta name="og:description" content={post.preview} />
 	<meta name="og:image" content={post.image ?? ''} />
+	<!-- Custom tags for Mastodon -->
+	<meta name="fediverse:creator" content="@wouter@wjt.je">
 </svelte:head>
 
 <h1>{post.title}</h1>
