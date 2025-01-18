@@ -39,7 +39,11 @@
 				titleLink={activity.titleUrl}
 			>
 				{#snippet image()}
-					<img src={activity.image} alt={activity.imageAlt} class="rounded-full w-full h-full" />
+					<img
+						src={activity.image}
+						alt={activity.imageAlt}
+						class={activity.imageRounded ? 'rounded-full w-full h-full' : 'w-full h-full'}
+					/>
 				{/snippet}
 				{#snippet subtitle()}
 					<p>{formatSubtitle(activity.subtitle, activity.start.toString())}</p>

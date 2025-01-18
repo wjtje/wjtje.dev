@@ -11,6 +11,11 @@ export default class Steam implements ActivitySource {
 	private readonly userId = env.STEAM_USERID;
 
 	async getActivities() {
+		if (!this.apiKey || !this.userId) {
+			console.log('[steam.ts] Steam is not configured, skipping');
+			return [];
+		}
+
 		const url = `https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${this.apiKey}&steamids=${this.userId}&format=json`;
 		console.log(`[steam.ts] Fetching Steam user data from ${url}`);
 

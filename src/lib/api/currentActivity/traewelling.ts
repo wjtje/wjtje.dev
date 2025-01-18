@@ -10,6 +10,11 @@ export default class Traewelling implements ActivitySource {
 	private readonly username = env.TRAEWELLING_USERNAME;
 
 	async getActivities() {
+		if (!this.username) {
+			console.log('[traewelling.ts] Traewelling is not configured, skipping');
+			return [];
+		}
+
 		const url = `https://traewelling.de/api/v1/user/${this.username}/statuses`;
 
 		const response = await fetch(url);

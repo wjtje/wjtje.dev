@@ -2,6 +2,7 @@ import { locales, defaultLocale, t, locale } from '$lib/i18n';
 import { prisma } from '$lib/prisma';
 import { DateTime } from 'luxon';
 import { getMapCompleteName } from './getMapCompleteDetails';
+import { env } from '$env/dynamic/private';
 
 export interface RemoteI18nData {
 	id: string;
@@ -38,13 +39,17 @@ export async function checkCacheState(name: string): Promise<{ cacheState: boole
 		});
 	}
 
+	const maxCacheAge =
+		cacheState.name === 'activity'
+			? Number(env.CACHE_DURATION_CURRENT)
+			: Number(env.CACHE_DURATION);
+
 	// Check if cache is valid
 	return {
 		cacheState: !(
 			cacheState == null ||
 			cacheState?.lastUpdate == null ||
-			DateTime.fromJSDate(cacheState?.lastUpdate).diffNow('minutes').minutes <
-				-Number(process.env['CACHE_DURATION'])
+			DateTime.fromJSDate(cacheState?.lastUpdate).diffNow('minutes').minutes < -maxCacheAge
 		),
 		id: cacheState.id
 	};
@@ -122,9 +127,7 @@ export function extractLangFromUrl(url: URL) {
 
 export async function translateCache(id: number) {
 	return await Promise.all(
-		(
-			await getCacheData(id)
-		).map(async (item) => {
+		(await getCacheData(id)).map(async (item) => {
 			const mainTitle = JSON.parse(item.mainTitle);
 			const subTitle = JSON.parse(item.subTitle);
 
@@ -141,14 +144,14 @@ export async function translateCache(id: number) {
 					mainTitle == null
 						? null
 						: typeof mainTitle == 'string'
-						? mainTitle
-						: t.get(mainTitle.id, mainTitle.data ?? {}),
+							? mainTitle
+							: t.get(mainTitle.id, mainTitle.data ?? {}),
 				subTitle:
 					subTitle == null
 						? null
 						: typeof subTitle == 'string'
-						? subTitle
-						: t.get(subTitle.id, subTitle.data ?? {})
+							? subTitle
+							: t.get(subTitle.id, subTitle.data ?? {})
 			};
 		})
 	);

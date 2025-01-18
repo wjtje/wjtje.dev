@@ -4,5 +4,11 @@
 	},
 	"traewelling": {
 		"subtitle": "{{line}} - 🚩{{distance}}km - ⏱️{durationReadable} - 🟠{{points}}pt."
+	},
+	"trakt": {
+		"subtitle": {
+			"movie": "🗓️{{year}} - 🕒{durationReadable}",
+			"episode": "{{season}}x{{episode}} - 🗓️{{year}} - 🕒{durationReadable}"
+		}
 	}
 }
