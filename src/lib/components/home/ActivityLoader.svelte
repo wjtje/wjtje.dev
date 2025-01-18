@@ -12,13 +12,35 @@
 
 	$: request = getDataFromServer($locale);
 
-	const formatSubtitle = (subtitle: string, start: string) => {
-		const timeMinutes = (new Date().getTime() - new Date(start).getTime()) / 1000 / 60;
-		const durationReadable =
-			timeMinutes < 60
-				? `${Math.round(timeMinutes)} min`
-				: `${Math.round(timeMinutes / 60)} h ${Math.round(timeMinutes % 60)} min`;
-		return subtitle.replace('{durationReadable}', durationReadable);
+	/**
+	 * Format the subtitle, replacing some placeholders with the actual values
+	 * @param subtitle Subtitle with placeholders
+	 * @param start Start Time
+	 * @param end End Time
+	 * @returns {string}
+	 */
+	const formatSubtitle = (subtitle: string, start: string, end: string) => {
+		if (subtitle.includes('{durationReadable}')) {
+			const timeMinutes = (new Date().getTime() - new Date(start).getTime()) / 1000 / 60;
+			const durationReadable =
+				timeMinutes < 60
+					? `${Math.round(timeMinutes)} min`
+					: `${Math.round(timeMinutes / 60)} h ${Math.round(timeMinutes % 60)} min`;
+			subtitle = subtitle.replace('{durationReadable}', durationReadable);
+		}
+
+		if (subtitle.includes('{timeLeft}')) {
+			const timeLeft = new Date(end).getTime() - new Date().getTime();
+			const timeLeftMinutes = timeLeft / 1000 / 60;
+
+			const timeLeftReadable =
+				timeLeftMinutes < 60
+					? `${Math.round(timeLeftMinutes)} min`
+					: `${Math.round(timeLeftMinutes / 60)} h ${Math.round(timeLeftMinutes % 60)} min`;
+			subtitle = subtitle.replace('{timeLeft}', timeLeftReadable);
+		}
+
+		return subtitle;
 	};
 
 	const determineProgress = (start: Date | null, end: Date | null) => {
@@ -46,7 +68,9 @@
 					/>
 				{/snippet}
 				{#snippet subtitle()}
-					<p>{formatSubtitle(activity.subtitle, activity.start.toString())}</p>
+					<p>
+						{formatSubtitle(activity.subtitle, activity.start.toString(), activity.end.toString())}
+					</p>
 				{/snippet}
 			</CurrentActivity>
 		{/each}

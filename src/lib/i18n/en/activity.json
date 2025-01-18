@@ -3,12 +3,12 @@
 		"subtitle": "Playing for {durationReadable}, {{totalTime}} hours total"
 	},
 	"traewelling": {
-		"subtitle": "{{line}} - 🚩{{distance}}km - ⏱️{durationReadable} - 🟠{{points}}pts."
+		"subtitle": "{{line}} - 🚩 {{distance}}km - ⏱️ {durationReadable} - 🟠 {{points}}pts."
 	},
 	"trakt": {
 		"subtitle": {
-			"movie": "🗓️{{year}}",
-			"episode": "{{season}}x{{episode}} - 🗓️{{year}}"
+			"movie": "🗓️{ {year}} - ⏱️ {timeLeft}",
+			"episode": "{{season}}x{{episode}} - 🗓️ {{year}} - ⏱️ {timeLeft} left"
 		}
 	}
 }

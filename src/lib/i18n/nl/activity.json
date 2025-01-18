@@ -3,12 +3,12 @@
 		"subtitle": "Spelend voor {durationReadable}, {{totalTime}} uur in totaal"
 	},
 	"traewelling": {
-		"subtitle": "{{line}} - 🚩{{distance}}km - ⏱️{durationReadable} - 🟠{{points}}pt."
+		"subtitle": "{{line}} - 🚩 {{distance}}km - ⏱️ {durationReadable} - 🟠 {{points}}pt."
 	},
 	"trakt": {
 		"subtitle": {
-			"movie": "🗓️{{year}}",
-			"episode": "{{season}}x{{episode}} - 🗓️{{year}}"
+			"movie": "🗓️ {{year}} - ⏱️ {timeLeft}",
+			"episode": "{{season}}x{{episode}} - 🗓️ {{year}} - ⏱️ {timeLeft} over"
 		}
 	}
 }

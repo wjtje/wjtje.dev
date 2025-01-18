@@ -40,6 +40,7 @@
 		{#if progress >= 0}
 			<span class="progress">
 				<progress value={progress} max="1"></progress>
+				<p>{Math.round(progress * 100)}%</p>
 			</span>
 		{/if}
 	</span>
@@ -66,6 +67,10 @@
 
 			.subtitle {
 				@apply text-sm;
+			}
+
+			.progress {
+				@apply flex flex-row items-center gap-2;
 			}
 		}
 	}
