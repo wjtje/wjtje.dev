@@ -7,8 +7,8 @@
 	},
 	"trakt": {
 		"subtitle": {
-			"movie": "🗓️{{year}} - 🕒{durationReadable}",
-			"episode": "{{season}}x{{episode}} - 🗓️{{year}} - 🕒{durationReadable}"
+			"movie": "🗓️{{year}}",
+			"episode": "{{season}}x{{episode}} - 🗓️{{year}}"
 		}
 	}
 }
