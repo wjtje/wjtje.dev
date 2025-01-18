@@ -14,9 +14,9 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.0.0
         with:
-          node-version: '19'
+          node-version: '18'
       - name: Install dependencies
-        run: npm install
+        run: npm ci
       - name: Run the formatter
         run: npm run format
       - name: Run the linter
