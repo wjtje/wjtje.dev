@@ -17,7 +17,6 @@ export default class Steam implements ActivitySource {
 		}
 
 		const url = `https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${this.apiKey}&steamids=${this.userId}&format=json`;
-		console.log(`[steam.ts] Fetching Steam user data from ${url}`);
 
 		const response = await fetch(url);
 		const data: PlayerSummaryAPIResponse = await response.json();
