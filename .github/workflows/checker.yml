@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: '19'
       - name: Install dependencies
-        run: npm install --global pnpm && pnpm install --frozen-lockfile
+        run: npm install
       - name: Run the formatter
         run: npm run format
       - name: Run the linter
