@@ -99,3 +99,15 @@ model GithubRepo {
   updatedAt       DateTime
   detailPage      Boolean  @default(false)
 }
+
+model CurrentActivity {
+  id           Int       @id @default(autoincrement())
+  title        String
+  titleUrl     String?
+  subtitle     String?
+  image        String?
+  imageAlt     String?
+  imageRounded Boolean   @default(true)
+  start        DateTime?
+  end          DateTime?
+}

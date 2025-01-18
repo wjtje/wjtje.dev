@@ -1,0 +1,8 @@
+{
+	"steam": {
+		"subtitle": "Playing for {durationReadable}, {{totalTime}} hours total"
+	},
+	"traewelling": {
+		"subtitle": "{{line}} - 🚩{{distance}}km - ⏱️{durationReadable} - 🟠{{points}}pts."
+	}
+}

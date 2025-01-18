@@ -28,6 +28,10 @@ const keys: key[] = [
 		routes: ['/']
 	},
 	{
+		key: 'activity',
+		routes: ['/api/activity']
+	},
+	{
 		key: 'projects',
 		routes: ['/projects']
 	},
