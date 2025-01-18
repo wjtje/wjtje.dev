@@ -1,0 +1,14 @@
+{
+	"steam": {
+		"subtitle": "Spelend voor {durationReadable}, {{totalTime}} uur in totaal"
+	},
+	"traewelling": {
+		"subtitle": "{{line}} - 🚩 {{distance}}km - ⏱️ {durationReadable} - 🟠 {{points}}pt."
+	},
+	"trakt": {
+		"subtitle": {
+			"movie": "🗓️ {{year}} - ⏱️ {timeLeft}",
+			"episode": "{{season}}x{{episode}} - 🗓️ {{year}} - ⏱️ {timeLeft} over"
+		}
+	}
+}

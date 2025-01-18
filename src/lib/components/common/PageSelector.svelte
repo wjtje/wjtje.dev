@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { locale } from '$lib/i18n';
 
-	export let pageCount: number;
-	export let currentPage: number;
+	let { pageCount, currentPage }: { pageCount: number; currentPage: number } = $props();
 </script>
 
 {#if pageCount > 1}

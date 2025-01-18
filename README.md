@@ -13,6 +13,7 @@
 
 - Auto generated GitHub event log
 - Auto generated OpenStreepMap event log
+- Indicator for current activity on Träwelling, Steam and Trakt
 - Easy to use contact options
 - i18n support
 - Dark and light mode support

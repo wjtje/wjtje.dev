@@ -3,6 +3,7 @@
 	import Profile from '$lib/components/home/Profile.svelte';
 	import { t } from '$lib/i18n';
 	import { env } from '$env/dynamic/public';
+	import ActivityLoader from '$lib/components/home/ActivityLoader.svelte';
 </script>
 
 <svelte:head>
@@ -18,16 +19,20 @@
 <Profile />
 
 <main>
+	<section class="current">
+		<ActivityLoader />
+	</section>
+
 	<section class="activity">
 		<section class="github">
 			<h2>{$t('home.ghactivity')}</h2>
-			
+
 			<ActivityList activityName="github" />
 		</section>
-		
+
 		<section class="osm">
 			<h2>{$t('home.osmactivity')}</h2>
-			
+
 			<ActivityList activityName="osm" />
 		</section>
 	</section>
@@ -40,6 +45,10 @@
 		&:last-child {
 			@apply pb-0;
 		}
+	}
+
+	section.current {
+		@apply flex justify-center items-center;
 	}
 
 	section.activity {
